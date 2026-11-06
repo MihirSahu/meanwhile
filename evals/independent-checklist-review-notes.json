@@ -1,0 +1,29 @@
+{
+  "harnessVersion": "independent-checklist-v3",
+  "cohort": "artifacts/evaluations/independent-checklist-v3-reference-5",
+  "reviewer": "coding agent reading committed text, gate traces and independent model audits",
+  "humanReview": "pending",
+  "findings": [
+    {
+      "caseId": "sino-japanese-war",
+      "finding": "The rendered ending includes a treaty caveat, but the independent audit rejects its characterization of Taiwan resistance and definitive November endpoint. Checklist source approval and final coverage did not establish historical correctness."
+    },
+    {
+      "caseId": "waterloo",
+      "finding": "Names, context and defeat/retreat are explicit. Independent audit flags the rendered claim of uncertainty about arrival versus collapse. Visible header coverage now counts, but uncertainty still needs source judgment."
+    },
+    {
+      "caseId": "beagle-voyage",
+      "finding": "No published actions. Actor-category repair succeeded; future-period placement and then coverage rejected the opening. No final historical review was available."
+    },
+    {
+      "caseId": "railway-1830",
+      "finding": "Two chapters committed, including injury and transport to Eccles. The 12-call/input work cap prevented final evidence review; 24 seconds remain playable and no done was emitted. No claim that the live ending is verified."
+    },
+    {
+      "caseId": "apollo-earth",
+      "finding": "Clarified on absent July preparation evidence. The final reviewer separately rejected a synthetic generic-return ending and accepted its correction explicitly naming Pacific splashdown and Hornet recovery."
+    }
+  ],
+  "criticControls": "Final-version synthetic checks: two bad endings rejected, two corrected controls accepted. These check consistency with supplied fixture evidence, not historical accuracy."
+}

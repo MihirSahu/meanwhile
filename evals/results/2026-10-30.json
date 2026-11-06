@@ -1,0 +1,1815 @@
+{
+  "createdAt": "2026-10-31T03:03:07.771Z",
+  "model": "gpt-6.1-terra",
+  "effort": "low",
+  "pricing": {
+    "input": 1,
+    "cachedInput": 0.05,
+    "output": 5,
+    "search": 0.01
+  },
+  "pricingCheckedAt": "2026-10-30",
+  "requestedCases": [
+    "sino-japanese-war",
+    "silk-road",
+    "waterloo",
+    "beagle-voyage",
+    "railway-1830",
+    "apollo-earth",
+    "indian-ocean",
+    "silk-road-premise",
+    "industrial-comparison",
+    "shimonoseki",
+    "meiji",
+    "french-revolution",
+    "haitian-revolution",
+    "mansa-musa",
+    "bronze-age-uncertainty",
+    "waterloo-quote",
+    "ambiguous-civil-war",
+    "ambiguous-revolution",
+    "ambiguous-battle",
+    "ambiguous-time-place"
+  ],
+  "stoppedForBudget": false,
+  "costCaveat": "Estimates exclude cache-write surcharges, taxes and hosting. Cold means empty application cache; provider prompt caching may still occur.",
+  "reviewCaveat": "Independent retrieval and a model-assisted rubric are not human historical-accuracy certification.",
+  "summary": {
+    "groups": [
+      {
+        "group": "staged/cold",
+        "samples": 5,
+        "completed": 5,
+        "clarifications": 0,
+        "checksPassed": 5,
+        "focusP50Ms": 15106,
+        "focusP95Ms": 49203,
+        "playableP50Ms": 22397,
+        "playableP95Ms": 53941,
+        "estimatedUsd": 0.1822623
+      },
+      {
+        "group": "staged/warm",
+        "samples": 5,
+        "completed": 5,
+        "clarifications": 0,
+        "checksPassed": 5,
+        "focusP50Ms": 5149,
+        "focusP95Ms": 5520,
+        "playableP50Ms": 10786,
+        "playableP95Ms": 11423,
+        "estimatedUsd": 0.0671425
+      },
+      {
+        "group": "opening/cold",
+        "samples": 20,
+        "completed": 16,
+        "clarifications": 2,
+        "checksPassed": 17,
+        "focusP50Ms": 19580,
+        "focusP95Ms": 54985,
+        "playableP50Ms": 19580,
+        "playableP95Ms": 54985,
+        "estimatedUsd": 0.5983962
+      },
+      {
+        "group": "opening/warm",
+        "samples": 20,
+        "completed": 16,
+        "clarifications": 2,
+        "checksPassed": 17,
+        "focusP50Ms": 9282,
+        "focusP95Ms": 10759,
+        "playableP50Ms": 9282,
+        "playableP95Ms": 10759,
+        "estimatedUsd": 0.18940440000000003
+      }
+    ],
+    "reviewed": 16,
+    "reviewPass": 0,
+    "needsReview": 16,
+    "reviewFailures": 0,
+    "reviewUnavailable": 0,
+    "estimatedTotalUsd": 1.6763898000000004,
+    "estimatedCostPerAcceptedStory": null,
+    "paired": [
+      {
+        "caseId": "silk-road",
+        "cache": "cold",
+        "baselineMs": 53941,
+        "openingMs": 18105,
+        "savedMs": 35836,
+        "savedPercent": 66.43554995272612
+      },
+      {
+        "caseId": "silk-road",
+        "cache": "warm",
+        "baselineMs": 9844,
+        "openingMs": 9282,
+        "savedMs": 562,
+        "savedPercent": 5.709061357171882
+      },
+      {
+        "caseId": "sino-japanese-war",
+        "cache": "cold",
+        "baselineMs": 22950,
+        "openingMs": 20557,
+        "savedMs": 2393,
+        "savedPercent": 10.427015250544661
+      },
+      {
+        "caseId": "sino-japanese-war",
+        "cache": "warm",
+        "baselineMs": 11398,
+        "openingMs": 9401,
+        "savedMs": 1997,
+        "savedPercent": 17.520617652219688
+      },
+      {
+        "caseId": "beagle-voyage",
+        "cache": "cold",
+        "baselineMs": 22397,
+        "openingMs": 18530,
+        "savedMs": 3867,
+        "savedPercent": 17.2657052283788
+      },
+      {
+        "caseId": "beagle-voyage",
+        "cache": "warm",
+        "baselineMs": 11423,
+        "openingMs": 8031,
+        "savedMs": 3392,
+        "savedPercent": 29.69447605707782
+      },
+      {
+        "caseId": "railway-1830",
+        "cache": "cold",
+        "baselineMs": 19609,
+        "openingMs": 19551,
+        "savedMs": 58,
+        "savedPercent": 0.2957825488296191
+      },
+      {
+        "caseId": "waterloo",
+        "cache": "cold",
+        "baselineMs": 20172,
+        "openingMs": 18887,
+        "savedMs": 1285,
+        "savedPercent": 6.370216141185803
+      },
+      {
+        "caseId": "railway-1830",
+        "cache": "warm",
+        "baselineMs": 10674,
+        "openingMs": 8561,
+        "savedMs": 2113,
+        "savedPercent": 19.795765411279746
+      },
+      {
+        "caseId": "waterloo",
+        "cache": "warm",
+        "baselineMs": 10786,
+        "openingMs": 8734,
+        "savedMs": 2052,
+        "savedPercent": 19.024661598368255
+      }
+    ],
+    "pairedSavedP50Ms": 2052,
+    "pairedSavedP50Percent": 17.2657052283788
+  },
+  "methodology": {
+    "openingCases": 20,
+    "pairedBaselineCases": 5,
+    "coldAndWarm": true,
+    "sourceReview": "independent retrieval and same-model rubric, complete cold opening scenes only",
+    "concurrency": "2 workers for the first two cases, then 3 after resuming",
+    "interruption": "Evaluation resumed after an external process termination; saved attempts were retained. Interrupted requests can have unrecorded usage."
+  },
+  "runs": [
+    {
+      "caseId": "silk-road",
+      "category": "journey",
+      "strategy": "staged",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 68319,
+      "firstFocusMs": 49203,
+      "firstBatchMs": 53941,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.036084,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "silk-road",
+      "category": "journey",
+      "strategy": "staged",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 20780,
+      "firstFocusMs": 4993,
+      "firstBatchMs": 9844,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.01202985,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "sino-japanese-war",
+      "category": "battle",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 35335,
+      "firstFocusMs": 20557,
+      "firstBatchMs": 20557,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "overstated",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter",
+              "b2_taiwan_fighting"
+            ],
+            "description": "The JACAR overview supports fighting continuing until November, but its detailed Taiwan account dates the collapse of organized resistance to October 21 and identifies November 18 as the pacification report. Revise the ending to distinguish those events rather than assert that fighting continued until November."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_land_narration",
+              "b1_sea_narration"
+            ],
+            "description": "The two-day interval follows JACAR\u2019s September 15 date for Pyongyang, but another historical source uses September 16. State the September 15 reference explicitly, and provide a direct battle account for the assessment of damage and weakened Chinese naval power."
+          }
+        ],
+        "rationale": "The scene identifies the 1894\u20131895 war, covers the Korean context and peace terms, and presents placements as schematic. Most events are supported, but the Taiwan endpoint and the Yalu damage assessment need revision or stronger verification."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 3,
+      "estimatedUsd": 0.043081999999999995,
+      "reviewEstimatedUsd": 0.0410594
+    },
+    {
+      "caseId": "sino-japanese-war",
+      "category": "battle",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 21305,
+      "firstFocusMs": 9401,
+      "firstBatchMs": 9401,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.011241000000000001,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "silk-road",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 29470,
+      "firstFocusMs": 18105,
+      "firstBatchMs": 18105,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "uncertain",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b1_chapter",
+              "b2_chapter"
+            ],
+            "description": "The scene is dated around 1340, within the permitted range but later than the requested around-1300 setting. The handbook does not establish that its itinerary was representative of trade in 1300."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b1_chapter"
+            ],
+            "description": "The reconstruction is clearly not presented as a documented completed trip, but the scene does not explicitly frame it as one possible route within the wider Silk Roads network."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration"
+            ],
+            "description": "Pegolotti recommends carrying linen, but does not specifically say it was acquired or prepared at Tana. The hypothetical wording limits the concern."
+          }
+        ],
+        "rationale": "The independently checked itinerary supports the principal route and trade details, and the schematic staging and uncertain final section are appropriately qualified. The main limitations are the later date and the lack of an explicit network framing or evidence of typicality around 1300."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 1,
+      "estimatedUsd": 0.0321366,
+      "reviewEstimatedUsd": 0.0372704
+    },
+    {
+      "caseId": "sino-japanese-war",
+      "category": "battle",
+      "strategy": "staged",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 35180,
+      "firstFocusMs": 16843,
+      "firstBatchMs": 22950,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.03793575,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "silk-road",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 19821,
+      "firstFocusMs": 9282,
+      "firstBatchMs": 9282,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0103461,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "sino-japanese-war",
+      "category": "battle",
+      "strategy": "staged",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 25453,
+      "firstFocusMs": 5520,
+      "firstBatchMs": 11398,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.014983449999999999,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "beagle-voyage",
+      "category": "journey",
+      "strategy": "staged",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 39454,
+      "firstFocusMs": 15106,
+      "firstBatchMs": 22397,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.03874215,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "railway-1830",
+      "category": "technology",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 29939,
+      "firstFocusMs": 19551,
+      "firstBatchMs": 19551,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter"
+            ],
+            "description": "The categorical claim that the whole procession did not stop at Eccles is not established by the checked sources. Present Eccles as Huskisson\u2019s separate destination without asserting an exclusive stop."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_eccles_narration",
+              "b2_narration"
+            ],
+            "description": "Narrating Huskisson\u2019s death before the Manchester arrival may imply it occurred first. He died later that evening; clarify the chronology."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_narration"
+            ],
+            "description": "The cited National Transport Trust PDF could not be checked. The independently reviewed s5 supports the procession\u2019s subdued continuation to Manchester and should be cited."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_train",
+              "b0_narration"
+            ],
+            "description": "The name Northumbrian has independent support, but the cited s2 and s3 call the locomotive Northumberland. Add a supporting reference or note the naming discrepancy."
+          }
+        ],
+        "rationale": "The date, northwest England setting, steam railway imagery and main sequence are supported. The schematic staging is clearly qualified, but an Eccles claim, the implied order of death and arrival, and citation limitations merit review."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 4,
+      "estimatedUsd": 0.0329527,
+      "reviewEstimatedUsd": 0.0396254
+    },
+    {
+      "caseId": "waterloo",
+      "category": "battle",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 31015,
+      "firstFocusMs": 18887,
+      "firstBatchMs": 18887,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b0_narration",
+              "b1_chapter",
+              "b1_narration"
+            ],
+            "description": "The cited Cambridge page could not be accessed. The independently checked National Army Museum page broadly supports these events, but the assigned source attribution remains unverified."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_narration"
+            ],
+            "description": "The National Army Museum gives about 6 p.m. for the fall of La Haye Sainte, but other checked accounts place it later. \u2018Around 6\u20136:30 p.m.\u2019 would better convey the uncertainty than \u2018by about 6 p.m.\u2019"
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The Guard\u2019s attack is placed around 7 p.m. by the National Army Museum, but other accounts place it later. The wording should distinguish the attack\u2019s approximate time from the subsequent retreat and pursuit."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The French retreat conveys the outcome, but explicitly identifying the defeated French army as Napoleon\u2019s would make the requested context clearer."
+          }
+        ],
+        "rationale": "The independently checked museum account supports the broad battle sequence and Allied\u2013Prussian context. The Cambridge citations were inaccessible, and some timings are disputed. The staging is explicitly schematic and does not present invented quotations or a precise pursuit route."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 1,
+      "estimatedUsd": 0.03199555,
+      "reviewEstimatedUsd": 0.0382334
+    },
+    {
+      "caseId": "beagle-voyage",
+      "category": "journey",
+      "strategy": "staged",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 26086,
+      "firstFocusMs": 5149,
+      "firstBatchMs": 11423,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.014332000000000001,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "railway-1830",
+      "category": "technology",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 19465,
+      "firstFocusMs": 8561,
+      "firstBatchMs": 8561,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.010754300000000001,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "waterloo",
+      "category": "battle",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 20014,
+      "firstFocusMs": 8734,
+      "firstBatchMs": 8734,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.01017165,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "railway-1830",
+      "category": "technology",
+      "strategy": "staged",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 29951,
+      "firstFocusMs": 14762,
+      "firstBatchMs": 19609,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.034630749999999995,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "waterloo",
+      "category": "battle",
+      "strategy": "staged",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 31174,
+      "firstFocusMs": 14588,
+      "firstBatchMs": 20172,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.03486965,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "beagle-voyage",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 31349,
+      "firstFocusMs": 18530,
+      "firstBatchMs": 18530,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration",
+              "b1_narration",
+              "b2_narration1",
+              "b2_narration2"
+            ],
+            "description": "The independent audit could not access the cited Tahiti and Earth Museum PDFs. Other checked sources support the main dates and selected-stop sequence, but the claims cannot be fully verified against those particular citations."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b1_callao"
+            ],
+            "description": "The South America chapter has no South American marker until Callao appears in the following chapter. The compressed route would better represent this substantial part of the voyage with an earlier selected stop."
+          }
+        ],
+        "rationale": "Independent sources support the principal chronology and route sequence. The sailing-ship asset and schematic framing are appropriate, and the scene does not imply Darwin published his theory during the voyage. Some cited-source assignments remain unverified because the PDFs were inaccessible."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 3,
+      "estimatedUsd": 0.03368505,
+      "reviewEstimatedUsd": 0.039771400000000005
+    },
+    {
+      "caseId": "railway-1830",
+      "category": "technology",
+      "strategy": "staged",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 22001,
+      "firstFocusMs": 5001,
+      "firstBatchMs": 10674,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.012735,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "waterloo",
+      "category": "battle",
+      "strategy": "staged",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 22764,
+      "firstFocusMs": 5153,
+      "firstBatchMs": 10786,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.013062200000000001,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "beagle-voyage",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 19055,
+      "firstFocusMs": 8031,
+      "firstBatchMs": 8031,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.01050125,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "apollo-earth",
+      "category": "asset-limits",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 26106,
+      "firstFocusMs": 17590,
+      "firstBatchMs": 17590,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "fail",
+        "uncertainty": "overstated",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration"
+            ],
+            "description": "The countdown-test source supports the rehearsal, but the July 16 Pad 39A launch should also cite the NASA mission overview."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_recovery"
+            ],
+            "description": "The assigned NTRS source was not verified for the recovery details. Independent NASA sources support the sequence and should be cited."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter",
+              "b2_houston_narration"
+            ],
+            "description": "July 27 local time is supported by another NASA recovery history, but the cited mission summary gives July 28 in Houston. Cite the corroborating account and flag the unresolved conflict rather than presenting the date as settled."
+          },
+          {
+            "severity": "error",
+            "actionIds": [
+              "b0_chapter",
+              "b1_chapter"
+            ],
+            "description": "The scene does not explain that spacecraft assets are unavailable, as the case requires. Add an explicit explanation; do not substitute a ship or train for a spacecraft."
+          }
+        ],
+        "rationale": "The main Earth-side sequence is independently supported, and the schematic ship represents USS Hornet rather than a spacecraft. However, source assignments need correction, the Houston date conflict is undisclosed, and the required explanation of missing spacecraft assets is absent."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 4,
+      "estimatedUsd": 0.0308567,
+      "reviewEstimatedUsd": 0.040417400000000006
+    },
+    {
+      "caseId": "silk-road-premise",
+      "category": "false-premise",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 28596,
+      "firstFocusMs": 18555,
+      "firstBatchMs": 18555,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b0_narration",
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The sources support the desert branches and maritime connections generally, but do not establish the full depicted configuration specifically around 1300. Add period-specific evidence or qualify the date framing."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_narration"
+            ],
+            "description": "The assigned source does not substantiate the full exchange and commodity claims. General exchange and silk and spices are supported by s1, but ceramics require better support for the period and scene."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The assigned s1 does not itself establish Mongol facilitation of travel. The independent review found broader supporting evidence elsewhere, but not uniform safety across the network."
+          }
+        ],
+        "rationale": "The scene explicitly corrects the single-road premise and labels its stationary markers as schematic, not documented journeys. The historical overview is broadly supported, but some citations and the around-1300 framing need stronger evidence."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.0313837,
+      "reviewEstimatedUsd": 0.0377964
+    },
+    {
+      "caseId": "apollo-earth",
+      "category": "asset-limits",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 18459,
+      "firstFocusMs": 9371,
+      "firstBatchMs": 9371,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.00961875,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "silk-road-premise",
+      "category": "false-premise",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 19632,
+      "firstFocusMs": 10759,
+      "firstBatchMs": 10759,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0103053,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "indian-ocean",
+      "category": "trade",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 62311,
+      "firstFocusMs": 54985,
+      "firstBatchMs": 54985,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "supported",
+        "chronology": "pass",
+        "requestCoverage": "uncertain",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_malindi",
+              "b0_kilwa",
+              "b0_cambay",
+              "b0_calicut",
+              "b0_malacca",
+              "b1_cloth",
+              "b1_spices"
+            ],
+            "description": "The narration describes connections, but the scene has only static port markers and no visual links. Add schematic connections to show the network without implying a single voyage or precise routes."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration",
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The Calicut arrival is supported independently, but cited s3 could not be checked. The cited s4 describes Portuguese control around 1511 rather than explicitly dating the seizure; add the independent UNESCO source for the exact event and date."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_cloth"
+            ],
+            "description": "The Met supports the 1506 textile-trade statement, but the exact date was not independently confirmed and the checked passage does not identify the underlying record."
+          }
+        ],
+        "rationale": "The principal historical claims are supported, the chronology is sound, and the schematic staging avoids an invented expedition or industrial anachronisms. The main presentation gap is that the trading network is described rather than visually connected."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 3,
+      "estimatedUsd": 0.0326697,
+      "reviewEstimatedUsd": 0.039002400000000007
+    },
+    {
+      "caseId": "indian-ocean",
+      "category": "trade",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 18052,
+      "firstFocusMs": 10312,
+      "firstBatchMs": 10312,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.01019325,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "industrial-comparison",
+      "category": "comparison",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 26892,
+      "firstFocusMs": 19580,
+      "firstBatchMs": 19580,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "supported",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "uncertain",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b0_narration"
+            ],
+            "description": "The exact 1860 chapter date compresses earlier mechanization and resistance together with hardship following the 1860 trade agreement. Use a broader period label or distinguish the sequence."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_coventry",
+              "b1_tomioka"
+            ],
+            "description": "The scene center is far from both geographic markers. Check that the camera framing actually makes the two schematic sites visible; the effect of the supplied distance is unclear."
+          }
+        ],
+        "rationale": "Independent checks support the narrowly scoped comparison and its different industrial timelines. The Coventry chronology needs qualification, and the visibility of the geographically separated markers is uncertain."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.030813699999999996,
+      "reviewEstimatedUsd": 0.035973399999999996
+    },
+    {
+      "caseId": "industrial-comparison",
+      "category": "comparison",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 18204,
+      "firstFocusMs": 10617,
+      "firstBatchMs": 10617,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.00935715,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "shimonoseki",
+      "category": "diplomacy",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 32786,
+      "firstFocusMs": 21795,
+      "firstBatchMs": 21795,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "fail",
+        "uncertainty": "overstated",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration"
+            ],
+            "description": "The treaty is mentioned but its parties and principal terms are not explained. Identify Qing China and Japan and summarize the territorial and indemnity provisions to show what the subsequent intervention and transfer concerned."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration"
+            ],
+            "description": "The armistice excluded Taiwan and the Pescadores; qualify 'a ceasefire' so it does not suggest an unrestricted ceasefire."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_november"
+            ],
+            "description": "JACAR gives November 18 in its narrative but November 8 in its description of the signed convention. Qualify the date or verify it against the document or another authoritative source."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_transfer"
+            ],
+            "description": "JACAR supports June 6 for entry into Taipei, but other cited historical sources give June 7. Disclose the disagreement rather than presenting the date as settled."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration",
+              "b1_narration",
+              "b1_november",
+              "b2_declaration",
+              "b2_transfer"
+            ],
+            "description": "The cited JACAR main-feature index links to detailed entries rather than independently establishing every narrated detail. Cite the relevant detailed pages; the substantive content of the cited Academia Sinica page could not be checked."
+          }
+        ],
+        "rationale": "The independently checked sources support much of the sequence and the distinction between the treaty, diplomatic pressure and subsequent fighting. The schematic staging and explicit return to May\u2013June are appropriate. However, the scene omits the treaty's basic terms and presents two disputed dates without qualification."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 4,
+      "estimatedUsd": 0.035005699999999994,
+      "reviewEstimatedUsd": 0.0420754
+    },
+    {
+      "caseId": "meiji",
+      "category": "political-change",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 28428,
+      "firstFocusMs": 20134,
+      "firstBatchMs": 20135,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "fail",
+        "uncertainty": "overstated",
+        "staging": "uncertain",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The cited Harvard chronology was inaccessible. The bloodless surrender and continued fighting have independent support, but the exact May 3 handover date needs verification against an accessible archival or academic source."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b1_chapter",
+              "b2_chapter"
+            ],
+            "description": "Label the displayed dates as Gregorian equivalents; Japan used a lunisolar calendar in 1868."
+          },
+          {
+            "severity": "error",
+            "actionIds": [
+              "b0_chapter",
+              "b0_alliance",
+              "b1_chapter",
+              "b1_former",
+              "b1_government"
+            ],
+            "description": "The captions describe figures and formations as schematic but do not explicitly say that the stylized people are not historically accurate portraits."
+          }
+        ],
+        "rationale": "The Kyoto coup and Toba\u2013Fushimi sequence are supported, and the scene does not import later industrial development into 1868. The Edo handover date remains insufficiently verified, and the requested distinction between stylized figures and accurate portraits is not explicit."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.032432699999999995,
+      "reviewEstimatedUsd": 0.039500400000000005
+    },
+    {
+      "caseId": "shimonoseki",
+      "category": "diplomacy",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 17211,
+      "firstFocusMs": 9115,
+      "firstBatchMs": 9116,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.009925,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "meiji",
+      "category": "political-change",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 16545,
+      "firstFocusMs": 8505,
+      "firstBatchMs": 8505,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.00943735,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "french-revolution",
+      "category": "revolution",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 28020,
+      "firstFocusMs": 18102,
+      "firstBatchMs": 18102,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_narration2"
+            ],
+            "description": "The assigned source s2 does not establish the family\u2019s installation at the Tuileries. Add s1, which independently supports that destination."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_narration2",
+              "b1_hotel"
+            ],
+            "description": "The H\u00f4tel de Ville marker anchors narration about the appointments, but the cited chronology does not establish that those appointments occurred there. Keep the association explicitly schematic."
+          }
+        ],
+        "rationale": "The scene covers relevant Parisian events within 1789 and does not introduce Napoleon\u2019s later rule. Its principal historical claims are supported, but one destination needs corrected attribution. The stationary markers are appropriately described as schematic."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.031190700000000002,
+      "reviewEstimatedUsd": 0.0367014
+    },
+    {
+      "caseId": "french-revolution",
+      "category": "revolution",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 18124,
+      "firstFocusMs": 8028,
+      "firstBatchMs": 8028,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.00899655,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "haitian-revolution",
+      "category": "revolution",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 31402,
+      "firstFocusMs": 21899,
+      "firstBatchMs": 21899,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b0_narration",
+              "b0_emancipation",
+              "b1_chapter",
+              "b1_alignment",
+              "b1_autonomy",
+              "b2_chapter",
+              "b2_france",
+              "b2_independence"
+            ],
+            "description": "The independent review supports most major claims, but could not verify that the cited pages support their assigned claims. Check or replace the inaccessible and insufficiently reviewed citations."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_france"
+            ],
+            "description": "The independent review confirmed the French expedition but could not verify all the details of Louverture\u2019s capture, deportation and death. Check them against a readable source."
+          }
+        ],
+        "rationale": "The scene covers enslaved people\u2019s uprising and emancipation, changing alliances, and the final war and independence in a coherent sequence. Bois Ca\u00efman is appropriately qualified, and the static staging is identified as schematic. Citation support and one set of details remain insufficiently verified."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 1,
+      "estimatedUsd": 0.034243699999999995,
+      "reviewEstimatedUsd": 0.0522074
+    },
+    {
+      "caseId": "haitian-revolution",
+      "category": "revolution",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 20034,
+      "firstFocusMs": 10065,
+      "firstBatchMs": 10065,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.01099315,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "mansa-musa",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 62936,
+      "firstFocusMs": 54101,
+      "firstBatchMs": 54101,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_narration"
+            ],
+            "description": "The cited teacher\u2019s guide supports the entourage but does not establish the inclusion of warriors. Add a source for that detail or remove it."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter"
+            ],
+            "description": "The cited account dates the Cairo visit to 1324; the 1324\u20131325 chapter date is broader than necessary."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter"
+            ],
+            "description": "The 1324\u20131325 range describes the broader pilgrimage, not a verified two-year stay in Mecca. Clarify this and consider marking the range approximate."
+          }
+        ],
+        "rationale": "Independent checks support the broad journey and Cairo encounter, while the scene appropriately labels its staging as schematic and uses narration rather than invented dialogue. A citation gap and date qualifications warrant review."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 3,
+      "estimatedUsd": 0.0315997,
+      "reviewEstimatedUsd": 0.039943400000000004
+    },
+    {
+      "caseId": "bronze-age-uncertainty",
+      "category": "uncertainty",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 31513,
+      "firstFocusMs": 23048,
+      "firstBatchMs": 23048,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "The selected historical period leaves the requested benchmark range."
+        ]
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_drought"
+            ],
+            "description": "The exact 1198\u20131196 BCE tree-ring drought claim could not be independently checked against the inaccessible Nature article."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_ugarit",
+              "b1_ships"
+            ],
+            "description": "The assigned sources were not established as support for the Ugarit records. Cite s1, which independently discusses grain shortages and enemy ships; the timing and interpretation of individual documents remain contested."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter",
+              "b2_endings"
+            ],
+            "description": "The 12th-century chapter heading may imply that all the named political endings occurred then. A late 13th\u201312th-century frame is safer."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b0_narration",
+              "b2_chapter",
+              "b2_uncertainty"
+            ],
+            "description": "The contribution of cited source s4 could not be verified because its page was inaccessible."
+          }
+        ],
+        "rationale": "The scene presents multiple possible pressures without asserting a universal cause, uses BCE dates, and labels its static staging as schematic. Independent review supports the broad account, but the precise drought finding and some assigned citations remain unverified."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.0351317,
+      "reviewEstimatedUsd": 0.0413984
+    },
+    {
+      "caseId": "mansa-musa",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 18560,
+      "firstFocusMs": 9334,
+      "firstBatchMs": 9334,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0101323,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "bronze-age-uncertainty",
+      "category": "uncertainty",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 19170,
+      "firstFocusMs": 10289,
+      "firstBatchMs": 10289,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "The selected historical period leaves the requested benchmark range."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.01147235,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-civil-war",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 9576,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0263871,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-revolution",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 5853,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0155201,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-civil-war",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "clarification",
+      "elapsedMs": 1770,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": true,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.00034255,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-revolution",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "clarification",
+      "elapsedMs": 1818,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": true,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0002648,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-time-place",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "error",
+      "elapsedMs": 2791,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected clarification, observed error."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-battle",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "evidence",
+      "elapsedMs": 4726,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected clarification, observed evidence."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0152374,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-time-place",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "evidence",
+      "elapsedMs": 3955,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected clarification, observed evidence."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.015179950000000001,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "ambiguous-battle",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "evidence",
+      "elapsedMs": 2764,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected clarification, observed evidence."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0108878,
+      "reviewEstimatedUsd": 0
+    },
+    {
+      "caseId": "waterloo-quote",
+      "category": "quotation",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 37501,
+      "firstFocusMs": 21236,
+      "firstBatchMs": 21236,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "uncertain",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_speech"
+            ],
+            "description": "The claim that the format cannot document a quotation is not independently established. The narration clarifies that no battlefield speech is being quoted, but does not summarize the proclamation\u2019s content."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_speech"
+            ],
+            "description": "Napoleon-related narration is attached to Wellington\u2019s force, which could visually suggest an attribution to that force despite its narration label."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter"
+            ],
+            "description": "The National Archives citation could not be accessed; the chapter\u2019s historical claims are nevertheless supported by the National Army Museum."
+          }
+        ],
+        "rationale": "The checked museum account supports the main chronology and battle narrative, and no invented quotation is presented. The schematic staging is disclosed. Review is needed for the unverified format limitation and the potential visual attribution of the quotation clarification."
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.042071700000000004,
+      "reviewEstimatedUsd": 0.0382084
+    },
+    {
+      "caseId": "waterloo-quote",
+      "category": "quotation",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "complete",
+      "elapsedMs": 18139,
+      "firstFocusMs": 8958,
+      "firstBatchMs": 8958,
+      "cacheHit": true,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.00928385,
+      "reviewEstimatedUsd": 0
+    }
+  ]
+}

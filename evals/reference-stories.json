@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "description": "Five agent-source-checked reference stories. These are evaluation anchors, not production evidence or human historical certification. Anchors locate supporting context and are not complete evidentiary excerpts. Evaluate facts when relevant to the requested scope; background facts need not all appear.",
+  "stories": [
+    {
+      "caseId": "sino-japanese-war",
+      "title": "First Sino-Japanese War",
+      "yearRange": [1894, 1895],
+      "facts": [
+        {
+          "id": "sino-japanese-war-f1",
+          "statement": "Hostilities began in July 1894.",
+          "sourceUrl": "https://jacar.go.jp/english/exhibition/jacarbl-fsjwar-e/about/index.html",
+          "anchor": "broke out in July 1894",
+          "normalizedOffset": 116,
+          "required": true
+        },
+        {
+          "id": "sino-japanese-war-f2",
+          "statement": "Rivalry between Meiji Japan and Qing China developed in a Korean political context.",
+          "sourceUrl": "https://jacar.go.jp/english/exhibition/jacarbl-fsjwar-e/about/index.html",
+          "anchor": "military rivalry between Meiji Japan and Qing China",
+          "normalizedOffset": 159,
+          "required": true
+        },
+        {
+          "id": "sino-japanese-war-f3",
+          "statement": "The Treaty of Shimonoseki was signed in April 1895.",
+          "sourceUrl": "https://jacar.go.jp/english/exhibition/jacarbl-fsjwar-e/about/index.html",
+          "anchor": "A peace treaty was signed in April 1895",
+          "normalizedOffset": 289,
+          "required": true
+        }
+      ],
+      "guards": [
+        "Do not confuse this event with the war beginning in 1937.",
+        "Do not equate the April treaty with an immediate end to fighting over Taiwan; qualify disputed endpoints."
+      ],
+      "review": {
+        "status": "agent-source-checked",
+        "checkedAt": "2026-10-31",
+        "method": "Read the authoritative page and compared each paraphrased fact and short anchor in context.",
+        "sourceAccess": "direct-reader-and-web",
+        "documentHash": "58fa0a3dd0c484cd1787e8f92c75e530396680d86c5aef75cefec67745120b80",
+        "humanReview": "pending"
+      }
+    },
+    {
+      "caseId": "waterloo",
+      "title": "Waterloo",
+      "yearRange": [1815, 1815],
+      "facts": [
+        {
+          "id": "waterloo-f1",
+          "statement": "The battle took place on 18 June 1815.",
+          "sourceUrl": "https://www.nam.ac.uk/explore/battle-waterloo",
+          "anchor": "18 June 1815",
+          "normalizedOffset": 90,
+          "required": true
+        },
+        {
+          "id": "waterloo-f2",
+          "statement": "Napoleon faced a coalition involving Wellington and Blücher.",
+          "sourceUrl": "https://www.nam.ac.uk/explore/battle-waterloo",
+          "anchor": "led by the Duke of Wellington and Marshal Blücher",
+          "normalizedOffset": 150,
+          "required": true
+        },
+        {
+          "id": "waterloo-f3",
+          "statement": "The battle ended in Napoleon’s defeat.",
+          "sourceUrl": "https://www.nam.ac.uk/explore/battle-waterloo",
+          "anchor": "Napoleon was defeated",
+          "normalizedOffset": 7860,
+          "required": true
+        }
+      ],
+      "guards": [
+        "Do not describe the coalition as solely British.",
+        "Avoid unsupported exact attack times or invented quotations."
+      ],
+      "review": {
+        "status": "agent-source-checked",
+        "checkedAt": "2026-10-31",
+        "method": "Read the authoritative page and compared each paraphrased fact and short anchor in context.",
+        "sourceAccess": "direct-reader-and-web",
+        "documentHash": "2d72123c1ca9f840ede055c1ab1fdd6f3103de517cd6127352c8ce66edf8ab0c",
+        "humanReview": "pending"
+      }
+    },
+    {
+      "caseId": "beagle-voyage",
+      "title": "Darwin and HMS Beagle",
+      "yearRange": [1831, 1836],
+      "facts": [
+        {
+          "id": "beagle-voyage-f1",
+          "statement": "Darwin sailed aboard Beagle from Plymouth on 27 December 1831.",
+          "sourceUrl": "https://www.darwinproject.ac.uk/commentary/voyage-hms-beagle",
+          "anchor": "27 December 1831",
+          "normalizedOffset": 18107,
+          "required": true
+        },
+        {
+          "id": "beagle-voyage-f2",
+          "statement": "The voyage was an Admiralty survey including South America.",
+          "sourceUrl": "https://www.darwinproject.ac.uk/commentary/voyage-hms-beagle",
+          "anchor": "chart the coast of South America",
+          "normalizedOffset": 16603,
+          "required": true
+        },
+        {
+          "id": "beagle-voyage-f3",
+          "statement": "The expedition returned to England on 2 October 1836.",
+          "sourceUrl": "https://www.darwinproject.ac.uk/commentary/voyage-hms-beagle",
+          "anchor": "2 October 1836",
+          "normalizedOffset": 18189,
+          "required": true
+        }
+      ],
+      "guards": [
+        "Compress only sourced stops and label the route as illustrative.",
+        "Do not depict publication of Origin of Species during this voyage."
+      ],
+      "review": {
+        "status": "agent-source-checked",
+        "checkedAt": "2026-10-31",
+        "method": "Read the authoritative page and compared each paraphrased fact and short anchor in context.",
+        "sourceAccess": "direct-reader-and-web",
+        "documentHash": "6cb92f3e65cf9e9aee46fa413428f57fbb8193d42d8bc2851b5ddaa35124d0d7",
+        "humanReview": "pending"
+      }
+    },
+    {
+      "caseId": "railway-1830",
+      "title": "Liverpool and Manchester Railway",
+      "yearRange": [1830, 1830],
+      "facts": [
+        {
+          "id": "railway-1830-f1",
+          "statement": "The company opened the Liverpool–Manchester line on 15 September 1830.",
+          "sourceUrl": "https://collection.sciencemuseumgroup.org.uk/people/ap48/liverpool-manchester-railway-co",
+          "anchor": "opened the line between Liverpool and Manchester on 15 September 1830",
+          "normalizedOffset": null,
+          "required": true
+        },
+        {
+          "id": "railway-1830-f2",
+          "statement": "The source distinguishes later passenger operations from the opening ceremony.",
+          "sourceUrl": "https://collection.sciencemuseumgroup.org.uk/people/ap48/liverpool-manchester-railway-co",
+          "anchor": "first passengers travelled along the line two days later",
+          "normalizedOffset": null,
+          "required": false
+        },
+        {
+          "id": "railway-1830-f3",
+          "statement": "Goods traffic began on 1 December in the source’s chronology.",
+          "sourceUrl": "https://collection.sciencemuseumgroup.org.uk/people/ap48/liverpool-manchester-railway-co",
+          "anchor": "goods on 1 December",
+          "normalizedOffset": null,
+          "required": false
+        }
+      ],
+      "guards": [
+        "The requested scene concerns the opening ceremony; later operations are background, not required events.",
+        "Do not call this the first railway of any kind."
+      ],
+      "review": {
+        "status": "agent-source-checked",
+        "checkedAt": "2026-10-31",
+        "method": "Read the authoritative page and compared each paraphrased fact and short anchor in context.",
+        "sourceAccess": "web-reader; direct server access unavailable",
+        "documentHash": null,
+        "humanReview": "pending"
+      }
+    },
+    {
+      "caseId": "apollo-earth",
+      "title": "Apollo 11 on Earth",
+      "yearRange": [1969, 1969],
+      "facts": [
+        {
+          "id": "apollo-earth-f1",
+          "statement": "Apollo 11 launched from Cape Kennedy on 16 July 1969.",
+          "sourceUrl": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/",
+          "anchor": "July 16, 1969",
+          "normalizedOffset": 1270,
+          "required": true
+        },
+        {
+          "id": "apollo-earth-f2",
+          "statement": "The mission returned by Pacific splashdown on 24 July 1969.",
+          "sourceUrl": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/",
+          "anchor": "July 24, 1969",
+          "normalizedOffset": 8392,
+          "required": true
+        },
+        {
+          "id": "apollo-earth-f3",
+          "statement": "USS Hornet was the recovery ship.",
+          "sourceUrl": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/",
+          "anchor": "recovery ship USS Hornet",
+          "normalizedOffset": 8173,
+          "required": true
+        }
+      ],
+      "guards": [
+        "Keep lunar scenes off the Earth globe.",
+        "Use a ship model only as a schematic recovery ship; do not present it as a spacecraft."
+      ],
+      "review": {
+        "status": "agent-source-checked",
+        "checkedAt": "2026-10-31",
+        "method": "Read the authoritative page and compared each paraphrased fact and short anchor in context.",
+        "sourceAccess": "direct-reader-and-web",
+        "documentHash": "124b087cb719583fdbc52a818b352be037524d74bf9aaac49d5e91dce2318155",
+        "humanReview": "pending"
+      }
+    }
+  ]
+}

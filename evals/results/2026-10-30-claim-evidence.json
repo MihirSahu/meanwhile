@@ -1,0 +1,2590 @@
+{
+  "createdAt": "2026-10-31T04:03:28.914Z",
+  "harnessVersion": "passage-review-v1",
+  "referenceDigest": "d60ff054bf30c1f27b1869ddf7b76a01e79ad43d5b8e6e3e03c47072e58f309b",
+  "coldOnly": true,
+  "model": "gpt-6.1-terra",
+  "effort": "low",
+  "pricing": {
+    "input": 1,
+    "cachedInput": 0.05,
+    "output": 5,
+    "search": 0.01
+  },
+  "pricingCheckedAt": "2026-10-30",
+  "costCaveat": "Estimates exclude cache-write surcharges, taxes and hosting. Cold means empty application cache; provider prompt caching may still occur.",
+  "reviewCaveat": "Independent retrieval and a model-assisted rubric are not human historical-accuracy certification.",
+  "requestedCases": [
+    "sino-japanese-war",
+    "silk-road",
+    "waterloo",
+    "beagle-voyage",
+    "railway-1830",
+    "apollo-earth",
+    "indian-ocean",
+    "silk-road-premise",
+    "industrial-comparison",
+    "shimonoseki",
+    "meiji",
+    "french-revolution",
+    "haitian-revolution",
+    "mansa-musa",
+    "bronze-age-uncertainty",
+    "waterloo-quote",
+    "ambiguous-civil-war",
+    "ambiguous-revolution",
+    "ambiguous-battle",
+    "ambiguous-time-place"
+  ],
+  "stoppedForBudget": false,
+  "runs": [
+    {
+      "referenceCase": null,
+      "caseId": "silk-road",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 14480,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected resolved, observed clarification."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0226353,
+      "reviewEstimatedUsd": 0,
+      "artifact": "silk-road/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_09f6cb830981525e016ae568914bc487d1ad8b1bc06f564080",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 12796,
+          "outputTokens": 532,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 9483
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_08a162b0474f124b016ae5689d32a087d184bcea14b0c487fb",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3589,
+          "outputTokens": 72,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 2400
+        }
+      ],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": "beagle-voyage",
+      "caseId": "beagle-voyage",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "validation",
+      "elapsedMs": 57316,
+      "firstFocusMs": 30782,
+      "firstBatchMs": 30782,
+      "cacheHit": false,
+      "readyThrough": 12,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected resolved, observed validation."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0654506,
+      "reviewEstimatedUsd": 0,
+      "artifact": "beagle-voyage/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 2,
+      "gateReasons": [
+        {
+          "stage": "batch-1",
+          "review": {
+            "claims": [],
+            "actions": [
+              {
+                "id": "b1_chapter",
+                "verdict": "supported",
+                "reason": "The title and dates match c3 and c4; the caption accurately identifies the staging as schematic."
+              },
+              {
+                "id": "b1_survey",
+                "verdict": "supported",
+                "reason": "c3 supports the Chiloé survey marker."
+              },
+              {
+                "id": "b1_darwin",
+                "verdict": "supported",
+                "reason": "c4 supports Darwin’s presence in the Galápagos."
+              },
+              {
+                "id": "b1_narration",
+                "verdict": "supported",
+                "reason": "c3 and c4 support the narration’s sequence and activities."
+              }
+            ],
+            "scope": {
+              "verdict": "revise",
+              "reason": "The outline covers the voyage, but the current staging explicitly does not trace a route. Show the requested compressed illustrative route through sequenced, labeled markers without inventing travel legs."
+            },
+            "chronology": {
+              "verdict": "supported",
+              "reason": "The current 1834–1835 chapter follows the committed 1831–1832 chapter and preserves the supported sequence."
+            },
+            "metadata": {
+              "verdict": "supported",
+              "reason": "Metadata and outline were previously approved."
+            }
+          }
+        },
+        {
+          "stage": "batch-1",
+          "review": {
+            "claims": [],
+            "actions": [
+              {
+                "id": "b1_chapter",
+                "verdict": "supported",
+                "reason": "The title, date and schematic caption fit c3 and c4."
+              },
+              {
+                "id": "b1_chiloe",
+                "verdict": "supported",
+                "reason": "c3 supports the 1834 Chiloé surveys."
+              },
+              {
+                "id": "b1_galapagos",
+                "verdict": "supported",
+                "reason": "c4 supports the 1835 Galápagos marker."
+              },
+              {
+                "id": "b1_narration",
+                "verdict": "supported",
+                "reason": "c3 and c4 support the sequence and activities described."
+              },
+              {
+                "id": "b1_australia",
+                "verdict": "revise",
+                "reason": "The 1836 marker appears under the 1834–1835 chapter; add the planned 1836 chapter before it."
+              },
+              {
+                "id": "b1_falmouth",
+                "verdict": "revise",
+                "reason": "The supported 1836 marker appears under the 1834–1835 chapter; place it in the planned 1836 chapter."
+              },
+              {
+                "id": "b1_return",
+                "verdict": "revise",
+                "reason": "The narration is supported by c5 but should appear under the planned 1836 chapter."
+              }
+            ],
+            "scope": {
+              "verdict": "supported",
+              "reason": "The outline and actions cover the requested voyage and compressed illustrative route."
+            },
+            "chronology": {
+              "verdict": "revise",
+              "reason": "Introduce the planned 1836 chapter before the Australia and Falmouth actions, which otherwise appear under a chapter dated 1834–1835."
+            },
+            "metadata": {
+              "verdict": "supported",
+              "reason": "Metadata and outline were previously approved."
+            }
+          }
+        }
+      ],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_02321ae466d465d2016ae5689f7e1c87d1941f0b46851ee869",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 12967,
+          "outputTokens": 591,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 11772
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_01e9b71dfb1cf122016ae568ac3fd887d1bbff0b962e52df3f",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5532,
+          "outputTokens": 989,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12361
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_057c26286bb8c800016ae568b895b087d1af10cab35a3bef6c",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4523,
+          "outputTokens": 401,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5724
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0d929a1aeda8fad3016ae568be5b8c87d1b5313922e5d3259e",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5489,
+          "outputTokens": 453,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 6273
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_02c5998ff7fb289e016ae568c4a09087d180430462f2b179bd",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4855,
+          "outputTokens": 365,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5281
+        },
+        {
+          "stage": "repair",
+          "responseId": "resp_090b14ed2de2d558016ae568c9e89887d1a2c363aab8d150e6",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5957,
+          "outputTokens": 663,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 9118
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0654e125dbcbbf5f016ae568d3144c87d1ad0b9bee9ae9eb1d",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5062,
+          "outputTokens": 433,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5828
+        }
+      ],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": "sino-japanese-war",
+      "caseId": "sino-japanese-war",
+      "category": "battle",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 49846,
+      "firstFocusMs": 33020,
+      "firstBatchMs": 33020,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "fail",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "fail",
+        "uncertainty": "overstated",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "error",
+            "actionIds": [
+              "b0_chapter",
+              "b0_narration"
+            ],
+            "description": "The scene does not explain the Korean political context or the rivalry between Qing China and Japan for influence in Korea."
+          },
+          {
+            "severity": "error",
+            "actionIds": [
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The final peace chapter omits the continuation of fighting over Taiwan, making the treaty appear to end all fighting immediately."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_narration"
+            ],
+            "description": "The sequence may suggest that Qing peace efforts began only after Weihaiwei fell. Earlier peace initiatives occurred in November 1894 and February 1895."
+          }
+        ],
+        "rationale": "The independently checked dates and schematic staging are substantially supported, and the title identifies the first war. However, the scene omits required Korean context and presents an insufficiently qualified endpoint.",
+        "referenceChecks": [
+          {
+            "id": "sino-japanese-war-f1",
+            "status": "addressed",
+            "reason": "The opening chapter places the outbreak in July 1894."
+          },
+          {
+            "id": "sino-japanese-war-f2",
+            "status": "missing",
+            "reason": "The scene does not explain the Korean political context or the rivalry for influence there."
+          },
+          {
+            "id": "sino-japanese-war-f3",
+            "status": "addressed",
+            "reason": "The scene places the treaty at Shimonoseki on 17 April 1895."
+          },
+          {
+            "id": "guard-1",
+            "status": "addressed",
+            "reason": "The title and dates identify the First Sino-Japanese War, not the war beginning in 1937."
+          },
+          {
+            "id": "guard-2",
+            "status": "missing",
+            "reason": "The final peace chapter does not qualify the treaty endpoint with continued fighting over Taiwan."
+          }
+        ]
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 3,
+      "estimatedUsd": 0.06695259999999999,
+      "reviewEstimatedUsd": 0.053279400000000005,
+      "artifact": "sino-japanese-war/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_03712efab1d85404016ae568914c3087d1ad071a120215cbe8",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13124,
+          "outputTokens": 586,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 11272
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_0a78454ba3387f51016ae568a00e5c87d1bbb52134615ec96a",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6526,
+          "outputTokens": 998,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12468
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_05d6585eb8721860016ae568ac798087d1be9a2186a276a356",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5581,
+          "outputTokens": 386,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5582
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_07d8efe2096f2fbb016ae568b2232087d1a45c42b7fa8c36cc",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6629,
+          "outputTokens": 307,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4681
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0827146ddc9bc8e0016ae568b6bf2087d19c7fa8dbcd787e3d",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5835,
+          "outputTokens": 204,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3869
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_06ff137a6f49652e016ae568baa96487d1ab80ef63913608bf",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6879,
+          "outputTokens": 255,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4751
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0de2e9650813c2da016ae568bf65f487d1bc52145695049dfe",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6073,
+          "outputTokens": 207,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3499
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0d42ef050fc7fca8016ae568c2d95487d197886a41526d2f78",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 22278,
+          "outputTokens": 1143,
+          "cachedInputTokens": 4528,
+          "toolCalls": 2,
+          "searchCalls": 1,
+          "elapsedMs": 18512
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_0e19126f0cae620d016ae568d6aae487d1831868d828274301",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 17293,
+          "outputTokens": 459,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 6213
+        }
+      ]
+    },
+    {
+      "referenceCase": "waterloo",
+      "caseId": "waterloo",
+      "category": "battle",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 51879,
+      "firstFocusMs": 32213,
+      "firstBatchMs": 32213,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "fail",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "fail",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "error",
+            "actionIds": [
+              "b0_chapter",
+              "b1_chapter"
+            ],
+            "description": "The scene identifies Wellington and Prussian forces but never identifies Napoleon or Blücher, leaving the required leadership context incomplete."
+          },
+          {
+            "severity": "error",
+            "actionIds": [
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The French retreat and pursuit suggest the outcome, but the scene does not identify Napoleon or explicitly establish his defeat."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_narration"
+            ],
+            "description": "The independent review could not verify that the Prussians approached from the east. The generator supplies a passage supporting this direction, but independent confirmation is needed."
+          }
+        ],
+        "rationale": "The date, broad sequence, Allied counterattack and schematic staging are supported. The independent Brown passage explicitly describes the counterattack, despite the review brief’s reservation. However, required leadership and outcome concepts are incompletely represented.",
+        "referenceChecks": [
+          {
+            "id": "waterloo-f1",
+            "status": "addressed",
+            "reason": "The chapters give 18 June 1815."
+          },
+          {
+            "id": "waterloo-f2",
+            "status": "missing",
+            "reason": "Wellington and Prussian forces appear, but neither Napoleon nor Blücher is named."
+          },
+          {
+            "id": "waterloo-f3",
+            "status": "missing",
+            "reason": "The French retreat is shown, but Napoleon is not identified and his defeat is not explicitly stated."
+          },
+          {
+            "id": "guard-1",
+            "status": "addressed",
+            "reason": "The scene identifies Allied and Prussian forces and does not describe the coalition as solely British."
+          },
+          {
+            "id": "guard-2",
+            "status": "addressed",
+            "reason": "The scene gives no exact attack times or invented quotations."
+          }
+        ]
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 1,
+      "estimatedUsd": 0.06926170000000001,
+      "reviewEstimatedUsd": 0.047756400000000004,
+      "artifact": "waterloo/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_07293ac9dddafe50016ae568914bd087d18463b06dc122df9a",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13174,
+          "outputTokens": 510,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 10976
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_031336fb3d65212b016ae5689cf67087d1aa35fc99eefd9a03",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6071,
+          "outputTokens": 1141,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 14138
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0d25bfe3546a2127016ae568ab157c87d1992efc4dc8676bfb",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5186,
+          "outputTokens": 440,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 6196
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_03d803bafcddd06c016ae568b14d7487d1bac6d00fd6eb1cb3",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6160,
+          "outputTokens": 426,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 6256
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_09205b34914de28a016ae568b78ff887d1abb1d0e62b8ab893",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5548,
+          "outputTokens": 251,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4331
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_08022750364e8710016ae568bbedcc87d1bf2ac3f1b4b10e27",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6517,
+          "outputTokens": 358,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5116
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0dd20fae7dd4143d016ae568c103f887d19b95edf93ecb6cf7",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5822,
+          "outputTokens": 219,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3940
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0507b960d4f1d1c4016ae568c4e79487d1ae8a5738a5972c5f",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 22144,
+          "outputTokens": 905,
+          "cachedInputTokens": 4528,
+          "toolCalls": 3,
+          "searchCalls": 1,
+          "elapsedMs": 16456
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_0ec393788e0a4f42016ae568d6c2b887d1b6d78014b450f43f",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13034,
+          "outputTokens": 471,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 6501
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "indian-ocean",
+      "category": "trade",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "validation",
+      "elapsedMs": 48974,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected resolved, observed validation."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0502393,
+      "reviewEstimatedUsd": 0,
+      "artifact": "indian-ocean/opening-cold",
+      "gateReviewed": 2,
+      "gateRejected": 2,
+      "gateReasons": [
+        {
+          "stage": "opening",
+          "review": {
+            "claims": [
+              {
+                "id": "c1",
+                "verdict": "supported",
+                "passageIds": [
+                  "p5"
+                ],
+                "reason": "The passage describes Hadrami residence by 1500 and the importance of Gujarat and Malabar to their network."
+              },
+              {
+                "id": "c2",
+                "verdict": "supported",
+                "passageIds": [
+                  "p5"
+                ],
+                "reason": "The passage states that these merchants were based in Masulipatnam and other upper Bay ports by the fifteenth century and had Iranian connections."
+              },
+              {
+                "id": "c3",
+                "verdict": "supported",
+                "passageIds": [
+                  "p3"
+                ],
+                "reason": "The passage describes the clustered residences shown in fifteenth-century Melaka maps."
+              },
+              {
+                "id": "c4",
+                "verdict": "supported",
+                "passageIds": [
+                  "p2"
+                ],
+                "reason": "The passage connects seasonal monsoons with travel and names textiles, ceramics and spices as exchanged commodities."
+              }
+            ],
+            "actions": [
+              {
+                "id": "b0_spawn",
+                "verdict": "supported",
+                "reason": "Masulipatnam is identified as a merchant base in p5."
+              },
+              {
+                "id": "b0_chapter",
+                "verdict": "revise",
+                "reason": "The caption is supported by p5, but the title implies connections across the Bay of Bengal; the passage establishes connections to the Iranian region, not a crossing of the bay."
+              },
+              {
+                "id": "b0_narration",
+                "verdict": "supported",
+                "reason": "The connection to the Iranian region is supported by c2 and p5."
+              }
+            ],
+            "scope": {
+              "verdict": "supported",
+              "reason": "The planned chapters cover trading connections, communities and winds around 1500 across the requested region."
+            },
+            "chronology": {
+              "verdict": "supported",
+              "reason": "The displayed fifteenth-century date and planned progression to by 1500 are consistent with the cited passages."
+            },
+            "metadata": {
+              "verdict": "revise",
+              "reason": "The first outline title implies a connection across the Bay of Bengal that c2 and p5 do not establish. Name the Iranian connection instead."
+            }
+          }
+        },
+        {
+          "stage": "opening",
+          "review": {
+            "claims": [
+              {
+                "id": "c1",
+                "verdict": "unsupported",
+                "passageIds": [
+                  "p5"
+                ],
+                "reason": "The passage says Hadrami merchants lived in most major ports between Yemen and Melaka, not major ports without that qualification."
+              },
+              {
+                "id": "c2",
+                "verdict": "supported",
+                "passageIds": [
+                  "p5"
+                ],
+                "reason": "The passage describes these merchants and their Iranian connections by the fifteenth century."
+              },
+              {
+                "id": "c3",
+                "verdict": "supported",
+                "passageIds": [
+                  "p3"
+                ],
+                "reason": "The passage describes clustered maritime diaspora residences on fifteenth-century Melaka maps."
+              },
+              {
+                "id": "c4",
+                "verdict": "supported",
+                "passageIds": [
+                  "p2"
+                ],
+                "reason": "The passage links seasonal monsoons to travel and identifies textiles, ceramics and spices as exchanged commodities."
+              }
+            ],
+            "actions": [
+              {
+                "id": "b0_spawn",
+                "verdict": "supported",
+                "reason": "Masulipatnam is identified as a merchant base in p5; the marker is schematic."
+              },
+              {
+                "id": "b0_chapter",
+                "verdict": "supported",
+                "reason": "The date and connection are supported by c2 and p5, without implying a voyage."
+              },
+              {
+                "id": "b0_narration",
+                "verdict": "supported",
+                "reason": "The stated connection is supported by c2 and p5."
+              }
+            ],
+            "scope": {
+              "verdict": "supported",
+              "reason": "The planned chapters cover trading connections, communities and monsoon-influenced networks around 1500."
+            },
+            "chronology": {
+              "verdict": "supported",
+              "reason": "The displayed and planned dates are consistent with the cited passages."
+            },
+            "metadata": {
+              "verdict": "supported",
+              "reason": "The focus and outlines match the passages; the final outline does not assert residence in every major port."
+            }
+          }
+        }
+      ],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_03c79ab372ff7d24016ae568dd40f087d1a425161b4be080bf",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13065,
+          "outputTokens": 596,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 10536
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_075b4fe9cc40f080016ae568e9468487d1ba1c292feffeeaa6",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4525,
+          "outputTokens": 900,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12088
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0488043a031ca065016ae568f552ec87d1a1d71034951e4ba9",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3501,
+          "outputTokens": 603,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 7829
+        },
+        {
+          "stage": "repair",
+          "responseId": "resp_04b49f45d2caf95e016ae568fd3a8c87d1a9b2d039daf0307a",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5494,
+          "outputTokens": 816,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 10725
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_07c81308576f4459016ae56907e0c487d1963e7667515fea72",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3499,
+          "outputTokens": 470,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 6285
+        }
+      ],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": "apollo-earth",
+      "caseId": "apollo-earth",
+      "category": "asset-limits",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 45505,
+      "firstFocusMs": 26065,
+      "firstBatchMs": 26066,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "pass",
+        "requestCoverage": "fail",
+        "uncertainty": "overstated",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_launch",
+              "b2_chapter",
+              "b2_recovery_marker"
+            ],
+            "description": "The scene does not explain that spacecraft assets are unavailable, as the case requires. Add a brief note explaining their omission."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_return",
+              "b2_narration"
+            ],
+            "description": "The distance is given as 13 miles without specifying the unit. The independent review reports 13 nautical miles; clarify the unit or omit the distance."
+          }
+        ],
+        "rationale": "The independent NASA review supports the principal preparation, launch and recovery claims. Earth locations and ship markers are schematic, with no spacecraft substitute or lunar scene on Earth. The missing asset explanation and ambiguous distance need correction.",
+        "referenceChecks": [
+          {
+            "id": "apollo-earth-f1",
+            "status": "addressed",
+            "reason": "The launch chapter gives Cape Kennedy and July 16, 1969."
+          },
+          {
+            "id": "apollo-earth-f2",
+            "status": "addressed",
+            "reason": "The return chapter and narration give the Pacific splashdown on July 24, 1969."
+          },
+          {
+            "id": "apollo-earth-f3",
+            "status": "addressed",
+            "reason": "USS Hornet is identified as the ship near the splashdown and labeled in the recovery area."
+          },
+          {
+            "id": "guard-1",
+            "status": "addressed",
+            "reason": "No lunar scene or Moon marker is placed on Earth."
+          },
+          {
+            "id": "guard-2",
+            "status": "addressed",
+            "reason": "The steamship is used as a schematic USS Hornet marker, not as a spacecraft."
+          }
+        ]
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.061851899999999994,
+      "reviewEstimatedUsd": 0.0387964,
+      "artifact": "apollo-earth/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0678236e84d9d6ce016ae568dcd1e887d18b0f3490e80f91cb",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 12898,
+          "outputTokens": 432,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 7798
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_023bfdc8b90b7f35016ae568e5b97487d1a062309f55a13de0",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6041,
+          "outputTokens": 966,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12122
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0d21fdec86d0a8b5016ae568f1cc3487d181fd7d5dc0e7a288",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4961,
+          "outputTokens": 348,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5151
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0dcffe39bf30f9cf016ae568f6f21887d1ab3c104504ba64bf",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5940,
+          "outputTokens": 408,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5639
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0171d6fc61825300016ae568fc92cc87d188fa6a295c64b5d4",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5191,
+          "outputTokens": 241,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3715
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_06f2d1e13e476303016ae569004e4087d18d4498fb9ba0df2c",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6171,
+          "outputTokens": 414,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5800
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_057f8c2b5c7f22e4016ae56906761c87d18f3d2397127c76bf",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5454,
+          "outputTokens": 240,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4262
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_024f42fe900fa6bb016ae5690a523087d1871e8076ff0a9b02",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13865,
+          "outputTokens": 801,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 12730
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_0149d5ab9f662cfb016ae5691770c087d1810629397e2f73a6",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13208,
+          "outputTokens": 404,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5731
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "industrial-comparison",
+      "category": "comparison",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 14506,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0324083,
+      "reviewEstimatedUsd": 0,
+      "artifact": "industrial-comparison/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0d12f6d139d11cff016ae5691d1d9c87d1a098f8e1adf5617c",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 21308,
+          "outputTokens": 635,
+          "cachedInputTokens": 4528,
+          "toolCalls": 2,
+          "searchCalls": 1,
+          "elapsedMs": 10948
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_01d4768e55133c11016ae569287a0487d194e4b61eaab57f23",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4325,
+          "outputTokens": 74,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3192
+        }
+      ],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": "railway-1830",
+      "caseId": "railway-1830",
+      "category": "technology",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 44822,
+      "firstFocusMs": 28237,
+      "firstBatchMs": 28237,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "supported",
+        "chronology": "uncertain",
+        "requestCoverage": "uncertain",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_narration",
+              "b2_chapter"
+            ],
+            "description": "The account mentions Huskisson’s death before the chapter on the procession’s continuation, potentially implying he had already died. Clarify that he died later that evening."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_spawn_train",
+              "b1_rocket"
+            ],
+            "description": "Rocket was a steam locomotive, but the supplied actions specify only generic train assets. Confirm that the imagery visibly conveys steam power."
+          }
+        ],
+        "rationale": "Independent sources support the opening date and main events, and the northwest England locations and schematic staging are appropriate. The death sequence should be clearer, and the appearance of the train assets cannot be verified from the supplied actions.",
+        "referenceChecks": [
+          {
+            "id": "railway-1830-f1",
+            "status": "addressed",
+            "reason": "The opening procession is dated 15 September 1830 and linked to Liverpool and Manchester."
+          },
+          {
+            "id": "railway-1830-f2",
+            "status": "not_required",
+            "reason": "Later passenger operations are optional background."
+          },
+          {
+            "id": "railway-1830-f3",
+            "status": "not_required",
+            "reason": "The start of goods traffic is optional background."
+          },
+          {
+            "id": "guard-1",
+            "status": "addressed",
+            "reason": "The scene focuses on the opening ceremony rather than later operations."
+          },
+          {
+            "id": "guard-2",
+            "status": "addressed",
+            "reason": "The scene does not claim this was the first railway of any kind."
+          }
+        ]
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 1,
+      "estimatedUsd": 0.0529519,
+      "reviewEstimatedUsd": 0.045147400000000004,
+      "artifact": "railway-1830/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_022665a7fcd6cb8b016ae568d8d80487d1a1dfdf70e6eec364",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13056,
+          "outputTokens": 490,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 9244
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_0d588532a83a6276016ae568e397d487d19da8618a11e446fb",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4529,
+          "outputTokens": 941,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 11823
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0c1864b9fa544a44016ae568ef63b087d19aa25a9b3be8fb85",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3600,
+          "outputTokens": 400,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5732
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0bf7226763bc843c016ae568f5226887d18728fb19746e7a10",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4469,
+          "outputTokens": 408,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5654
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0f98cda0bd9593c0016ae568facdb087d188283c1fd2cfbf5e",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3919,
+          "outputTokens": 239,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3850
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0d185f922b7ff989016ae568fea03487d19c91fbfddd6e39e8",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4770,
+          "outputTokens": 236,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3614
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0dedcac4a626da05016ae56902408487d1890ad546d1d12c88",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4138,
+          "outputTokens": 190,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3436
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_019f1dc8dd8e7ff6016ae56905a89487d18991b30ae9338401",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 22032,
+          "outputTokens": 930,
+          "cachedInputTokens": 4528,
+          "toolCalls": 2,
+          "searchCalls": 1,
+          "elapsedMs": 51297
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_0ab4e75573da3c62016ae56939cf6c87d1aeef0679e29ed7ca",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 10672,
+          "outputTokens": 419,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5785
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "silk-road-premise",
+      "category": "false-premise",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 53362,
+      "firstFocusMs": 38199,
+      "firstBatchMs": 38199,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "pass",
+        "sourceSupport": "supported",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [],
+        "rationale": "The independently checked UNESCO overview supports the network, medieval caravan and maritime-trade claims. The scene explicitly rejects the single-road premise, uses an approximate date, and labels the travel markers schematic rather than presenting a documented route or voyage.",
+        "referenceChecks": []
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.06327479999999999,
+      "reviewEstimatedUsd": 0.0349574,
+      "artifact": "silk-road-premise/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_096159eb5138851d016ae5690e24b487d18b0ec8599750456b",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 12858,
+          "outputTokens": 548,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 9264
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_08e037caf3984e9a016ae56918d3ec87d1bbcd04385e993869",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5220,
+          "outputTokens": 890,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 11198
+        },
+        {
+          "stage": "repair",
+          "responseId": "resp_02e544b9493b82a1016ae569240d5887d1bf4c0f34f5fdbf74",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6126,
+          "outputTokens": 880,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 11377
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_015c1e10468ad689016ae5692f5e6887d1810ce431ddeda849",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4115,
+          "outputTokens": 359,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4994
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0dcb10b616333de4016ae569346e4887d1893e9dad1c4691d1",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5103,
+          "outputTokens": 285,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4303
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_05b93525b1d7a887016ae56938b69887d1802ee85074adf723",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4347,
+          "outputTokens": 195,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3269
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_064c9e0ac16d44df016ae5693bfa2c87d19b669bfb259a8abe",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5335,
+          "outputTokens": 281,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4293
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_07d3fb17894f4f97016ae569404c2887d1b2d557371dc93c63",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4568,
+          "outputTokens": 186,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3282
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_05577deb4aeaeb67016ae56943842887d1884504bc584cec0e",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13620,
+          "outputTokens": 893,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 14739
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_05dc9434ddb90b0d016ae56953f7f487d1a2f34564b601646a",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 10689,
+          "outputTokens": 97,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 2575
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "shimonoseki",
+      "category": "diplomacy",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 46531,
+      "firstFocusMs": 30443,
+      "firstBatchMs": 30443,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "needs_review",
+        "sourceSupport": "mixed",
+        "chronology": "uncertain",
+        "requestCoverage": "pass",
+        "uncertainty": "overstated",
+        "staging": "uncertain",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_retrocession"
+            ],
+            "description": "The 18 November date is presented as settled, but the independent review reports that JACAR’s document description and another treaty transcription give 8 November. Verify or qualify the date."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_intervention",
+              "b2_ratification",
+              "b2_resistance",
+              "b2_retrocession"
+            ],
+            "description": "All narration is attached to the Shimonoseki marker. Although the later chapter calls it schematic, location labels would better distinguish the intervention in Tokyo, ratification exchange at Chefoo and events in Taiwan from the treaty negotiations."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_treaty",
+              "b2_resistance"
+            ],
+            "description": "The account would be clearer if it named the cession of Taiwan and explained that resistance and subsequent fighting there followed the peace treaty."
+          }
+        ],
+        "rationale": "Independent source review supports the principal sequence and the substance of the aftermath, but identifies conflicting evidence for the retrocession agreement’s date. The scene does not portray later outcomes for Taiwan or Korea as immediate results, and its intervention is distinct from the treaty.",
+        "referenceChecks": []
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.06294090000000001,
+      "reviewEstimatedUsd": 0.0484704,
+      "artifact": "shimonoseki/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0f6cc8403b0db0c7016ae5692bb90c87d1a081548441e4d085",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13040,
+          "outputTokens": 715,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 11471
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_045af16cf63674f0016ae5693874b087d196d0c661e43e8c85",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6041,
+          "outputTokens": 1006,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12526
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_01f8505444f7cc3f016ae56944f8e487d19c2d416a2121f822",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5078,
+          "outputTokens": 363,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5250
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0fe48ce6c4729721016ae5694a24bc87d1a5bdd9189b2d3a67",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6042,
+          "outputTokens": 302,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4520
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_00754c59dc19bab5016ae5694ea4bc87d19adbb34adbe5721f",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5322,
+          "outputTokens": 180,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3334
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_01ee41bae00c1e28016ae56952054487d1b9718dc160667344",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6297,
+          "outputTokens": 330,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4908
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0709d9a39c667c32016ae56956e89c87d19e945f5b8a4a5728",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5635,
+          "outputTokens": 211,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3305
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0c5ef5d3ef7b5490016ae5695a2f2887d1af31bbf34078e57e",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 22078,
+          "outputTokens": 1114,
+          "cachedInputTokens": 4528,
+          "toolCalls": 2,
+          "searchCalls": 1,
+          "elapsedMs": 17953
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_0513ace31194b39e016ae5696c914087d180106e978a14135f",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13494,
+          "outputTokens": 326,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4927
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "haitian-revolution",
+      "category": "revolution",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "evidence",
+      "elapsedMs": 12368,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected resolved, observed evidence."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0218404,
+      "reviewEstimatedUsd": 0,
+      "artifact": "haitian-revolution/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_024f288305835cb0016ae5697168c087d196ec530ddc77a0f4",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13012,
+          "outputTokens": 626,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 11889
+        }
+      ],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": null,
+      "caseId": "meiji",
+      "category": "political-change",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 46454,
+      "firstFocusMs": 28634,
+      "firstBatchMs": 28634,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "fail",
+        "sourceSupport": "mixed",
+        "chronology": "fail",
+        "requestCoverage": "fail",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "error",
+            "actionIds": [
+              "b0_chapter",
+              "b0_speech",
+              "b1_chapter",
+              "b1_speech",
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The months are presented without calendar labels, misleading readers who assume Gregorian dates. The independent review identifies them as old-calendar months: the surrender and Battle of Ueno fall in May and July Gregorian, respectively, and the renaming and emperor’s arrival fall in September and November. Label the calendars or convert consistently; independently verify exact conversions."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b2_chapter"
+            ],
+            "description": "The scene shows events associated with the Restoration but does not explicitly explain the political transition from shogunal to imperial rule."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b1_chapter",
+              "b1_government",
+              "b1_shogitai"
+            ],
+            "description": "Positions and formations are identified as schematic, but the scene does not explicitly say that the people are stylized miniatures rather than historically accurate portraits."
+          }
+        ],
+        "rationale": "The independently checked Tokyo Metropolitan Library source supports the broad sequence and the schematic treatment of the battle, and no later industrial development is placed in 1868. However, unqualified old-calendar months create a materially misleading chronology. The political change and stylized-figure distinction should also be made explicit.",
+        "referenceChecks": []
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 1,
+      "estimatedUsd": 0.053567899999999995,
+      "reviewEstimatedUsd": 0.0474824,
+      "artifact": "meiji/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0f1f4b57da303313016ae5693f8b3c87d19ce0e146120d3c93",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13160,
+          "outputTokens": 605,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 10100
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_06d8f56c02ca99fc016ae5694b9cbc87d19ac3b5c7cd355bd5",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4538,
+          "outputTokens": 953,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 11838
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_022e5cfa2fdfea83016ae56957663887d1825fa9751bb5860e",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3538,
+          "outputTokens": 339,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4811
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_00f64b8b01b7d5f5016ae5695c45d887d18c4ff66ee6b862be",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4396,
+          "outputTokens": 403,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5764
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_06c5f251f70a35d8016ae56962083087d19b18bf0cb2633212",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3867,
+          "outputTokens": 243,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3847
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0ff845aa7d8e0898016ae56965e4ac87d1aeb3c3e9dcc3b03b",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4733,
+          "outputTokens": 291,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4600
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0d3ed5f783e2ae47016ae5696a7fdc87d19a77e4a00c964416",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4105,
+          "outputTokens": 222,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3579
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_021f2726ea4adf86016ae5696e00a487d1912ee622672fe008",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 21776,
+          "outputTokens": 1140,
+          "cachedInputTokens": 4528,
+          "toolCalls": 2,
+          "searchCalls": 1,
+          "elapsedMs": 19763
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_02fccf37ef38da6c016ae569835cac87d18124be6a26710aa9",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 12248,
+          "outputTokens": 412,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5976
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "french-revolution",
+      "category": "revolution",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 47160,
+      "firstFocusMs": 31031,
+      "firstBatchMs": 31031,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "pass",
+        "sourceSupport": "supported",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_chapter"
+            ],
+            "description": "The caption could clarify that the Assembly moved into the Riding Academy in November, having already met elsewhere in Paris. The narration gives the more precise account."
+          },
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b0_chapter",
+              "b0_narration",
+              "b1_chapter",
+              "b1_narration",
+              "b2_chapter",
+              "b2_narration"
+            ],
+            "description": "The Versailles source does not support every claim alongside which it is cited; the Parcours Révolution chronology supports the relevant dates and events."
+          }
+        ],
+        "rationale": "Independent source passages support the principal events and their sequence. All displayed chapters remain in 1789, with no later Napoleonic rule. Miniature placement is explicitly schematic, and no undocumented route is depicted.",
+        "referenceChecks": []
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.06011190000000001,
+      "reviewEstimatedUsd": 0.0391964,
+      "artifact": "french-revolution/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_01226ed225bc5d2b016ae56956470487d1a940b0aed0380be5",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13080,
+          "outputTokens": 566,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 10910
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_0379318919e978a3016ae5696357b487d18c7d30f9a39961dd",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5636,
+          "outputTokens": 1037,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12616
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0f67d836b656fb70016ae5696fe42487d19a8cbfd6895cdcd5",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4698,
+          "outputTokens": 388,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5460
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0f108f6eaa807a2b016ae56975624487d180d020512ae9fb27",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5669,
+          "outputTokens": 299,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4533
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0c418052e49e2208016ae56979e3a487d18578344bec5741bc",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4944,
+          "outputTokens": 194,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3080
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0ca389e78fb3824a016ae5697d059887d19232897f4a2cb466",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5927,
+          "outputTokens": 323,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5137
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0e14ac31a0069f6a016ae56982387887d18cccb753881b3b43",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5222,
+          "outputTokens": 190,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3364
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0e645eadcadbe44b016ae5698571f887d196b1e70d4c381f0b",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13726,
+          "outputTokens": 958,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 15871
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_01134725334988ef016ae56996e9c087d195a258e7ebc9fa6b",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13632,
+          "outputTokens": 270,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4109
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "bronze-age-uncertainty",
+      "category": "uncertainty",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "validation",
+      "elapsedMs": 41131,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": false,
+        "errors": [
+          "Expected either, observed validation."
+        ]
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0.0378932,
+      "reviewEstimatedUsd": 0,
+      "artifact": "bronze-age-uncertainty/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_094d23e4f2c10a68016ae56989477887d1abffad7fd2b9b3af",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13084,
+          "outputTokens": 768,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 13020
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_0e47de85838cf6f3016ae56999eeb087d196b8a460f37cc664",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4680,
+          "outputTokens": 983,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12369
+        },
+        {
+          "stage": "repair",
+          "responseId": "resp_0df2e7747aa2892d016ae569a64f8087d18200c08b80bceb69",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5652,
+          "outputTokens": 992,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 12150
+        }
+      ],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": null,
+      "caseId": "ambiguous-civil-war",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-civil-war/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": null,
+      "caseId": "ambiguous-revolution",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-revolution/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": null,
+      "caseId": "ambiguous-battle",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-battle/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": null,
+      "caseId": "ambiguous-time-place",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-time-place/opening-cold",
+      "gateReviewed": 0,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [],
+      "reviewUsage": []
+    },
+    {
+      "referenceCase": null,
+      "caseId": "mansa-musa",
+      "category": "journey",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 48404,
+      "firstFocusMs": 31299,
+      "firstBatchMs": 31299,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "pass",
+        "sourceSupport": "supported",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [],
+        "rationale": "The independently checked al-Umari excerpt supports the attributed Cairo account, and the Cambridge abstract supports the broad pilgrimage period and travel to Mecca. Figures and markers are explicitly schematic, with no invented route or dialogue. The full Cambridge article was not accessible, but its abstract supports the claims made here.",
+        "referenceChecks": []
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 2,
+      "estimatedUsd": 0.06262090000000001,
+      "reviewEstimatedUsd": 0.0477684,
+      "artifact": "mansa-musa/opening-cold",
+      "gateReviewed": 3,
+      "gateRejected": 0,
+      "gateReasons": [],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_082f67d4316cbcad016ae5697dcbf487d1871ee7542ebb935f",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13165,
+          "outputTokens": 550,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 10968
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_0b2e3415ce81de92016ae5698abd1487d1bcbd9f0fc2402f3b",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6084,
+          "outputTokens": 953,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 11722
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_02153688eaf4a753016ae56996783c87d1930ec2446f6812a6",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5089,
+          "outputTokens": 423,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 6709
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_035eae8a950824a4016ae5699d2dbc87d18bd75eeac477b3ab",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6149,
+          "outputTokens": 356,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5160
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0eadeb492032d12c016ae569a24b8087d1b31929d03a3376cb",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5380,
+          "outputTokens": 204,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3375
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_081e94d6d328a52c016ae569a5f16c87d1a44b2f529970a74a",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 6448,
+          "outputTokens": 257,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4049
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_06050ffe59583e0d016ae569a9b86c87d1b33f85cc0ce99496",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5620,
+          "outputTokens": 204,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4505
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0d8feb2ffd76d26e016ae569ae3d3887d1a030cad94201c85b",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 22246,
+          "outputTokens": 1128,
+          "cachedInputTokens": 4528,
+          "toolCalls": 2,
+          "searchCalls": 1,
+          "elapsedMs": 18121
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_027dd681407bd022016ae569c1bbf487d1b3e56eac912dc204",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13629,
+          "outputTokens": 111,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 2436
+        }
+      ]
+    },
+    {
+      "referenceCase": null,
+      "caseId": "waterloo-quote",
+      "category": "quotation",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "complete",
+      "elapsedMs": 66952,
+      "firstFocusMs": 51733,
+      "firstBatchMs": 51733,
+      "cacheHit": false,
+      "readyThrough": 36,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": {
+        "verdict": "pass",
+        "sourceSupport": "supported",
+        "chronology": "pass",
+        "requestCoverage": "pass",
+        "uncertainty": "appropriate",
+        "staging": "appropriate",
+        "issues": [
+          {
+            "severity": "warning",
+            "actionIds": [
+              "b2_narration"
+            ],
+            "description": "The summary compresses the Prussian contribution; their arrival did not instantly end the battle without further fighting."
+          }
+        ],
+        "rationale": "Independent museum and Royal Armouries passages support the campaign sequence and outcomes. The scene explains that its fetched passages do not document a Napoleon quotation and uses sourced narration instead. Its markers are explicitly schematic, and the speech actions are labeled narration rather than documented dialogue.",
+        "referenceChecks": []
+      },
+      "reviewError": null,
+      "verifiedSourceCount": 1,
+      "estimatedUsd": 0.0628148,
+      "reviewEstimatedUsd": 0.034940399999999996,
+      "artifact": "waterloo-quote/opening-cold",
+      "gateReviewed": 4,
+      "gateRejected": 1,
+      "gateReasons": [
+        {
+          "stage": "opening",
+          "review": {
+            "claims": [
+              {
+                "id": "c1",
+                "verdict": "supported",
+                "passageIds": [
+                  "p1",
+                  "p2",
+                  "p5"
+                ],
+                "reason": "The passages establish both engagements and their date."
+              },
+              {
+                "id": "c2",
+                "verdict": "supported",
+                "passageIds": [
+                  "p3",
+                  "p5"
+                ],
+                "reason": "The passages establish the retreat date and Wellington's plan."
+              },
+              {
+                "id": "c3",
+                "verdict": "supported",
+                "passageIds": [
+                  "p5"
+                ],
+                "reason": "The passage describes the attacks and Prussian arrival on 18 June."
+              },
+              {
+                "id": "c4",
+                "verdict": "supported",
+                "passageIds": [
+                  "p4"
+                ],
+                "reason": "The passage identifies the ridge and both outposts."
+              }
+            ],
+            "actions": [
+              {
+                "id": "b0_chapter",
+                "verdict": "revise",
+                "reason": "The passages contain no documented Napoleon quotation, but do not establish that the prepared format cannot document one. State the evidential limitation instead."
+              },
+              {
+                "id": "b0_spawn",
+                "verdict": "supported",
+                "reason": "The schematic French army marker is consistent with c1."
+              },
+              {
+                "id": "b0_speech",
+                "verdict": "supported",
+                "reason": "The narration is supported by c1 and its passages."
+              }
+            ],
+            "scope": {
+              "verdict": "revise",
+              "reason": "The outline covers Waterloo and its approaches, but the quotation fallback should explain that the fetched passages do not document a Napoleon quotation, rather than asserting a format limitation."
+            },
+            "chronology": {
+              "verdict": "supported",
+              "reason": "The planned chapters proceed from 16 to 18 June 1815."
+            },
+            "metadata": {
+              "verdict": "supported",
+              "reason": "The focus and outlines match the cited claims and passages."
+            }
+          }
+        }
+      ],
+      "usage": [
+        {
+          "stage": "research",
+          "responseId": "resp_0df02ff75e6438da016ae5699afe2487d1803c580faee73ea0",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13228,
+          "outputTokens": 444,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 9556
+        },
+        {
+          "stage": "opening",
+          "responseId": "resp_0bf5745fcf673d64016ae569ade9a487d19cfb6d56111752c7",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4418,
+          "outputTokens": 907,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 11607
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0c7727904c772b8e016ae569b9483c87d188cd7b2f9eb57126",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3359,
+          "outputTokens": 426,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 5902
+        },
+        {
+          "stage": "repair",
+          "responseId": "resp_094e5b6b98fcd438016ae569bf27f887d1b93ce02b881997b9",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 5418,
+          "outputTokens": 870,
+          "cachedInputTokens": 2598,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 10886
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0783e3dddaa3da02016ae569ca284c87d1a6e25018ecae83d6",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3376,
+          "outputTokens": 309,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4709
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0ee9027526a78bf1016ae569cec7a887d18a1104ebea0375df",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4235,
+          "outputTokens": 270,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4281
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_063b8a5aa0e232fd016ae569d3081c87d1a23b2f61cdb12512",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3591,
+          "outputTokens": 202,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3563
+        },
+        {
+          "stage": "batch",
+          "responseId": "resp_0eb113af6c456f98016ae569d69fb887d19d34216a4abf5328",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 4451,
+          "outputTokens": 279,
+          "cachedInputTokens": 1726,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 4097
+        },
+        {
+          "stage": "evidence_review",
+          "responseId": "resp_0038f65e6b35b181016ae569dab12487d1aaf25c56a8bcb2b9",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 3806,
+          "outputTokens": 183,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3264
+        }
+      ],
+      "reviewUsage": [
+        {
+          "stage": "research",
+          "responseId": "resp_031fc845cc90a3f7016ae569ddeb8887d1a94eebbc8e507bf9",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 13604,
+          "outputTokens": 965,
+          "cachedInputTokens": 4528,
+          "toolCalls": 1,
+          "searchCalls": 1,
+          "elapsedMs": 15975
+        },
+        {
+          "stage": "review",
+          "responseId": "resp_008d6391c5de9af8016ae569f09cb087d183544b300dbe2bab",
+          "model": "gpt-6.1-terra",
+          "inputTokens": 9863,
+          "outputTokens": 190,
+          "cachedInputTokens": 0,
+          "toolCalls": 0,
+          "searchCalls": 0,
+          "elapsedMs": 3161
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "gateProposalsReviewed": 36,
+    "gateProposalsRejected": 5,
+    "referenceCasesReviewed": 4,
+    "groups": [
+      {
+        "group": "opening/cold",
+        "samples": 20,
+        "completed": 10,
+        "clarifications": 6,
+        "checksPassed": 15,
+        "focusP50Ms": 31031,
+        "focusP95Ms": 51733,
+        "playableP50Ms": 31031,
+        "playableP95Ms": 51733,
+        "estimatedUsd": 0.8468163999999998
+      }
+    ],
+    "reviewed": 10,
+    "reviewPass": 4,
+    "needsReview": 3,
+    "reviewFailures": 3,
+    "reviewUnavailable": 0,
+    "estimatedTotalUsd": 1.2846114,
+    "estimatedCostPerAcceptedStory": 0.32115285,
+    "paired": [],
+    "pairedSavedP50Ms": null,
+    "pairedSavedP50Percent": null
+  }
+}

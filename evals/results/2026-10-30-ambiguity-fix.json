@@ -1,0 +1,253 @@
+{
+  "createdAt": "2026-10-31T03:15:46.362Z",
+  "model": "gpt-6.1-terra",
+  "effort": "low",
+  "pricing": {
+    "input": 1,
+    "cachedInput": 0.05,
+    "output": 5,
+    "search": 0.01
+  },
+  "pricingCheckedAt": "2026-10-30",
+  "costCaveat": "Estimates exclude cache-write surcharges, taxes and hosting. Cold means empty application cache; provider prompt caching may still occur.",
+  "reviewCaveat": "Independent retrieval and a model-assisted rubric are not human historical-accuracy certification.",
+  "requestedCases": [
+    "ambiguous-civil-war",
+    "ambiguous-revolution",
+    "ambiguous-battle",
+    "ambiguous-time-place"
+  ],
+  "stoppedForBudget": false,
+  "runs": [
+    {
+      "caseId": "ambiguous-revolution",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 1,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-revolution/opening-cold"
+    },
+    {
+      "caseId": "ambiguous-civil-war",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 3,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-civil-war/opening-cold"
+    },
+    {
+      "caseId": "ambiguous-revolution",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-revolution/opening-warm"
+    },
+    {
+      "caseId": "ambiguous-civil-war",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-civil-war/opening-warm"
+    },
+    {
+      "caseId": "ambiguous-battle",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-battle/opening-cold"
+    },
+    {
+      "caseId": "ambiguous-time-place",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "cold",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-time-place/opening-cold"
+    },
+    {
+      "caseId": "ambiguous-battle",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-battle/opening-warm"
+    },
+    {
+      "caseId": "ambiguous-time-place",
+      "category": "ambiguity",
+      "strategy": "opening",
+      "cache": "warm",
+      "outcome": "clarification",
+      "elapsedMs": 0,
+      "firstFocusMs": null,
+      "firstBatchMs": null,
+      "cacheHit": false,
+      "readyThrough": 0,
+      "deterministic": {
+        "pass": true,
+        "errors": []
+      },
+      "review": null,
+      "reviewError": null,
+      "verifiedSourceCount": 0,
+      "usage": [],
+      "reviewUsage": [],
+      "estimatedUsd": 0,
+      "reviewEstimatedUsd": 0,
+      "artifact": "ambiguous-time-place/opening-warm"
+    }
+  ],
+  "summary": {
+    "groups": [
+      {
+        "group": "opening/cold",
+        "samples": 4,
+        "completed": 0,
+        "clarifications": 4,
+        "checksPassed": 4,
+        "focusP50Ms": null,
+        "focusP95Ms": null,
+        "playableP50Ms": null,
+        "playableP95Ms": null,
+        "estimatedUsd": 0
+      },
+      {
+        "group": "opening/warm",
+        "samples": 4,
+        "completed": 0,
+        "clarifications": 4,
+        "checksPassed": 4,
+        "focusP50Ms": null,
+        "focusP95Ms": null,
+        "playableP50Ms": null,
+        "playableP95Ms": null,
+        "estimatedUsd": 0
+      }
+    ],
+    "reviewed": 0,
+    "reviewPass": 0,
+    "needsReview": 0,
+    "reviewFailures": 0,
+    "reviewUnavailable": 0,
+    "estimatedTotalUsd": 0,
+    "estimatedCostPerAcceptedStory": null,
+    "paired": [],
+    "pairedSavedP50Ms": null,
+    "pairedSavedP50Percent": null
+  }
+}

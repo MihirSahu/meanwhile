@@ -1,0 +1,48 @@
+{
+  "name": "meanwhile",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "playwright test",
+    "test:live": "tsx scripts/smoke-live.ts",
+    "eval:live": "tsx scripts/evaluate-live.ts",
+    "generate:globe": "node scripts/generate-globe.mjs",
+    "eval:references": "tsx scripts/check-references.ts"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "cheerio": "1.2.0",
+    "gsap": "^3.14.2",
+    "ipaddr.js": "2.2.0",
+    "lucide-react": "^0.577.0",
+    "next": "16.4.3",
+    "openai": "7.46.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "0.187.0",
+    "undici": "7.30.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@next/env": "16.4.3",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.183.1",
+    "d3-geo": "^3.1.1",
+    "topojson-client": "^3.1.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "world-atlas": "^2.0.2"
+  },
+  "engines": {
+    "node": ">=20.18.1"
+  }
+}

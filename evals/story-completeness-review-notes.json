@@ -1,0 +1,56 @@
+{
+  "harnessVersion": "story-coverage-v2",
+  "cohort": "artifacts/evaluations/story-coverage-v2-reference-5",
+  "reviewer": "coding agent reading committed text and the independent audit against the existing reference set",
+  "humanReview": "pending",
+  "notes": [
+    {
+      "caseId": "sino-japanese-war",
+      "outcome": "complete",
+      "finding": "Korean context and continued Taiwan fighting are explicit in the rendered story. The independent audit still found the missing July outbreak and an overconfident November endpoint. Introductory coverage does not guarantee every relevant fact was selected."
+    },
+    {
+      "caseId": "waterloo",
+      "outcome": "complete",
+      "finding": "Rendered text names Napoleon, Wellington and Bl\u00fccher and explicitly states Napoleon's defeat and the retreat/pursuit. The independent audit questioned the precision of left centre; this remains needs_review."
+    },
+    {
+      "caseId": "beagle-voyage",
+      "outcome": "clarification",
+      "finding": "No final scene was published in this sample. The earlier separate pilot completed the 1836 return, but omitted the Admiralty survey purpose; that pilot is not substituted for this result."
+    },
+    {
+      "caseId": "railway-1830",
+      "outcome": "validation",
+      "finding": "No opening was published. Source review rejected wording that made intended goods/passenger carriage sound already established, then rejected a repair's accident sequence. These are retained failures."
+    },
+    {
+      "caseId": "apollo-earth",
+      "outcome": "complete",
+      "finding": "Preparation/launch, July 20\u201322 milestones and July 24\u201328 recovery have distinct headings. Pacific splashdown and Hornet recovery are explicit. The independent audit still flagged mixed time zones and incomplete disclosure of missing spacecraft assets."
+    }
+  ],
+  "fullSetCohort": "artifacts/evaluations/story-coverage-v2-20",
+  "fullSetNotes": [
+    {
+      "caseId": "sino-japanese-war",
+      "finding": "The full-set sample renders Korean context, July fighting, April 17 treaty and continued Taiwan fighting. Its independent audit passed with qualifications about treaty scope and subsequent territorial changes."
+    },
+    {
+      "caseId": "waterloo",
+      "finding": "The full-set sample names Napoleon, Wellington and Bl\u00fccher and states the French defeat, retreat and pursuit. Its independent audit passed but warned that compressed wording can make Prussian arrival sound like an immediate conclusion."
+    },
+    {
+      "caseId": "beagle-voyage",
+      "finding": "The full-set sample completed all three chapters, rendered the coastal survey purpose and 1836 return, and kept the return in the final 1835\u20131836 heading. Independent review questioned the unsupported/vague later-study interpretation, so this remains needs_review."
+    },
+    {
+      "caseId": "railway-1830",
+      "finding": "The full-set sample completed but failed independent review. Its ending combines Huskisson\u2019s death and the party continuing to Manchester in wording that can invert the sequence; its subdued-arrival title also needs qualification."
+    },
+    {
+      "caseId": "apollo-earth",
+      "finding": "The full-set sample kept July 24 recovery separate from the July 16 launch heading. It still omitted Pacific splashdown and Hornet\u2019s actual recovery role, and the missing-spacecraft disclosure. Its independent audit failed despite all self-planned requirements receiving production coverage."
+    }
+  ]
+}

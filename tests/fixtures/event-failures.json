@@ -1,0 +1,2369 @@
+{
+  "waterloo": {
+    "plan": {
+      "status": "resolved",
+      "title": "The Battle of Waterloo",
+      "location": "Waterloo",
+      "presentation": "timeline",
+      "events": [
+        {
+          "kind": "context",
+          "title": "The armies face each other",
+          "statement": "At Waterloo, Napoleon\u2019s army fought the coalition. Wellington planned to hold until the Prussians arrived.",
+          "location": {
+            "name": "Waterloo",
+            "position": {
+              "lat": 50.68,
+              "lon": 4.41
+            }
+          },
+          "participants": [
+            {
+              "name": "Napoleon Bonaparte",
+              "role": "Commander of the French army"
+            },
+            {
+              "name": "Duke of Wellington",
+              "role": "Commander of the Anglo-Allied force"
+            },
+            {
+              "name": "Gebhard von Bl\u00fccher",
+              "role": "Commander of the Prussians"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            0
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "The fight for Hougoumont",
+          "statement": "French attacks opened near Hougoumont. Fighting continued through the afternoon as other battles unfolded; the ch\u00e2teau remained in Allied hands.",
+          "location": {
+            "name": "Hougoumont",
+            "position": {
+              "lat": 50.665,
+              "lon": 4.396
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            1
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Prussians arrive",
+          "statement": "By mid-afternoon, Prussian forces were arriving on Napoleon\u2019s right, forcing him to divert troops.",
+          "location": {
+            "name": "Waterloo",
+            "position": {
+              "lat": 50.68,
+              "lon": 4.41
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            2
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Cavalry against squares",
+          "statement": "French cavalry charged Wellington\u2019s infantry, who formed squares and held firm as Prussians continued to arrive.",
+          "location": {
+            "name": "Waterloo",
+            "position": {
+              "lat": 50.68,
+              "lon": 4.41
+            }
+          },
+          "participants": [
+            {
+              "name": "Duke of Wellington",
+              "role": "Anglo-Allied commander"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            2
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "La Haye Sainte falls",
+          "statement": "At about 6 p.m., French forces captured La Haye Sainte, weakening Wellington\u2019s position.",
+          "location": {
+            "name": "La Haye Sainte",
+            "position": {
+              "lat": 50.678,
+              "lon": 4.412
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            3
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Fighting for Plancenoit",
+          "statement": "French and Prussian forces fought over Plancenoit into the evening, as the Guard advanced; the Prussians eventually regained the village.",
+          "location": {
+            "name": "Plancenoit",
+            "position": {
+              "lat": 50.663,
+              "lon": 4.436
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            3
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "The Imperial Guard breaks",
+          "statement": "At about 7 p.m., Napoleon\u2019s Imperial Guard advanced but was repulsed by Allied fire.",
+          "location": {
+            "name": "Waterloo",
+            "position": {
+              "lat": 50.68,
+              "lon": 4.41
+            }
+          },
+          "participants": [
+            {
+              "name": "Napoleon Bonaparte",
+              "role": "French commander"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            4
+          ]
+        },
+        {
+          "kind": "outcome",
+          "title": "Retreat and pursuit",
+          "statement": "The French retreated, harried by Prussian cavalry.",
+          "location": {
+            "name": "Waterloo",
+            "position": {
+              "lat": 50.68,
+              "lon": 4.41
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "battle",
+          "claimIndices": [
+            4
+          ]
+        },
+        {
+          "kind": "outcome",
+          "title": "The coalition prevails",
+          "statement": "Wellington advanced to La Belle Alliance and met Bl\u00fccher. The coalition had defeated Napoleon.",
+          "location": {
+            "name": "La Belle Alliance",
+            "position": {
+              "lat": 50.67,
+              "lon": 4.415
+            }
+          },
+          "participants": [
+            {
+              "name": "Duke of Wellington",
+              "role": "Anglo-Allied commander"
+            },
+            {
+              "name": "Gebhard von Bl\u00fccher",
+              "role": "Prussian commander"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "end": {
+              "year": 1815,
+              "month": 6,
+              "day": 18
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "people",
+          "claimIndices": [
+            5
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "beforeIndex": 6,
+          "afterIndex": 7,
+          "kind": "before",
+          "passageIds": [
+            "p9"
+          ]
+        }
+      ]
+    },
+    "checklist": {
+      "claims": [
+        {
+          "id": "c1",
+          "text": "On 18 June 1815 at Waterloo, Napoleon\u2019s French army fought a coalition led by Wellington and Bl\u00fccher; Wellington intended to hold until the Prussians arrived.",
+          "passageIds": [
+            "p6",
+            "p7"
+          ],
+          "yearRange": {
+            "startYear": 1815,
+            "endYear": 1815,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c2",
+          "text": "French attacks opened near Hougoumont, where fighting continued through the afternoon and the ch\u00e2teau remained in Allied hands.",
+          "passageIds": [
+            "p1",
+            "p2"
+          ],
+          "yearRange": {
+            "startYear": 1815,
+            "endYear": 1815,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c3",
+          "text": "French cavalry charged Wellington\u2019s infantry, who formed squares; meanwhile Prussian forces arrived on Napoleon\u2019s right.",
+          "passageIds": [
+            "p8"
+          ],
+          "yearRange": {
+            "startYear": 1815,
+            "endYear": 1815,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c4",
+          "text": "The French captured La Haye Sainte, while French and Prussian forces fought over Plancenoit.",
+          "passageIds": [
+            "p3",
+            "p8"
+          ],
+          "yearRange": {
+            "startYear": 1815,
+            "endYear": 1815,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c5",
+          "text": "Napoleon\u2019s Imperial Guard was repulsed, the French retreated, and Prussian cavalry pursued them.",
+          "passageIds": [
+            "p9"
+          ],
+          "yearRange": {
+            "startYear": 1815,
+            "endYear": 1815,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c6",
+          "text": "Wellington advanced to La Belle Alliance and met Bl\u00fccher; the coalition had defeated Napoleon.",
+          "passageIds": [
+            "p3",
+            "p10"
+          ],
+          "yearRange": {
+            "startYear": 1815,
+            "endYear": 1815,
+            "approximate": false
+          },
+          "certainty": "established"
+        }
+      ],
+      "result": {
+        "status": "ready",
+        "requirements": [
+          {
+            "id": "r1",
+            "kind": "request",
+            "description": "Show the Battle of Waterloo on 18 June 1815.",
+            "claimIds": [
+              "c1"
+            ]
+          },
+          {
+            "id": "r2",
+            "kind": "actors",
+            "description": "Identify Napoleon and his French army, Wellington and his Anglo-Allied force, and Bl\u00fccher and the Prussians; Wellington planned to hold until Prussian support arrived.",
+            "claimIds": [
+              "c1"
+            ]
+          },
+          {
+            "id": "r3",
+            "kind": "context",
+            "description": "Include the French attack and continuing Allied defense at Hougoumont.",
+            "claimIds": [
+              "c2"
+            ]
+          },
+          {
+            "id": "r4",
+            "kind": "context",
+            "description": "Include French cavalry charges against infantry squares and the arrival of Prussian forces on Napoleon\u2019s right.",
+            "claimIds": [
+              "c3"
+            ]
+          },
+          {
+            "id": "r5",
+            "kind": "context",
+            "description": "Include the French capture of La Haye Sainte and the fighting for Plancenoit.",
+            "claimIds": [
+              "c4"
+            ]
+          },
+          {
+            "id": "r6",
+            "kind": "outcome",
+            "description": "Show the Imperial Guard\u2019s repulse, French retreat and Prussian pursuit.",
+            "claimIds": [
+              "c5"
+            ]
+          },
+          {
+            "id": "r7",
+            "kind": "outcome",
+            "description": "Identify the coalition victory and Wellington\u2019s meeting with Bl\u00fccher at La Belle Alliance.",
+            "claimIds": [
+              "c6"
+            ]
+          }
+        ],
+        "relations": []
+      }
+    },
+    "research": {
+      "text": "# Battle of Waterloo \u2014 18 June 1815\n\n**Setting:** South of Brussels, near Waterloo, in what was then the United Kingdom of the Netherlands and is now Belgium. Napoleon Bonaparte\u2019s French army faced the Duke of Wellington\u2019s multinational Allied army, supported during the battle by the Prussian army under Gebhard von Bl\u00fccher. ([exhibitions.lib.cam.ac.uk](https://exhibitions.lib.cam.ac.uk/waterloo/?utm_source=openai)) [s1]\n\n**Why they fought:** Napoleon had returned to power in France after exile. He sought to defeat Wellington before the Prussians could join him; Wellington chose to stand with the expectation of Prussian support. ([fitzmuseum.cam.ac.uk](https://fitzmuseum.cam.ac.uk/explore-our-collection/highlights/context/stories-and-histories/waterloo?utm_source=openai)) [s2]\n\n## Three possible narrative chapters\n\n### 1. The attack begins\nWellington\u2019s forces held a position on the ridge; the French deployed opposite. Fighting began around **11:20 a.m.**, with the French attacking near Hougoumont. Cambridge University\u2019s account gives the first shot as approximately **11:30 a.m.**, so the exact opening time should be treated as approximate. ([library.brown.edu](https://library.brown.edu/cds/askb/waterloo/battle.html?utm_source=openai)) [s3]\n\n### 2. Farms and a threatened flank\nFighting continued around Hougoumont, which the Allies held. The French eventually captured **La Haye Sainte**, while Prussian troops engaged the French around **Plancenoit**. These were overlapping struggles, not stops on a single journey. ([fitzmuseum.cam.ac.uk](https://fitzmuseum.cam.ac.uk/explore-our-collection/highlights/context/stories-and-histories/waterloo?utm_source=openai)) [s2]\n\n### 3. The French defeat\nWellington\u2019s army resisted the final French assaults as the Prussians pressed Napoleon\u2019s flank. The coalition won; Wellington and Bl\u00fccher met after the battle near La Belle Alliance. ([nam.ac.uk](https://www.nam.ac.uk/explore/battle-waterloo?utm_source=openai)) [s4]\n\n**For a visual scene:** Use static markers for **Hougoumont, La Haye Sainte, Plancenoit, and La Belle Alliance**, rather than suggesting one person traveled through them in that order. The cited accounts establish the broad sequence, but not a particular individual\u2019s exact path or undocumented dialogue.",
+      "passages": [
+        {
+          "id": "p1",
+          "sourceId": "s3",
+          "text": " K. Brown Military Collection Box A Brown University Library Providence, RI 02912 Tel.: (401) 863-2414 ASKB@Brown.edu The Battle A timeline of the events of the battle on June 18th, 1815 3:30 a.m. Wellington receives confirmation that Bl\u00fccher and the Prussians will march to Waterloo. 6 a.m. The Allied Army takes their position north of the Hougoumont. The French Army deploys to the area surrounding La Belle Alliance. 7 a.m. Napoleon eats his breakfast at La Caillou. 9 a.m. Wellington orders readjustments to the defense of the Hougoumont. Napoleon sends his chief engineer to conduct a reconnaissance of the Allied defenses. Bl\u00fccher sends a message to Wellington's Headquarters that he is en route. 11 a.m. Napoleon makes a decision to commence the attack on the French left, opposite the Hougoumont. 11:20 a.m. The first shots of the battle are fired. 11:20 a.m. \u2014 12:20 p.m. The Allied Army is driven from the woods and orchard at the Hougoumont. They conduct a counter-attack. 12:20 p.m. \u2014 1:15 p.m. The fighting for the Hougoumont intensifies and French troops succeed in forcing entry.",
+          "documentHash": "3de7c13075545af1ff8d5670e63415a44382e2b7154580adf4e3dcc17c7510f9",
+          "start": 228,
+          "end": 1323,
+          "retrievedAt": "2026-10-31T20:41:27.653Z"
+        },
+        {
+          "id": "p2",
+          "sourceId": "s3",
+          "text": "m. Napoleon orders an attack at the Allied Army center, successfully pushing their line back to La Haye Sainte. Allied brigades then surround the French at this location, and push Napoleon back to La Belle Alliance. 2:15 p.m. \u2014 3:00 p.m. The struggle for the Hougoumont continues. Nearly 15,000 men are embroiled in the task of taking or defending the chateau. Napoleon launches his heavy cavalry and lancers to counter the Allied cavalry, and they inflict heavy losses. The Prussian brigades are slow to progress toward the site. 3:00 p.m. \u2014 4:00 p.m. The buildings at Hougoumont are set on fire and the Allied Army reinforces La Haye Sainte, but is in great need of ammunition resupply. French troops reorganize and the Grand Battery opens fire. To the east, the Prussian and French cavalry clash. 4:00 p.m. \u2014 6:00 p.m. Wellington readjusts his troops. The French misunderstand this action as a sign of withdrawal, and order a concerted cavalry charge. The Allied infantry form squares to meet the attack. Attacks continue on La Haye Sainte and the Hougoumont, which remains in Allied hands.",
+          "documentHash": "3de7c13075545af1ff8d5670e63415a44382e2b7154580adf4e3dcc17c7510f9",
+          "start": 1462,
+          "end": 2555,
+          "retrievedAt": "2026-10-31T20:41:27.653Z"
+        },
+        {
+          "id": "p3",
+          "sourceId": "s3",
+          "text": "m. After fierce fighting, La Haye Sainte falls to the French and the village of Plancenoit falls to the Prussian forces. Napoleon is compelled to deploy troops to recapture the village. 6:30 p.m. \u2014 7:00 p.m. Napoleon\u2019s troops and the Prussians relentlessly attack and counter-attack at Plancenoit, with the village eventually held by the French. 7:00 p.m. \u2014 8:30 p.m. Wellington reorganizes his central defense after the loss of La Haye Sainte. The Prussians once again regain control of Plancenoit. Napoleon gives orders for his Guard to advance north, and they suffer badly from the Allied artillery. The French begin to collapse and commence a disorderly retreat. 8:30 p.m. \u2014 10:30 p.m. Wellington signals an advance and rides to La Belle Alliance where he famously meets Bl\u00fccher. The French recoil and the Prussians take the pursuit. Items on Display A selection of 54 mm lead soldiers representing infantrymen from the French and Allied armies Various European manufacturers 20th century The Battle of Waterloo June 18th, 1815 William Heath (artist) Richard Reeve (engraver) London, J. & M.",
+          "documentHash": "3de7c13075545af1ff8d5670e63415a44382e2b7154580adf4e3dcc17c7510f9",
+          "start": 2575,
+          "end": 3670,
+          "retrievedAt": "2026-10-31T20:41:27.653Z"
+        },
+        {
+          "id": "p4",
+          "sourceId": "s3",
+          "text": " Items on Display A selection of 54 mm lead soldiers representing infantrymen from the French and Allied armies Various European manufacturers 20th century The Battle of Waterloo June 18th, 1815 William Heath (artist) Richard Reeve (engraver) London, J. & M. Rippin, 1817 Hand-colored aquatint 64.2 x 48.4 cm British artist William Heath (c. 1795-1840) is best known for his numerous military scenes and political satires. This panoramic image shows the scale and calamity of the battle. Flags from all three armies are visible. Note the rockets in the sky which were used to some effect by the British artillery. \"The Prince of Orange at the Head of His Troops Charging the Old Guard\" Sir Charles Warren 1818 Watercolor 46 x 38 cm This battle scene by the British engraver, Charles Turner Warren (1762-1823) follows a Dutch infantry regiment as they approach the French infantry. William II of the Netherlands, the Prince of Orange, mounted on the horse in the foreground, commanded the Dutch regiments within the Anglo-Allied Army.",
+          "documentHash": "3de7c13075545af1ff8d5670e63415a44382e2b7154580adf4e3dcc17c7510f9",
+          "start": 3412,
+          "end": 4445,
+          "retrievedAt": "2026-10-31T20:41:27.653Z"
+        },
+        {
+          "id": "p5",
+          "sourceId": "s3",
+          "text": " William II of the Netherlands, the Prince of Orange, mounted on the horse in the foreground, commanded the Dutch regiments within the Anglo-Allied Army. \"Pursuit of the Prussians by Moonlight\" Sir Charles Warren 1818 Watercolor 46 x 38 cm During a moment of combat towards the end of the long day of fighting, Warren illustrates the confident attack of the Prussian cavalry against fleeing French cavalry and infantry. A selection of three battle scenes from Battle of Waterloo: Illustrated in Eight Different Points of View John Heaviside Clark (artist) M. Dubourg (engraver) London, Edward Orme, 1816 Hand-colored aquatints 22.5 x 27.5 cm This publication of printed plates is arranged with stanzas of Walter Scott's long poem The Field of Waterloo paired with each image. The collection of fanciful renditions of the Battle of Waterloo presents combat scenes from different perspectives, featuring various regiments.",
+          "documentHash": "3de7c13075545af1ff8d5670e63415a44382e2b7154580adf4e3dcc17c7510f9",
+          "start": 4292,
+          "end": 5212,
+          "retrievedAt": "2026-10-31T20:41:27.653Z"
+        },
+        {
+          "id": "p6",
+          "sourceId": "s4",
+          "text": "Explore more from Napoleonic Wars Battle of Waterloo The Battle of Waterloo was fought on 18 June 1815 between Napoleon\u2019s French Army and a coalition led by the Duke of Wellington and Marshal Bl\u00fccher. The decisive battle of its age, it concluded a war that had raged for 23 years, ended French attempts to dominate Europe, and destroyed Napoleon\u2019s imperial power forever. 9 minute read Napoleonic Wars Europe 1800s Waterloo Great Battles Conflict in Europe View this object The defence of Hougoumont at Waterloo, 1815 Opening moves The French Emperor Napoleon Bonaparte had escaped from exile in March 1815 and returned to power. He decided to go on the offensive, hoping to win a quick victory that would tear apart the coalition of European armies formed against him. Two armies - the Prussians, led by Field Marshal Gebhard von Bl\u00fccher, and an Anglo-Allied force, under Field Marshal the Duke of Wellington - were gathering in the Netherlands. Together, they outnumbered the French. Napoleon\u2019s best chance of success was therefore to keep them apart and defeat each one separately.",
+          "documentHash": "2d72123c1ca9f840ede055c1ab1fdd6f3103de517cd6127352c8ce66edf8ab0c",
+          "start": 0,
+          "end": 1084,
+          "retrievedAt": "2026-10-31T20:41:27.917Z"
+        },
+        {
+          "id": "p7",
+          "sourceId": "s4",
+          "text": " They retreated north towards Wellington\u2019s position and were able keep in contact with him. The 48,000-strong Prussian Army was experienced and professional, a mix of veteran, militia and reserve units. Its strength lay in the officer corps, especially its General Staff, who managed to reorganise the army and move it to Waterloo within 48 hours of its defeat at Ligny. Emboldened by their promise of reinforcements, Wellington decided to stand and fight on 18 June until the Prussians could arrive. View this object Napoleon at Waterloo, 1815 The Little Corporal The French Army had their greatest military commander in Napoleon Bonaparte. He was loved by his loyal troops, demonised by his enemies, feared and respected by all. His army was composed of veterans who had rallied to his cause on his return from exile. Having detached 33,000 men to follow the Prussians after Ligny, Napoleon had 72,000 men and 246 guns at Waterloo. Wellington also accepted that Napoleon\u2019s presence on the battlefield made a huge difference to the morale and performance of his troops.",
+          "documentHash": "2d72123c1ca9f840ede055c1ab1fdd6f3103de517cd6127352c8ce66edf8ab0c",
+          "start": 2236,
+          "end": 3306,
+          "retrievedAt": "2026-10-31T20:41:27.917Z"
+        },
+        {
+          "id": "p8",
+          "sourceId": "s4",
+          "text": " Visit the Conflict in Europe gallery View this object French eagle standard captured at Waterloo, 1815 The Prussians arrive By mid-afternoon, news of the Prussians' arrival forced Napoleon to form a defensive line on his right. Soon afterwards, believing the Allies were pulling back, the French cavalry charged the infantry of Wellington\u2019s right centre who formed square. Although more cavalry were committed to attack, the soggy ground hampered the French. They could not make an impression on the British squares, which held firm despite suffering casualties from artillery fire. Meanwhile, the Prussians continued to arrive on Napoleon\u2019s right, forcing him to detach more troops to steady the situation. At about 6.00pm, the French captured La Haye Sainte, severely weakening Wellington\u2019s position. Under withering fire, Wellington\u2019s centre began to collapse. The French commander Marshal Ney called for reinforcements to push home his advantage. But Napoleon decided first to send troops to recapture the village of Plancenoit from the Prussians.",
+          "documentHash": "2d72123c1ca9f840ede055c1ab1fdd6f3103de517cd6127352c8ce66edf8ab0c",
+          "start": 5927,
+          "end": 6979,
+          "retrievedAt": "2026-10-31T20:41:27.917Z"
+        },
+        {
+          "id": "p9",
+          "sourceId": "s4",
+          "text": " But Napoleon decided first to send troops to recapture the village of Plancenoit from the Prussians. This gave Wellington time to strengthen his position. View this object Bearskin worn by the French Imperial Guard, c1805 View this object Bloodstained jacket worn by Lieutenant Henry Anderson who was wounded during the final repulse of the Imperial Guard Defeat of the Imperial Guard At about 7.00pm, in a last bid for victory, Napoleon released his finest troops, the Imperial Guard. They marched up the ridge between Hougoumont and La Haye Sainte, but had chosen to attack where Wellington was strongest. Under a withering fire from British guardsmen and light infantry, the Imperial Guard halted, wavered and finally broke. Their defeat sent the rest of the French into panic and, eventually, retreat. This continued all night, with the French harried by the Prussian cavalry. Napoleon lost nearly 40,000 men killed, wounded or captured. The Allies suffered 22,000 casualties. Napoleon was defeated. He spoke of fighting on, but was forced to abdicate when the Allies entered Paris on 7 July.",
+          "documentHash": "2d72123c1ca9f840ede055c1ab1fdd6f3103de517cd6127352c8ce66edf8ab0c",
+          "start": 6878,
+          "end": 7975,
+          "retrievedAt": "2026-10-31T20:41:27.917Z"
+        },
+        {
+          "id": "p10",
+          "sourceId": "s4",
+          "text": " He falls back to a ridge near the village of Waterloo. Wellington plans to fight there until the Prussians come to his aid. 18 June 1815 Battle of Waterloo Wellington\u2019s army beats off a succession of French attacks. The arrival of the Prussians completes Napoleon\u2019s defeat. 7 July 1815 Paris occupied The victorious allies enter Paris. Napoleon surrenders to the British and is exiled to St Helena. Impact The Duke of Wellington received a hero's welcome on his return to Britain. He was showered with further honours, eventually becoming prime minister in 1828, and again in 1834. Waterloo ended the wars that had convulsed Europe since the French Revolution (1789-99). It also ended France\u2019s attempts, whether under Louis XIV or Napoleon, to dominate the continent. Waterloo inaugurated a general European peace that, apart from the brief interruption of the Crimean War (1854-56), lasted until 1914. In the years that followed 1815, France and Britain were brought closer together, fighting as partners in the Crimea and remaining allies through two World Wars.",
+          "documentHash": "2d72123c1ca9f840ede055c1ab1fdd6f3103de517cd6127352c8ce66edf8ab0c",
+          "start": 8768,
+          "end": 9833,
+          "retrievedAt": "2026-10-31T20:41:27.917Z"
+        }
+      ],
+      "sourceChecks": [
+        {
+          "sourceId": "s1",
+          "status": "unavailable",
+          "reason": "source_unavailable",
+          "finalUrl": null,
+          "documentHash": null,
+          "retrievedAt": "2026-10-31T20:41:36.147Z"
+        },
+        {
+          "sourceId": "s2",
+          "status": "unavailable",
+          "reason": "source_unavailable",
+          "finalUrl": null,
+          "documentHash": null,
+          "retrievedAt": "2026-10-31T20:41:36.147Z"
+        },
+        {
+          "sourceId": "s3",
+          "status": "readable",
+          "reason": null,
+          "finalUrl": "https://library.brown.edu/cds/askb/waterloo/battle.html",
+          "documentHash": "3de7c13075545af1ff8d5670e63415a44382e2b7154580adf4e3dcc17c7510f9",
+          "retrievedAt": "2026-10-31T20:41:27.653Z"
+        },
+        {
+          "sourceId": "s4",
+          "status": "readable",
+          "reason": null,
+          "finalUrl": "https://www.nam.ac.uk/explore/battle-waterloo",
+          "documentHash": "2d72123c1ca9f840ede055c1ab1fdd6f3103de517cd6127352c8ce66edf8ab0c",
+          "retrievedAt": "2026-10-31T20:41:27.917Z"
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "A damned serious business | A damned serious business: Waterloo 1815, the battle and its books",
+          "url": "https://exhibitions.lib.cam.ac.uk/waterloo/?utm_source=openai"
+        },
+        {
+          "id": "s2",
+          "title": "The Fitzwilliam Museum - Waterloo",
+          "url": "https://fitzmuseum.cam.ac.uk/explore-our-collection/highlights/context/stories-and-histories/waterloo?utm_source=openai"
+        },
+        {
+          "id": "s3",
+          "title": "Waterloo 1815 | The Battle",
+          "url": "https://library.brown.edu/cds/askb/waterloo/battle.html?utm_source=openai"
+        },
+        {
+          "id": "s4",
+          "title": "Battle of Waterloo | National Army Museum",
+          "url": "https://www.nam.ac.uk/explore/battle-waterloo?utm_source=openai"
+        }
+      ]
+    },
+    "recordedReview": {
+      "events": [
+        {
+          "verdict": "supported",
+          "reason": "The battle, commanders and Wellington\u2019s plan are supported.",
+          "index": 0,
+          "passageIds": [
+            "p6",
+            "p7"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The passages support the opening attacks and continuing Allied defense at Hougoumont.",
+          "index": 1,
+          "passageIds": [
+            "p1",
+            "p2"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The passage describes Prussian arrival on Napoleon\u2019s right and the diversion of French troops.",
+          "index": 2,
+          "passageIds": [
+            "p8"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The cavalry charges, infantry squares and continuing Prussian arrival are supported.",
+          "index": 3,
+          "passageIds": [
+            "p8"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The passage dates the French capture to about 6 p.m. and describes its effect on Wellington\u2019s position.",
+          "index": 4,
+          "passageIds": [
+            "p3",
+            "p8"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The fighting, eventual Prussian recovery and overlapping Guard advance are supported.",
+          "index": 5,
+          "passageIds": [
+            "p3",
+            "p8"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The passage supports the approximate time, advance and repulse of the Guard.",
+          "index": 6,
+          "passageIds": [
+            "p9"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The passage describes the French retreat and Prussian cavalry pursuit.",
+          "index": 7,
+          "passageIds": [
+            "p9"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The passages support the meeting at La Belle Alliance and Napoleon\u2019s defeat.",
+          "index": 8,
+          "passageIds": [
+            "p3",
+            "p10"
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "verdict": "supported",
+          "reason": "The scene shows the battle at Waterloo on 18 June 1815.",
+          "index": 0
+        },
+        {
+          "verdict": "supported",
+          "reason": "The event and participant labels identify all three commanders and forces, and Wellington\u2019s plan.",
+          "index": 1
+        },
+        {
+          "verdict": "supported",
+          "reason": "The Hougoumont event includes both the French attack and continuing Allied defense.",
+          "index": 2
+        },
+        {
+          "verdict": "supported",
+          "reason": "The events include the cavalry charges, squares and Prussian arrival on Napoleon\u2019s right.",
+          "index": 3
+        },
+        {
+          "verdict": "supported",
+          "reason": "Both La Haye Sainte\u2019s capture and the fighting for Plancenoit are shown.",
+          "index": 4
+        },
+        {
+          "verdict": "supported",
+          "reason": "The Guard\u2019s repulse, French retreat and Prussian cavalry pursuit are shown.",
+          "index": 5
+        },
+        {
+          "verdict": "supported",
+          "reason": "The final event identifies the coalition victory and meeting at La Belle Alliance.",
+          "index": 6
+        }
+      ],
+      "relations": [
+        {
+          "verdict": "supported",
+          "reason": "The passage places the Guard\u2019s defeat before the ensuing French retreat and pursuit.",
+          "index": 0,
+          "passageIds": [
+            "p9"
+          ]
+        }
+      ],
+      "metadata": {
+        "verdict": "supported",
+        "reason": "The focus and chapter dates fit the events, and the captions disclose schematic markers and placeholder figures."
+      },
+      "chronology": {
+        "verdict": "supported",
+        "reason": "The order conveys the main sequence while the statements and captions acknowledge overlapping fighting, including Plancenoit and the Guard\u2019s advance."
+      }
+    },
+    "audit": {
+      "verdict": "needs_review",
+      "sourceSupport": "mixed",
+      "chronology": "pass",
+      "requestCoverage": "pass",
+      "uncertainty": "overstated",
+      "staging": "uncertain",
+      "issues": [
+        {
+          "severity": "warning",
+          "actionIds": [
+            "b2_ev_8_marker",
+            "b2_ev_8_speech"
+          ],
+          "description": "The commanders\u2019 meeting is presented as certainly at La Belle Alliance. Brown gives that location, but the independent Walloon atlas calls it traditional and suggests another location. Qualify the location and marker."
+        }
+      ],
+      "rationale": "The date, opposing forces, Prussian role and Napoleon\u2019s defeat are supported by the independently checked sources. The battlefield is explicitly schematic, the overlapping Plancenoit fighting is acknowledged, and the stated attack times are approximate. The meeting location nevertheless needs a caveat because the sources differ.",
+      "referenceChecks": [
+        {
+          "id": "waterloo-f1",
+          "status": "addressed",
+          "reason": "The narration dates the battle to 18 June 1815."
+        },
+        {
+          "id": "waterloo-f2",
+          "status": "addressed",
+          "reason": "Napoleon, Wellington and Bl\u00fccher are identified, along with the Anglo-Allied and Prussian forces."
+        },
+        {
+          "id": "waterloo-f3",
+          "status": "addressed",
+          "reason": "The final narration states that the coalition defeated Napoleon."
+        },
+        {
+          "id": "guard-1",
+          "status": "addressed",
+          "reason": "The coalition is not described as solely British; the Prussian contribution is explicit."
+        },
+        {
+          "id": "guard-2",
+          "status": "addressed",
+          "reason": "No invented quotations appear, and the cited attack timings are qualified as approximate."
+        }
+      ]
+    }
+  },
+  "railway-1830": {
+    "plan": {
+      "status": "resolved",
+      "title": "The Liverpool and Manchester Railway opens",
+      "location": "Liverpool to Manchester, England",
+      "presentation": "journey",
+      "events": [
+        {
+          "kind": "context",
+          "title": "A new inter-city railway",
+          "statement": "The line linked Liverpool's port with textile-industry centre Manchester. It was the first modern inter-city passenger railway, using steam and scheduled services.",
+          "location": {
+            "name": "Liverpool and Manchester Railway",
+            "position": {
+              "lat": 53.45,
+              "lon": -2.6
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1830,
+              "month": null,
+              "day": null
+            },
+            "end": {
+              "year": 1830,
+              "month": null,
+              "day": null
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "railway",
+          "claimIndices": [
+            0
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "The opening procession",
+          "statement": "Eight trains took part in the opening procession as thousands of spectators gathered. Stephenson drove the leading Northumberland.",
+          "location": {
+            "name": "Liverpool and Manchester Railway",
+            "position": {
+              "lat": 53.45,
+              "lon": -2.6
+            }
+          },
+          "participants": [
+            {
+              "name": "George Stephenson",
+              "role": "Chief engineer and driver of North\ud802\udd1f"
+            },
+            {
+              "name": "William Huskisson",
+              "role": "Opening-day attendee"
+            },
+            {
+              "name": "Duke of Wellington",
+              "role": "Prime Minister and opening-dayium"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "end": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "railway",
+          "claimIndices": [
+            1
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "A stop for water",
+          "statement": "At Newton-le-Willows, Huskisson left his carriage and approached Wellington to shake hands in reconciliation as Rocket approached on the adjacent track.",
+          "location": {
+            "name": "Newton-le-Willows",
+            "position": {
+              "lat": 53.45,
+              "lon": -2.62
+            }
+          },
+          "participants": [
+            {
+              "name": "William Huskisson",
+              "role": "Passenger"
+            },
+            {
+              "name": "Duke of Wellington",
+              "role": "Prime Minister"
+            },
+            {
+              "name": "Joseph Locke",
+              "role": "Driver of Rocket"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "end": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "railway",
+          "claimIndices": [
+            2
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Huskisson is struck",
+          "statement": "Rocket struck Huskisson, badly mangling his leg.",
+          "location": {
+            "name": "Newton-le-Willows",
+            "position": {
+              "lat": 53.45,
+              "lon": -2.62
+            }
+          },
+          "participants": [
+            {
+              "name": "William Huskisson",
+              "role": "Injured passenger"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "end": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "railway",
+          "claimIndices": [
+            3
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "A train to Eccles",
+          "statement": "Stephenson drove the injured Huskisson by train to Eccles.",
+          "location": {
+            "name": "Eccles",
+            "position": {
+              "lat": 53.483,
+              "lon": -2.335
+            }
+          },
+          "participants": [
+            {
+              "name": "George Stephenson",
+              "role": "Train driver"
+            },
+            {
+              "name": "William Huskisson",
+              "role": "Injured passenger"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "end": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "railway",
+          "claimIndices": [
+            3
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "The procession continues",
+          "statement": "Despite calls to stop, the procession continued to Manchester, where a crowd awaited it. The mood was subdued; the reception and banquet were to go ahead.",
+          "location": {
+            "name": "Manchester",
+            "position": {
+              "lat": 53.48,
+              "lon": -2.24
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "end": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "railway",
+          "claimIndices": [
+            4
+          ]
+        },
+        {
+          "kind": "outcome",
+          "title": "Huskisson dies",
+          "statement": "Huskisson died at around 9 p.m. that evening.",
+          "location": {
+            "name": "England, death location not specified in the passage",
+            "position": {
+              "lat": 53.48,
+              "lon": -2.335
+            }
+          },
+          "participants": [
+            {
+              "name": "William Huskisson",
+              "role": "Fatally injured passenger"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "end": {
+              "year": 1830,
+              "month": 9,
+              "day": 15
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "people",
+          "claimIndices": [
+            3
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "beforeIndex": 1,
+          "afterIndex": 2,
+          "kind": "before",
+          "passageIds": [
+            "p3"
+          ]
+        },
+        {
+          "beforeIndex": 2,
+          "afterIndex": 3,
+          "kind": "before",
+          "passageIds": [
+            "p3",
+            "p4"
+          ]
+        },
+        {
+          "beforeIndex": 3,
+          "afterIndex": 4,
+          "kind": "before",
+          "passageIds": [
+            "p4"
+          ]
+        },
+        {
+          "beforeIndex": 4,
+          "afterIndex": 6,
+          "kind": "before",
+          "passageIds": [
+            "p4"
+          ]
+        },
+        {
+          "beforeIndex": 3,
+          "afterIndex": 5,
+          "kind": "before",
+          "passageIds": [
+            "p4"
+          ]
+        }
+      ]
+    },
+    "checklist": {
+      "claims": [
+        {
+          "id": "c1",
+          "text": "The railway linked the port of Liverpool with textile-industry centre Manchester; it was the first modern inter-city passenger railway, relying exclusively on steam power and providing scheduled passenger services.",
+          "passageIds": [
+            "p1",
+            "p2"
+          ],
+          "yearRange": {
+            "startYear": 1830,
+            "endYear": 1830,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c2",
+          "text": "On 15 September 1830, eight trains took part in the opening procession before thousands of spectators. George Stephenson drove the leading Northumberland; attendees included William Huskisson and Prime Minister the Duke of Wellington.",
+          "passageIds": [
+            "p3"
+          ],
+          "yearRange": {
+            "startYear": 1830,
+            "endYear": 1830,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c3",
+          "text": "At a scheduled water stop at Newton-le-Willows, Huskisson left his carriage and approached Wellington to shake hands in reconciliation. Rocket, driven by Joseph Locke, approached on the adjacent track.",
+          "passageIds": [
+            "p3"
+          ],
+          "yearRange": {
+            "startYear": 1830,
+            "endYear": 1830,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c4",
+          "text": "Rocket struck Huskisson, badly mangling his leg. George Stephenson drove him by train to Eccles, but Huskisson died at around 9 p.m.",
+          "passageIds": [
+            "p4"
+          ],
+          "yearRange": {
+            "startYear": 1830,
+            "endYear": 1830,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c5",
+          "text": "Despite calls to abandon the day's events, the procession continued to Manchester, where a crowd awaited it. Its mood was subdued, though the reception and banquet were to go ahead.",
+          "passageIds": [
+            "p4"
+          ],
+          "yearRange": {
+            "startYear": 1830,
+            "endYear": 1830,
+            "approximate": false
+          },
+          "certainty": "established"
+        }
+      ],
+      "result": {
+        "status": "ready",
+        "requirements": [
+          {
+            "id": "r1",
+            "kind": "context",
+            "description": "Establish the Liverpool\u2013Manchester railway's purpose and its significance as a steam-powered inter-city passenger line.",
+            "claimIds": [
+              "c1"
+            ]
+          },
+          {
+            "id": "r2",
+            "kind": "request",
+            "description": "Show the railway's opening procession on 15 September 1830, with its eight trains and spectators.",
+            "claimIds": [
+              "c2"
+            ]
+          },
+          {
+            "id": "r3",
+            "kind": "actors",
+            "description": "Identify George Stephenson, William Huskisson, the Duke of Wellington and Rocket's driver Joseph Locke in their roles.",
+            "claimIds": [
+              "c2",
+              "c3"
+            ]
+          },
+          {
+            "id": "r4",
+            "kind": "outcome",
+            "description": "Show the Newton-le-Willows water stop, Huskisson's attempted reconciliation with Wellington and Rocket's fatal collision with him.",
+            "claimIds": [
+              "c3",
+              "c4"
+            ]
+          },
+          {
+            "id": "r5",
+            "kind": "outcome",
+            "description": "Account for Stephenson's train journey taking the injured Huskisson to Eccles and Huskisson's death that evening.",
+            "claimIds": [
+              "c4"
+            ]
+          },
+          {
+            "id": "r6",
+            "kind": "outcome",
+            "description": "Show that the procession continued to Manchester despite calls to stop, with its mood subdued; the reception and banquet were to go ahead.",
+            "claimIds": [
+              "c5"
+            ]
+          }
+        ],
+        "relations": []
+      }
+    },
+    "research": {
+      "text": "Source receipts rebuilt after a targeted lookup; summary is not evidence.",
+      "passages": [
+        {
+          "id": "p1",
+          "sourceId": "s1",
+          "text": "The opening of the Liverpool and Manchester Railway, 1830 Body The Liverpool and Manchester Railway, which opened in 1830, was the first modern, inter-city passenger railway. It was the first to rely exclusively on steam power, run a scheduled passenger service and use a system of signalling. Earlier railways had used horse power, fixed steam engines and locomotives. The opening of the railway was a momentous occasion, but it was marred by tragedy, when William Huskisson, MP and former cabinet member, was fatally wounded by an oncoming train. The bill is passed Parliament gave permission for the new railway to be built in 1826. On 5 May, a bill was passed, \u2018An Act for making and maintaining a Railway or Tramroad from the Town of Liverpool to the Town of Manchester, with certain Branches therefrom, all in the County of Lancaster\u2019 (Gazette issue 18246). A previous bill had been rejected in July 1825, due to inaccuracies with two surveys. A third survey was accurately completed by Charles Blacker Vignoles. George Stephenson, engineer, was appointed to design and build the line.",
+          "documentHash": "7029e037896a6ade65e591917cfd6358de853db071c5d17abe255d055f1aadac",
+          "start": 0,
+          "end": 1091,
+          "retrievedAt": "2026-10-31T20:44:03.155Z"
+        },
+        {
+          "id": "p2",
+          "sourceId": "s1",
+          "text": " It averaged 12mph, with a top speed of 30mph, and was the only locomotive to complete the trial\u2019s several tasks. Robert Stephenson Company gained the contract to produce locomotives for the line. The new railway was intended to speedily transport raw materials, goods and passengers between the two towns \u2013 Manchester, the centre of the textiles industry, and the key port of Liverpool. It was to be a double track, built to 4 feet, 8.5 inches. William Huskisson: Gazette citations Returned as MP for Chichester in 1812 (Gazette issue 16665), Huskisson rose from commissioner of \u2018His Majesty's Woods, forests, and Land Revenues\u2019 in 1814 (Gazette issue 16923) to president of the board of trade and treasurer of the Navy in 1823 (Gazette issue 17893). He became secretary of state for war and the colonies and leader of the House of Commons in 1827 (Gazette issue 18393), resigning from this office in 1828. In 1830, he was present at the state funeral of King George IV (Gazette issue 18696).",
+          "documentHash": "7029e037896a6ade65e591917cfd6358de853db071c5d17abe255d055f1aadac",
+          "start": 1858,
+          "end": 2851,
+          "retrievedAt": "2026-10-31T20:44:03.155Z"
+        },
+        {
+          "id": "p3",
+          "sourceId": "s1",
+          "text": " The day of the opening Huskisson, along with other dignitaries, including Prime Minister Arthur Wellesley, Duke of Wellington, attended the opening on 15 September 1830. Eight trains, including the Rocket, took part in the procession. The company\u2019s chief engineer, Stephenson, drove the Northumberland at the lead. The Liverpool and Manchester Railway Company organised much celebration, timed for the day of its opening, where thousands of spectators gathered, jostling for the best vantage points. After 17 miles, the engines made a scheduled stop for water. On stepping down from the train at Newton-le-Willows (despite passengers being advised to stay inside the carriage), Huskisson approached the Duke of Wellington to shake hands in a move of reconciliation after earlier disagreements. Unbeknown to Huskisson, the Rocket, driven by Joseph Locke, was approaching on the adjacent track. \"An engine is approaching. Take care, gentlemen!\" was heard.",
+          "documentHash": "7029e037896a6ade65e591917cfd6358de853db071c5d17abe255d055f1aadac",
+          "start": 3267,
+          "end": 4221,
+          "retrievedAt": "2026-10-31T20:44:03.155Z"
+        },
+        {
+          "id": "p4",
+          "sourceId": "s1",
+          "text": " Unbeknown to Huskisson, the Rocket, driven by Joseph Locke, was approaching on the adjacent track. \"An engine is approaching. Take care, gentlemen!\" was heard. Others managed to move out of the way and on to the embankment or back into their carriages, but Huskisson panicked and, clinging to the duke\u2019s carriage door, found himself in the path of the oncoming train. On impact his leg was badly mangled, and he was rushed to Eccles by train, driven by George Stephenson. There were calls, especially by the prime minister, to cease the day\u2019s events and return to Liverpool. However, a large crowd had gathered in Manchester to see the trains arrive and were becoming increasingly restless. Some were using the public occasion to call for political reforms. Advised that it would be safest to resume, and aware of the bad publicity and unrest if they retreated, they proceeded to the destination, with the mood understandably much subdued (though the reception and banquet was to go ahead). Huskisson died a at around 9pm, having made a will when he was aware that he had been mortally wounded.",
+          "documentHash": "7029e037896a6ade65e591917cfd6358de853db071c5d17abe255d055f1aadac",
+          "start": 4061,
+          "end": 5156,
+          "retrievedAt": "2026-10-31T20:44:03.155Z"
+        },
+        {
+          "id": "p5",
+          "sourceId": "s1",
+          "text": " The funeral was on Friday 24 September, and almost every business in Liverpool was closed as a mark of respect to Huskisson. The railway went on to be a financial success and ushered in a modern age of travel. Within 20 years there were 6,200 miles of rail in Britain. Soon to follow were the 1844 Railway Regulation Act (Gazette issue 20373), which made provision for less well-off rail passengers, and Regulating the Gauge of Railways Act 1846 (Gazette issue 20635), which legislated that railway lines were to be built at a uniform width of 4 feet, 8.5 inches across the country \u2013 a legacy of Stephenson\u2019s Liverpool and Manchester Railway. Further reading and sources Fyfe, Paul, \u2018On the Opening of the Liverpool and Manchester Railway, 1830\u2019. BRANCH: Britain, Representation and Nineteenth-Century History. Ed. Dino Franco Felluga. Extension of Romanticism and Victorianism on the Net. Garfield, Simon, The Last Journey of William Huskisson, Faber and Faber, 2002. Find out more: the Museum of Science and Industry, Manchester. Image: George Stephenson's Rocket, wood engraving, 1878",
+          "documentHash": "7029e037896a6ade65e591917cfd6358de853db071c5d17abe255d055f1aadac",
+          "start": 5156,
+          "end": 6244,
+          "retrievedAt": "2026-10-31T20:44:03.155Z"
+        }
+      ],
+      "sourceChecks": [
+        {
+          "sourceId": "s1",
+          "status": "readable",
+          "reason": null,
+          "finalUrl": "https://www.thegazette.co.uk/all-notices/content/100741",
+          "documentHash": "7029e037896a6ade65e591917cfd6358de853db071c5d17abe255d055f1aadac",
+          "retrievedAt": "2026-10-31T20:44:03.155Z"
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "The opening of the Liverpool and Manchester Railway, 1830 | The Gazette",
+          "url": "https://www.thegazette.co.uk/all-notices/content/100741?utm_source=openai"
+        }
+      ]
+    },
+    "recordedReview": {
+      "events": [
+        {
+          "verdict": "supported",
+          "reason": "The line\u2019s context and significance are supported.",
+          "index": 0,
+          "passageIds": [
+            "p1",
+            "p2"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The participant labels are corrupted, and the chapter date does not contain the event\u2019s full date.",
+          "index": 1,
+          "passageIds": [
+            "p3"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The chapter date does not contain the event\u2019s full date.",
+          "index": 2,
+          "passageIds": [
+            "p3"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The selected claim and passage do not identify Newton-le-Willows as the collision location; the chapter date also omits the full event date.",
+          "index": 3,
+          "passageIds": [
+            "p4"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The chapter date does not contain the event\u2019s full date.",
+          "index": 4,
+          "passageIds": [
+            "p4"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The chapter date does not contain the event\u2019s full date.",
+          "index": 5,
+          "passageIds": [
+            "p4"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The chapter date does not contain the event\u2019s full date.",
+          "index": 6,
+          "passageIds": [
+            "p4"
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "verdict": "supported",
+          "reason": "The context identifies the linked cities and the steam-powered, scheduled inter-city passenger line.",
+          "index": 0
+        },
+        {
+          "verdict": "supported",
+          "reason": "The procession, date, eight trains and spectators are visible.",
+          "index": 1
+        },
+        {
+          "verdict": "supported",
+          "reason": "The four named actors and their essential roles are identifiable, although two labels need correction.",
+          "index": 2
+        },
+        {
+          "verdict": "revise",
+          "reason": "The rendered stop does not say it was for water.",
+          "index": 3
+        },
+        {
+          "verdict": "supported",
+          "reason": "The train journey to Eccles and death that evening are visible.",
+          "index": 4
+        },
+        {
+          "verdict": "supported",
+          "reason": "The continuation, subdued mood and planned reception and banquet are stated.",
+          "index": 5
+        }
+      ],
+      "relations": [
+        {
+          "verdict": "supported",
+          "reason": "The passage places the water stop after the opening procession began.",
+          "index": 0,
+          "passageIds": [
+            "p3"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The passages place Rocket\u2019s approach and collision after Huskisson approached Wellington.",
+          "index": 1,
+          "passageIds": [
+            "p3",
+            "p4"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The collision preceded the train journey to Eccles.",
+          "index": 2,
+          "passageIds": [
+            "p4"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The journey with the injured Huskisson preceded his death.",
+          "index": 3,
+          "passageIds": [
+            "p4"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The procession resumed after the collision and calls to cease.",
+          "index": 4,
+          "passageIds": [
+            "p4"
+          ]
+        }
+      ],
+      "metadata": {
+        "verdict": "revise",
+        "reason": "The chapter dates give only 1830 and do not contain the full dates narrated for the opening-day events. The focus and schematic captions are otherwise appropriate."
+      },
+      "chronology": {
+        "verdict": "revise",
+        "reason": "The playback places the continuation to Manchester before the death, but the cited passage does not establish their relative timing. The chapter dates also omit the narrated day and month."
+      }
+    },
+    "audit": null
+  },
+  "apollo-earth": {
+    "plan": {
+      "status": "resolved",
+      "title": "Apollo 11: Earth-side preparations and return",
+      "location": "Earth",
+      "presentation": "earth_mission",
+      "events": [
+        {
+          "kind": "context",
+          "title": "Mission and crew",
+          "statement": "Apollo 11\u2019s goal was a crewed lunar landing and return to Earth.",
+          "location": {
+            "name": "Kennedy Space Center, Florida",
+            "position": {
+              "lat": 28.5729,
+              "lon": -80.649
+            }
+          },
+          "participants": [
+            {
+              "name": "Neil Armstrong",
+              "role": "Commander"
+            },
+            {
+              "name": "Buzz Aldrin",
+              "role": "Lunar module pilot"
+            },
+            {
+              "name": "Michael Collins",
+              "role": "Command module pilot"
+            }
+          ],
+          "date": null,
+          "template": "earth_mission",
+          "claimIndices": [
+            0
+          ]
+        },
+        {
+          "kind": "caveat",
+          "title": "Reading the map",
+          "statement": "Earth markers schematically substitute for spacecraft and the recovery ship; they do not locate the Moon or its surface.",
+          "location": {
+            "name": "Kennedy Space Center, Florida",
+            "position": {
+              "lat": 28.5729,
+              "lon": -80.649
+            }
+          },
+          "participants": [],
+          "date": null,
+          "template": "earth_mission",
+          "claimIndices": [
+            0
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Fueled rehearsal",
+          "statement": "The fueled countdown rehearsal ended at Kennedy Space Center.",
+          "location": {
+            "name": "Kennedy Space Center, Florida",
+            "position": {
+              "lat": 28.5729,
+              "lon": -80.649
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": 7,
+              "day": 2
+            },
+            "end": {
+              "year": 1969,
+              "month": 7,
+              "day": 2
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            1
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Hornet reaches Pearl Harbor",
+          "statement": "USS Hornet arrived at Pearl Harbor to prepare for its recovery assignment.",
+          "location": {
+            "name": "Pearl Harbor, Hawaii",
+            "position": {
+              "lat": 21.35,
+              "lon": -157.95
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": 7,
+              "day": 2
+            },
+            "end": {
+              "year": 1969,
+              "month": 7,
+              "day": 2
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            2
+          ]
+        },
+        {
+          "kind": "context",
+          "title": "Recovery preparations",
+          "statement": "A practice capsule and recovery personnel came aboard Hornet at Pearl Harbor.",
+          "location": {
+            "name": "Pearl Harbor, Hawaii",
+            "position": {
+              "lat": 21.35,
+              "lon": -157.95
+            }
+          },
+          "participants": [],
+          "date": null,
+          "template": "earth_mission",
+          "claimIndices": [
+            2
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Crewed dry rehearsal",
+          "statement": "The crew suited up and boarded the command module for an unfueled rehearsal monitored by controllers.",
+          "location": {
+            "name": "Kennedy Space Center, Florida",
+            "position": {
+              "lat": 28.5729,
+              "lon": -80.649
+            }
+          },
+          "participants": [
+            {
+              "name": "Neil Armstrong",
+              "role": "Astronaut"
+            },
+            {
+              "name": "Buzz Aldrin",
+              "role": "Astronaut"
+            },
+            {
+              "name": "Michael Collins",
+              "role": "Astronaut"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": 7,
+              "day": 3
+            },
+            "end": {
+              "year": 1969,
+              "month": 7,
+              "day": 3
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            1
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Quarantine facilities loaded",
+          "statement": "Workers loaded two mobile quarantine facilities aboard Hornet.",
+          "location": {
+            "name": "Pearl Harbor, Hawaii",
+            "position": {
+              "lat": 21.35,
+              "lon": -157.95
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": 7,
+              "day": 6
+            },
+            "end": {
+              "year": 1969,
+              "month": 7,
+              "day": 6
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            2
+          ]
+        },
+        {
+          "kind": "event",
+          "title": "Launch from Florida",
+          "statement": "Apollo 11 launched from Florida carrying Armstrong, Aldrin and Collins.",
+          "location": {
+            "name": "Kennedy Space Center, Florida",
+            "position": {
+              "lat": 28.5729,
+              "lon": -80.649
+            }
+          },
+          "participants": [
+            {
+              "name": "Neil Armstrong",
+              "role": "Commander"
+            },
+            {
+              "name": "Buzz Aldrin",
+              "role": "Lunar module pilot"
+            },
+            {
+              "name": "Michael Collins",
+              "role": "Command module pilot"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": 7,
+              "day": 16
+            },
+            "end": {
+              "year": 1969,
+              "month": 7,
+              "day": 16
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            3
+          ]
+        },
+        {
+          "kind": "outcome",
+          "title": "Pacific splashdown",
+          "statement": "After re-entry and parachute deployment, the command module splashed down 13 miles from USS Hornet.",
+          "location": {
+            "name": "Pacific Ocean splashdown",
+            "position": {
+              "lat": 13.3167,
+              "lon": -169.15
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": 7,
+              "day": 24
+            },
+            "end": {
+              "year": 1969,
+              "month": 7,
+              "day": 24
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            4
+          ]
+        },
+        {
+          "kind": "outcome",
+          "title": "Recovery assistance",
+          "statement": "Navy frogmen assisted the recovery of the returning crew.",
+          "location": {
+            "name": "Pacific Ocean recovery area",
+            "position": {
+              "lat": 13.3167,
+              "lon": -169.15
+            }
+          },
+          "participants": [
+            {
+              "name": "US Navy frogmen",
+              "role": "Recovery swimmers"
+            }
+          ],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": null,
+              "day": null
+            },
+            "end": {
+              "year": 1969,
+              "month": null,
+              "day": null
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            5
+          ]
+        },
+        {
+          "kind": "outcome",
+          "title": "Quarantine",
+          "statement": "After the mission, the astronauts were quarantined at the Lunar Receiving Laboratory to guard against possible lunar microorganisms.",
+          "location": {
+            "name": "Lunar Receiving Laboratory, Houston",
+            "position": {
+              "lat": 29.56,
+              "lon": -95.09
+            }
+          },
+          "participants": [],
+          "date": {
+            "start": {
+              "year": 1969,
+              "month": null,
+              "day": null
+            },
+            "end": {
+              "year": 1969,
+              "month": null,
+              "day": null
+            },
+            "approximate": false,
+            "zone": null
+          },
+          "template": "earth_mission",
+          "claimIndices": [
+            5
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "beforeIndex": 3,
+          "afterIndex": 4,
+          "kind": "before",
+          "passageIds": [
+            "p13"
+          ]
+        },
+        {
+          "beforeIndex": 8,
+          "afterIndex": 9,
+          "kind": "before",
+          "passageIds": [
+            "p9",
+            "p13"
+          ]
+        },
+        {
+          "beforeIndex": 8,
+          "afterIndex": 10,
+          "kind": "before",
+          "passageIds": [
+            "p9",
+            "p13"
+          ]
+        }
+      ]
+    },
+    "checklist": {
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Apollo 11\u2019s goal was a crewed lunar landing and return to Earth. Its crew were commander Neil Armstrong, lunar module pilot Buzz Aldrin, and command module pilot Michael Collins.",
+          "passageIds": [
+            "p1",
+            "p6"
+          ],
+          "yearRange": {
+            "startYear": 1969,
+            "endYear": 1969,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c2",
+          "text": "At Kennedy Space Center, a fueled countdown rehearsal ended on July 2; on July 3 the crew suited up and boarded the command module for an unfueled rehearsal monitored by controllers.",
+          "passageIds": [
+            "p11"
+          ],
+          "yearRange": {
+            "startYear": 1969,
+            "endYear": 1969,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c3",
+          "text": "USS Hornet arrived at Pearl Harbor on July 2 to prepare for recovery; a practice capsule and recovery personnel came aboard, and two mobile quarantine facilities were loaded on July 6.",
+          "passageIds": [
+            "p13",
+            "p15"
+          ],
+          "yearRange": {
+            "startYear": 1969,
+            "endYear": 1969,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c4",
+          "text": "Apollo 11 launched from Florida on July 16, 1969, carrying Armstrong, Aldrin and Collins.",
+          "passageIds": [
+            "p1",
+            "p6"
+          ],
+          "yearRange": {
+            "startYear": 1969,
+            "endYear": 1969,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c5",
+          "text": "On July 24, the command module re-entered and deployed parachutes before splashing down in the Pacific, 13 miles from recovery ship USS Hornet.",
+          "passageIds": [
+            "p9"
+          ],
+          "yearRange": {
+            "startYear": 1969,
+            "endYear": 1969,
+            "approximate": false
+          },
+          "certainty": "established"
+        },
+        {
+          "id": "c6",
+          "text": "Navy frogmen assisted the recovery, and the returning astronauts were quarantined to guard against possible lunar microorganisms.",
+          "passageIds": [
+            "p13"
+          ],
+          "yearRange": {
+            "startYear": 1969,
+            "endYear": 1969,
+            "approximate": false
+          },
+          "certainty": "established"
+        }
+      ],
+      "result": {
+        "status": "ready",
+        "requirements": [
+          {
+            "id": "r1",
+            "kind": "context",
+            "description": "Frame the July 1969 Earth-side story around Apollo 11\u2019s lunar-landing and safe-return goal.",
+            "claimIds": [
+              "c1"
+            ]
+          },
+          {
+            "id": "r2",
+            "kind": "actors",
+            "description": "Identify Armstrong, Aldrin and Collins as the crew, with their respective mission roles.",
+            "claimIds": [
+              "c1"
+            ]
+          },
+          {
+            "id": "r3",
+            "kind": "context",
+            "description": "Include the July 2\u20133 countdown rehearsals at Kennedy Space Center and the July 16 launch from Florida.",
+            "claimIds": [
+              "c2",
+              "c4"
+            ]
+          },
+          {
+            "id": "r4",
+            "kind": "context",
+            "description": "Include Hornet\u2019s recovery preparations at Pearl Harbor, including the practice capsule and quarantine facilities.",
+            "claimIds": [
+              "c3"
+            ]
+          },
+          {
+            "id": "r5",
+            "kind": "outcome",
+            "description": "Show the July 24 parachute-assisted Pacific splashdown near USS Hornet.",
+            "claimIds": [
+              "c5"
+            ]
+          },
+          {
+            "id": "r6",
+            "kind": "outcome",
+            "description": "Include the Navy frogmen\u2019s recovery role and the astronauts\u2019 subsequent quarantine.",
+            "claimIds": [
+              "c6"
+            ]
+          },
+          {
+            "id": "r7",
+            "kind": "request",
+            "description": "Use schematic Earth locations and keep the Moon separate from Earth. Explicitly explain schematic substitutes for unavailable spacecraft and recovery-ship assets.",
+            "claimIds": [
+              "c1",
+              "c3",
+              "c5"
+            ]
+          }
+        ],
+        "relations": []
+      }
+    },
+    "research": {
+      "text": "## Apollo 11: Earth-side preparations and return\n\n**Scope:** Apollo 11\u2019s July 1969 launch and recovery, shown with schematic Earth locations. NASA\u2019s objective was to land people on the Moon and return them safely to Earth; the crew were Neil Armstrong, Buzz Aldrin and Michael Collins. The lunar landing itself belongs off the Earth map. ([nasa.gov](https://www.nasa.gov/mission/apollo-11/?utm_source=openai)) [s1]\n\n### Three possible narrative chapters\n\n**1. Preparing at two locations**  \nAt Kennedy Space Center, Florida, NASA prepared the Saturn V and spacecraft for launch. Meanwhile, the U.S. Navy recovery ship *USS Hornet* arrived at Pearl Harbor, Hawaii, on July 2; workers loaded mobile quarantine facilities aboard on July 6. Quarantine was a precaution against possible lunar contamination. ([nasa.gov](https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/?utm_source=openai)) [s2]\n\n**2. Departure from Florida**  \nOn **July 16 at 9:32 a.m. EDT**, Apollo 11 lifted off from Launch Pad 39A. Show the rocket leaving Earth rather than drawing a route to a Moon marker on the globe. ([nasa.gov](https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/?utm_source=openai)) [s2]\n\n**3. Pacific recovery and return to Houston**  \nOn **July 24**, the command module re-entered the atmosphere and splashed down in the Pacific southwest of Hawaii, near *Hornet*. Navy personnel helped the crew into isolation garments; a helicopter took them to the ship, where they entered the mobile quarantine facility. The crew later reached the Lunar Receiving Laboratory in Houston and were released from quarantine on August 10. ([ntrs.nasa.gov](https://ntrs.nasa.gov/api/citations/19740019322/downloads/19740019322.pdf?utm_source=openai)) [s3]\n\n### Schematic Earth markers\n\n- **Kennedy Space Center, Florida:** preparation and launch.\n- **Pearl Harbor, Hawaii:** *Hornet*\u2019s recovery preparations.\n- **Central Pacific, southwest of Hawaii:** splashdown and shipboard recovery.\n- **Houston, Texas:** quarantine at the Lunar Receiving Laboratory.\n\nUse **static markers**, not a continuous route: these sources establish the locations and sequence but do not, by themselves, establish every intermediate stop of the crew\u2019s journey to Houston. ([nasa.gov](https://www.nasa.gov/history/50-years-ago-apollo-11-passes-countdown-test/?utm_source=openai)) [s4]",
+      "passages": [
+        {
+          "id": "p1",
+          "sourceId": "s1",
+          "text": "Apollo Program Apollo 11 Occurred 57 years ago The primary objective of Apollo 11 was to complete a national goal set by President John F. Kennedy on May 25, 1961: perform a crewed lunar landing and return to Earth. Mission Type Lunar Landing astronauts Neil Armstrong, Buzz Aldrin, Michael Collins Launch July 16, 1969 SPLASHDOWN July 24, 1969 Astronaut Buzz Aldrin stands on the Moon facing a U.S. flag during the Apollo 11 mission in July 1969. NASA Apollo 11 lifts off from Kennedy Space Center in Florida. NASA Apollo 11 Commander Neil Armstrong working at an equipment storage area on the lunar module. This is one of the few photos that show Armstrong during the moonwalk. Buzz Aldrin climbs down the Eagle\u2019s ladder to the surface. NASA NASA and Manned Spacecraft Center (MSC, later renamed Johnson Space Center) officials join the Mission Operations Control Room flight controllers in celebrating the successful splashdown of the Apollo 11 crew.",
+          "documentHash": "b57e967fb00523258fd7ff2c5d7baa3c3c205fe4587df91b70e5f469a6f89ed7",
+          "start": 0,
+          "end": 953,
+          "retrievedAt": "2026-10-31T20:44:23.424Z"
+        },
+        {
+          "id": "p2",
+          "sourceId": "s1",
+          "text": " NASA NASA and Manned Spacecraft Center (MSC, later renamed Johnson Space Center) officials join the Mission Operations Control Room flight controllers in celebrating the successful splashdown of the Apollo 11 crew. Identifiable in the foreground from right to center are MSC Director Bob Gilruth, Apollo Spacecraft Program Manager George Low, and MSC Director of Flight Operation Chris Kraft. (24 July 1969) Neil Armstrong Edwin \u201cBuzz\u201d Aldrin Michael Collins Neil Armstrong First human to set foot on the Moon. Neil A. Armstrong is probably best known as the commander for the Apollo 11 mission. He joined NASA\u2019s predecessor, the NACA, as an aeronautical research scientist and pilot in 1955. Armstrong was one of nine men chosen of NASA\u2019s second astronaut group in 1962, and flew to space on the Gemini 8 mission in 1966 before being assigned to the Apollo 11 mission. Read About Neil Armstrong Portrait of Astronaut Neil A. Armstrong, commander of the Apollo 11 Lunar Landing mission.",
+          "documentHash": "b57e967fb00523258fd7ff2c5d7baa3c3c205fe4587df91b70e5f469a6f89ed7",
+          "start": 738,
+          "end": 1725,
+          "retrievedAt": "2026-10-31T20:44:23.424Z"
+        },
+        {
+          "id": "p3",
+          "sourceId": "s1",
+          "text": " Read About Neil Armstrong Portrait of Astronaut Neil A. Armstrong, commander of the Apollo 11 Lunar Landing mission. NASA Edwin \u201cBuzz\u201d Aldrin The second human to set foot on the Moon An engineer and fighter pilot in the Korean War, Dr. Edwin E. \u201cBuzz\u201d Aldrin was selected in NASA\u2019s third astronaut class in 1963 and went to space on Gemini XII before becoming the lunar module pilot for Apollo 11. Read About Buzz Aldrin S69-31743 (July 1969) \u2014 Astronaut Edwin E. Aldrin Jr. NASA Michael Collins Collins served as command module pilot on Apollo 11. Michael Collins was one of the third group of astronauts named by NASA in October 1963. He first flew to space on Gemini X in 1966 before his assignment to the Apollo 11 mission. He logged over 266 hours in space. Read About Michael Collins Official NASA portrait of astronaut Michael Collins. NASA NASA+ Apollo 11 on NASA+ Watch highlights from the Apollo 11 mission including the launch on July 16, 1969, the landing of the lunar module, Neil Armstrong\u2019s first steps on the Moon, splashdown, and more. Watch on NASA+ 20 July 1969\u2014Astronaut Edwin E.",
+          "documentHash": "b57e967fb00523258fd7ff2c5d7baa3c3c205fe4587df91b70e5f469a6f89ed7",
+          "start": 1608,
+          "end": 2708,
+          "retrievedAt": "2026-10-31T20:44:23.424Z"
+        },
+        {
+          "id": "p4",
+          "sourceId": "s1",
+          "text": " NASA NASA+ Apollo 11 on NASA+ Watch highlights from the Apollo 11 mission including the launch on July 16, 1969, the landing of the lunar module, Neil Armstrong\u2019s first steps on the Moon, splashdown, and more. Watch on NASA+ 20 July 1969\u2014Astronaut Edwin E. Aldrin Jr., lunar module pilot, walks on the surface of the moon near the leg of the Lunar Module (LM) \u201cEagle\u201d during the Apollo 11 extravehicular activity (EVA). NASA Featured Story Apollo 11 Mission Overview Apollo 11 launched on July 16, 1969, carrying Neil Armstrong, Michael Collins and Edwin \u201cBuzz\u201d Aldrin for the first crewed\u2026 Read the Story July 20, 1969: One Giant Leap For Mankind July 1969. It\u2019s a little over eight years since the flights of Gagarin and Shepard, followed quickly by President Kennedy\u2019s challenge to put a man on the moon before the decade is out. Learn More JOHNSON SPACE CENTER, HOUSTON, TEXAS \u2013 With a half-Earth in the background, the Lunar Module ascent stage with Moon-walking astronauts Neil Armstrong and Edwin Aldrin Jr. approaches for a rendezvous with the Apollo Command Module manned by Michael Collins.",
+          "documentHash": "b57e967fb00523258fd7ff2c5d7baa3c3c205fe4587df91b70e5f469a6f89ed7",
+          "start": 2451,
+          "end": 3552,
+          "retrievedAt": "2026-10-31T20:44:23.424Z"
+        },
+        {
+          "id": "p5",
+          "sourceId": "s1",
+          "text": " The hometowns of the Apollo 11 astronauts held parades in their honor, the postal\u2026 September 19, 2024 Article 55 Years Ago: Apollo 11 Astronauts End Quarantine, Feted from Coast to Coast 12 min read On Aug. 10, 1969, Apollo 11 astronauts Neil A. Armstrong, Michael Collins, and Edwin E. \u201cBuzz\u201d Aldrin completed their 21-day quarantine after returning from the Moon. The historic nature of their mission resulted in a very busy postflight schedule for\u2026 August 20, 2024 Article 55 Years Ago: Apollo 11\u2019s One Small Step, One Giant Leap 8 min read \u201cHouston, Tranquility Base here, the Eagle has landed.\u201d \u201cThat\u2019s one small step for [a] man, one giant leap for mankind.\u201d \u201cMagnificent desolation.\u201d Three phrases that recall humanity\u2019s first landing on and exploration of the lunar surface. In July 1969, Apollo\u2026 July 16, 2024 Article Apollo 11 69 Images Go To Gallery Go To Gallery Keep Exploring Discover More Topics From NASA Missions Humans In Space The Apollo Program Astronauts",
+          "documentHash": "b57e967fb00523258fd7ff2c5d7baa3c3c205fe4587df91b70e5f469a6f89ed7",
+          "start": 6819,
+          "end": 7795,
+          "retrievedAt": "2026-10-31T20:44:23.424Z"
+        },
+        {
+          "id": "p6",
+          "sourceId": "s2",
+          "text": " Kennedy on May 25, 1961: perform a crewed lunar landing and return to Earth. Additional flight objectives included scientific exploration by the lunar module, or LM, crew; deployment of a television camera to transmit signals to Earth; and deployment of a solar wind composition experiment, seismic experiment package and a Laser Ranging Retroreflector. During the exploration, the two astronauts were to gather samples of lunar-surface materials for return to Earth. They also were to extensively photograph the lunar terrain, the deployed scientific equipment, the LM spacecraft, and each other, both with still and motion picture cameras. This was to be the last Apollo mission to fly a \u201cfree-return\u201d trajectory, which would enable a return to Earth with no engine firing, providing a ready abort of the mission at any time prior to lunar orbit insertion. Mission Highlights Apollo 11 launched from Cape Kennedy on July 16, 1969, carrying Commander Neil Armstrong, Command Module Pilot Michael Collins and Lunar Module Pilot Edwin \u201cBuzz\u201d Aldrin into an initial Earth-orbit of 114 by 116 miles.",
+          "documentHash": "124b087cb719583fdbc52a818b352be037524d74bf9aaac49d5e91dce2318155",
+          "start": 351,
+          "end": 1448,
+          "retrievedAt": "2026-10-31T20:44:23.487Z"
+        },
+        {
+          "id": "p7",
+          "sourceId": "s2",
+          "text": " Mission Highlights Apollo 11 launched from Cape Kennedy on July 16, 1969, carrying Commander Neil Armstrong, Command Module Pilot Michael Collins and Lunar Module Pilot Edwin \u201cBuzz\u201d Aldrin into an initial Earth-orbit of 114 by 116 miles. An estimated 650 million people watched Armstrong\u2019s televised image and heard his voice describe the event as he took \u201c\u2026one small step for a man, one giant leap for mankind\u201d on July 20, 1969. Two hours, 44 minutes and one-and-a-half revolutions after launch, the S-IVB stage reignited for a second burn of five minutes, 48 seconds, placing Apollo 11 into a translunar orbit. The command and service module, or CSM, Columbia separated from the stage, which included the spacecraft-lunar module adapter, or SLA, containing the lunar module, or LM, Eagle. After transposition and jettisoning of the SLA panels on the S-IVB stage, the CSM docked with the LM. The S-IVB stage separated and injected into heliocentric orbit four hours, 40 minutes into the flight.",
+          "documentHash": "124b087cb719583fdbc52a818b352be037524d74bf9aaac49d5e91dce2318155",
+          "start": 1210,
+          "end": 2206,
+          "retrievedAt": "2026-10-31T20:44:23.487Z"
+        },
+        {
+          "id": "p8",
+          "sourceId": "s2",
+          "text": " Later, on July 17, a three-second burn of the SPS was made to perform the second of four scheduled midcourse corrections programmed for the flight. The launch had been so successful that the other three were not needed. On July 18, Armstrong and Aldrin put on their spacesuits and climbed through the docking tunnel from Columbia to Eagle to check out the LM, and to make the second TV transmission. On July 19, after Apollo 11 had flown behind the moon out of contact with Earth, came the first lunar orbit insertion maneuver. At about 75 hours, 50 minutes into the flight, a retrograde firing of the SPS for 357.5 seconds placed the spacecraft into an initial, elliptical-lunar orbit of 69 by 190 miles. Later, a second burn of the SPS for 17 seconds placed the docked vehicles into a lunar orbit of 62 by 70.5 miles, which was calculated to change the orbit of the CSM piloted by Collins. The change happened because of lunar-gravity perturbations to the nominal 69 miles required for subsequent LM rendezvous and docking after completion of the lunar landing.",
+          "documentHash": "124b087cb719583fdbc52a818b352be037524d74bf9aaac49d5e91dce2318155",
+          "start": 2314,
+          "end": 3378,
+          "retrievedAt": "2026-10-31T20:44:23.487Z"
+        },
+        {
+          "id": "p9",
+          "sourceId": "s2",
+          "text": " Following this, the astronauts slept for about 10 hours. An 11.2 second firing of the SPS accomplished the only midcourse correction required on the return flight. The correction was made July 22 at about 150 hours, 30 minutes into the mission. Two more television transmissions were made during the trans-Earth coast. Re-entry procedures were initiated July 24, 44 hours after leaving lunar orbit. The SM separated from the CM, which was re-oriented to a heat-shield-forward position. Parachute deployment occurred at 195 hours, 13 minutes. After a flight of 195 hours, 18 minutes, 35 seconds \u2013 about 36 minutes longer than planned \u2013 Apollo 11 splashed down in the Pacific Ocean, 13 miles from the recovery ship USS Hornet. Because of bad weather in the target area, the landing point was changed by about 250 miles. Apollo 11 landed 13 degrees, 19 minutes north latitude and 169 degrees, nine minutes west longitude July 24, 1969. Crew Neil Armstrong, Commander Edwin E. \u201cBuzz\u201d Aldrin Jr., Lunar Module Pilot Michael Collins, Command Module Pilot Backup Crew James A. Lovell, Commander Fred W.",
+          "documentHash": "124b087cb719583fdbc52a818b352be037524d74bf9aaac49d5e91dce2318155",
+          "start": 7473,
+          "end": 8569,
+          "retrievedAt": "2026-10-31T20:44:23.487Z"
+        },
+        {
+          "id": "p10",
+          "sourceId": "s2",
+          "text": "m. EDT Launch Pad 39A Saturn-V AS-506 High Bay 1 Mobile Launcher Platform-1 Firing Room 1 Orbit Altitude: 118.65 miles Inclination: 32.521 degrees Orbits: 30 revolutions Duration: 8 days, 3 hours, 18 min, 35 seconds Distance: 953,054 miles Lunar Location: Sea of Tranquility Lunar Coordinates: .71 degrees north, 23.63 degrees east Landing July 24, 1969; 12:50 p.m. EDT Pacific Ocean Recovery Ship: USS Hornet Get more details on the Apollo 11 mission Share Details Last Updated Jul 29, 2026 Related Terms Apollo 11 Apollo Buzz Aldrin Michael Collins NASA History Neil A. Armstrong Explore More 4 min read The View from Above: The Gemini Visual Acuity Experiments Article 2 months ago 6 min read NASA Glenn\u2019s Legacy Forged Through Decades of Flight Research Article 2 months ago 4 min read Playing the Moon Game Apollo astronauts previewed their roles as lunar field geologists in Alaska\u2019s Valley of Ten Thousand\u2026 Article 4 months ago",
+          "documentHash": "124b087cb719583fdbc52a818b352be037524d74bf9aaac49d5e91dce2318155",
+          "start": 9507,
+          "end": 10441,
+          "retrievedAt": "2026-10-31T20:44:23.487Z"
+        },
+        {
+          "id": "p11",
+          "sourceId": "s4",
+          "text": "6 min read 50 Years Ago: Apollo 11 Passes Countdown Test John Uri Johnson Space Center Jul 02, 2019 Article The major activity at the Kennedy Space Center (KSC) the first week of July 1969 was the Countdown Demonstration Test (CDDT) for the Apollo 11 Moon landing mission. The CDDT, a full dress rehearsal for the actual countdown to launch, consisted of two parts. The \u201cwet\u201d test included fueling the rocket as if for flight, with the countdown cutting off just prior to first stage engine ignition, and did not involve the flight crew. This was followed by the \u201cdry\u201d test, an abbreviated countdown without fueling the rocket but with the flight crew boarding the Command Module (CM) as if on launch day. The wet countdown was completed on July 2, and the dry test the next day, with astronauts Neil A. Armstrong, Edwin E. \u201cBuzz\u201d Aldrin, and Michael Collins suiting up and climbing aboard their CM. Controllers in Firing Room 1 of the Launch Control Center (LCC) at Launch Complex 39 monitored all aspects of the CDDT as they would on launch day.",
+          "documentHash": "1b6d82fda0394ff784fc15b35d16c3c7c8691eb6ec9e2ddfa9cdf4b8f56bf2fe",
+          "start": 0,
+          "end": 1047,
+          "retrievedAt": "2026-10-31T20:44:23.557Z"
+        },
+        {
+          "id": "p12",
+          "sourceId": "s4",
+          "text": " The astronauts would plant the three-by-five-foot flag near their Lunar Module (LM) during their spacewalk. The stainless steel plaque bore the images of the two hemispheres of the Earth and this inscription, Here men from the Planet Earth first set foot upon the Moon July 1969 A.D. we came in peace for all mankind The signatures of the three astronauts and President Richard M. Nixon also appeared on the plaque. Workers mounted it on the forward landing leg strut of the LM. The messages of goodwill from 73 world leaders were etched on the one-and-one-half-inch silicon disc using the technique to make microcircuits for electronic equipment. The crew placed the disc on the lunar surface at the end of their spacewalk. Left: The Lunar Flag Assembly. Middle: Stainless steel commemorative plaque. Right: Silicon disc containing messages of goodwill from world leaders. During a July 5 press conference in the auditorium of the Manned Spacecraft Center (MSC), now the Johnson Space Center in Houston, the Apollo 11 astronauts revealed the call signs for their spacecraft.",
+          "documentHash": "1b6d82fda0394ff784fc15b35d16c3c7c8691eb6ec9e2ddfa9cdf4b8f56bf2fe",
+          "start": 2702,
+          "end": 3778,
+          "retrievedAt": "2026-10-31T20:44:23.557Z"
+        },
+        {
+          "id": "p13",
+          "sourceId": "s4",
+          "text": " After their mission, the returning astronauts were quarantined in the LRL for 21 days to prevent any back contamination of the Earth by any possible lunar microorganisms. During that time, they held press conferences and other events in the glass-enclosed conference room. Left: Apollo 11 astronauts (left to right) Armstrong, Aldrin, and Collins holding a copy of the commemorative plaque they will leave behind on the Moon and their mission patch. Right: The Apollo 11 astronauts in the glass-enclosed room at the LRL. Halfway around the world, on July 2 the Apollo 11 Prime Recovery Ship USS Hornet (CVS-12) arrived at Pearl Harbor, Hawaii, to begin provisioning for her historic assignment. Workers loaded a boilerplate Apollo capsule onto the aircraft carrier to be used for recovery practice. The NASA recovery team, the Frogmen swimmers from the US Navy\u2019s Underwater Demolition Team (UDT) who assisted with the recovery, and some media personnel arrived onboard. For the recovery operation, Capt. Carl J.",
+          "documentHash": "1b6d82fda0394ff784fc15b35d16c3c7c8691eb6ec9e2ddfa9cdf4b8f56bf2fe",
+          "start": 4373,
+          "end": 5385,
+          "retrievedAt": "2026-10-31T20:44:23.557Z"
+        },
+        {
+          "id": "p14",
+          "sourceId": "s4",
+          "text": " The NASA recovery team, the Frogmen swimmers from the US Navy\u2019s Underwater Demolition Team (UDT) who assisted with the recovery, and some media personnel arrived onboard. For the recovery operation, Capt. Carl J. Seiberlich adopted the motto Hornet Plus Three, indicating the goal of a safe recovery of the three astronauts returning from the Moon. On July 3, Capt. Seiberlich introduced the 35-member NASA recovery team to the Hornet\u2019s crew. Donald E. Stullken, Chief of the Recovery Operations Branch at MSC, who led the NASA team was the inventor of the inflatable flotation collar attached by swimmers to the capsule after splashdown. His assistant John C. Stonesifer was responsible for decontamination and quarantine operations. Stullken and Stonesifer briefed Hornet\u2019s 90-man Command Module Retrieval Team on all events associated with the recovery and retrieval of an Apollo capsule and its crew. Left: Workers prepare to hoist a boilerplate Apollo CM aboard USS Hornet in Pearl Harbor. Right: Two MQFs arriving by barge to be loaded aboard the USS Hornet in Pearl Harbor.",
+          "documentHash": "1b6d82fda0394ff784fc15b35d16c3c7c8691eb6ec9e2ddfa9cdf4b8f56bf2fe",
+          "start": 5172,
+          "end": 6253,
+          "retrievedAt": "2026-10-31T20:44:23.557Z"
+        },
+        {
+          "id": "p15",
+          "sourceId": "s4",
+          "text": " Left: Workers prepare to hoist a boilerplate Apollo CM aboard USS Hornet in Pearl Harbor. Right: Two MQFs arriving by barge to be loaded aboard the USS Hornet in Pearl Harbor. Credits: US Navy Bob Fish, US Navy. On July 6, workers loaded two Mobile Quarantine Facilities (MQFs) aboard Hornet. One MQF was to house the returning astronauts, a flight surgeon and an engineer from shortly after splashdown until their arrival at the LRL in Houston several days later. The second MQF was designated as a backup should there be a problem with the first or if quarantine protocols were violated at any time requiring additional personnel to be isolated. Along with the MQFs, Navy personnel loaded other equipment necessary for the recovery, including 55 one-gallon containers of sodium hypochlorite to be used as a disinfectant. In case Apollo 11 were not successful in accomplishing the first Moon landing, NASA continued preparations to support an Apollo 12 mission as early as September 1969. On July 1, workers in KSC\u2019s Vehicle Assembly Building stacked the spacecraft atop its Saturn V rocket.",
+          "documentHash": "1b6d82fda0394ff784fc15b35d16c3c7c8691eb6ec9e2ddfa9cdf4b8f56bf2fe",
+          "start": 6077,
+          "end": 7170,
+          "retrievedAt": "2026-10-31T20:44:23.557Z"
+        }
+      ],
+      "sourceChecks": [
+        {
+          "sourceId": "s1",
+          "status": "readable",
+          "reason": null,
+          "finalUrl": "https://www.nasa.gov/mission/apollo-11/",
+          "documentHash": "b57e967fb00523258fd7ff2c5d7baa3c3c205fe4587df91b70e5f469a6f89ed7",
+          "retrievedAt": "2026-10-31T20:44:23.424Z"
+        },
+        {
+          "sourceId": "s2",
+          "status": "readable",
+          "reason": null,
+          "finalUrl": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/",
+          "documentHash": "124b087cb719583fdbc52a818b352be037524d74bf9aaac49d5e91dce2318155",
+          "retrievedAt": "2026-10-31T20:44:23.487Z"
+        },
+        {
+          "sourceId": "s3",
+          "status": "unavailable",
+          "reason": "unsupported_document",
+          "finalUrl": null,
+          "documentHash": null,
+          "retrievedAt": "2026-10-31T20:44:23.940Z"
+        },
+        {
+          "sourceId": "s4",
+          "status": "readable",
+          "reason": null,
+          "finalUrl": "https://www.nasa.gov/history/50-years-ago-apollo-11-passes-countdown-test/",
+          "documentHash": "1b6d82fda0394ff784fc15b35d16c3c7c8691eb6ec9e2ddfa9cdf4b8f56bf2fe",
+          "retrievedAt": "2026-10-31T20:44:23.557Z"
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Apollo 11 - NASA",
+          "url": "https://www.nasa.gov/mission/apollo-11/?utm_source=openai"
+        },
+        {
+          "id": "s2",
+          "title": "Apollo 11 Mission Overview - NASA",
+          "url": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/?utm_source=openai"
+        },
+        {
+          "id": "s3",
+          "title": "-9- THE FLIGHT OF APOLLO 11 FACT SHEET COLUMBIA",
+          "url": "https://ntrs.nasa.gov/api/citations/19740019322/downloads/19740019322.pdf?utm_source=openai"
+        },
+        {
+          "id": "s4",
+          "title": "50 Years Ago: Apollo 11 Passes Countdown Test - NASA",
+          "url": "https://www.nasa.gov/history/50-years-ago-apollo-11-passes-countdown-test/?utm_source=openai"
+        }
+      ]
+    },
+    "recordedReview": {
+      "events": [
+        {
+          "verdict": "supported",
+          "reason": "The mission goal, crew roles and Kennedy narrative anchor are supported.",
+          "index": 0,
+          "passageIds": [
+            "p1",
+            "p6"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The caveat accurately explains the schematic Earth-only presentation.",
+          "index": 1,
+          "passageIds": [
+            "p1",
+            "p6"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The fueled rehearsal ended at Kennedy on July 2.",
+          "index": 2,
+          "passageIds": [
+            "p11"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "Hornet arrived at Pearl Harbor on July 2 for recovery preparations.",
+          "index": 3,
+          "passageIds": [
+            "p13",
+            "p15"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The practice capsule and recovery personnel came aboard Hornet during preparations at Pearl Harbor.",
+          "index": 4,
+          "passageIds": [
+            "p13",
+            "p15"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The crewed dry rehearsal and controller monitoring are supported.",
+          "index": 5,
+          "passageIds": [
+            "p11"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "Two mobile quarantine facilities were loaded aboard Hornet on July 6.",
+          "index": 6,
+          "passageIds": [
+            "p13",
+            "p15"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The launch, location, crew and roles are supported.",
+          "index": 7,
+          "passageIds": [
+            "p1",
+            "p6"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The parachute-assisted splashdown, date, location and distance from Hornet are supported.",
+          "index": 8,
+          "passageIds": [
+            "p9"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The selected passage supports the frogmen's recovery assistance but does not locate it in the Pacific recovery area.",
+          "index": 9,
+          "passageIds": [
+            "p13"
+          ]
+        },
+        {
+          "verdict": "revise",
+          "reason": "The selected passage identifies the quarantine site only as the LRL; it does not expand its name or locate it in Houston.",
+          "index": 10,
+          "passageIds": [
+            "p13"
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "verdict": "supported",
+          "reason": "The mission context states the crewed lunar-landing and Earth-return goal.",
+          "index": 0
+        },
+        {
+          "verdict": "supported",
+          "reason": "The crew and their respective roles are visible in participant labels.",
+          "index": 1
+        },
+        {
+          "verdict": "supported",
+          "reason": "Both dated rehearsals and the Florida launch are shown.",
+          "index": 2
+        },
+        {
+          "verdict": "supported",
+          "reason": "The Pearl Harbor preparations include the practice capsule and quarantine facilities.",
+          "index": 3
+        },
+        {
+          "verdict": "supported",
+          "reason": "The July 24 Pacific splashdown follows parachute deployment and is located near Hornet.",
+          "index": 4
+        },
+        {
+          "verdict": "supported",
+          "reason": "The events state the frogmen's recovery role and the subsequent quarantine.",
+          "index": 5
+        },
+        {
+          "verdict": "supported",
+          "reason": "The captions and map caveat explain the Earth-only schematic markers and substitutes.",
+          "index": 6
+        }
+      ],
+      "relations": [
+        {
+          "verdict": "supported",
+          "reason": "Hornet arrived at Pearl Harbor to begin preparations, during which the capsule and personnel came aboard.",
+          "index": 0,
+          "passageIds": [
+            "p13"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The frogmen assisted the recovery following the splashdown.",
+          "index": 1,
+          "passageIds": [
+            "p9",
+            "p13"
+          ]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The astronauts' post-mission quarantine followed their splashdown.",
+          "index": 2,
+          "passageIds": [
+            "p9",
+            "p13"
+          ]
+        }
+      ],
+      "metadata": {
+        "verdict": "supported",
+        "reason": "The title, Earth focus, period and schematic chapter captions fit the scene."
+      },
+      "chronology": {
+        "verdict": "supported",
+        "reason": "The dated preparations, launch and splashdown play in order; recovery and post-mission quarantine follow them without an invented precise date."
+      }
+    },
+    "audit": null
+  }
+}

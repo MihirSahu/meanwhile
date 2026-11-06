@@ -1,0 +1,319 @@
+[
+  {
+    "id": "sino-japanese-war",
+    "category": "battle",
+    "prompt": "Show the First Sino-Japanese War, 1894–1895.",
+    "expected": "resolved",
+    "years": [
+      1894,
+      1895
+    ],
+    "checks": [
+      "Distinguish this war from the second war beginning in 1937.",
+      "Explain Korean context and the 1895 peace without exact troop-position claims."
+    ],
+    "references": [
+      "https://jacar.go.jp/english/exhibition/jacarbl-fsjwar-e/about/index.html"
+    ]
+  },
+  {
+    "id": "silk-road",
+    "category": "journey",
+    "prompt": "Show a representative trading journey along the Silk Roads around 1300.",
+    "expected": "resolved",
+    "years": [
+      1250,
+      1350
+    ],
+    "checks": [
+      "Treat the roads as a network, not a single documented expedition.",
+      "Label the route as representative and avoid steamships or locomotives."
+    ],
+    "references": [
+      "https://www.unesco.org/en/silk-roads/about-silk-roads"
+    ]
+  },
+  {
+    "id": "waterloo",
+    "category": "battle",
+    "prompt": "Show the Battle of Waterloo on 18 June 1815.",
+    "expected": "resolved",
+    "years": [
+      1815,
+      1815
+    ],
+    "checks": [
+      "Do not turn a schematic battlefield into exact troop positions.",
+      "Represent Napoleon's defeat and the Allied/Prussian context without invented quotations."
+    ],
+    "references": [
+      "https://www.nam.ac.uk/explore/battle-waterloo"
+    ]
+  },
+  {
+    "id": "beagle-voyage",
+    "category": "journey",
+    "prompt": "Show Charles Darwin's voyage on HMS Beagle, 1831–1836, using a compressed illustrative route.",
+    "expected": "resolved",
+    "years": [
+      1831,
+      1836
+    ],
+    "checks": [
+      "Use a sailing ship, not a late nineteenth-century steam warship.",
+      "Do not imply Darwin published his evolutionary theory during the voyage."
+    ],
+    "references": [
+      "https://www.darwinproject.ac.uk/commentary/voyage-hms-beagle"
+    ]
+  },
+  {
+    "id": "railway-1830",
+    "category": "technology",
+    "prompt": "Show the opening of the Liverpool and Manchester Railway in September 1830.",
+    "expected": "resolved",
+    "years": [
+      1830,
+      1830
+    ],
+    "checks": [
+      "Place the story in northwest England.",
+      "Use steam railway imagery and avoid claiming this was the first railway of any kind."
+    ],
+    "references": [
+      "https://collection.sciencemuseumgroup.org.uk/people/ap48/liverpool-manchester-railway-co"
+    ]
+  },
+  {
+    "id": "apollo-earth",
+    "category": "asset-limits",
+    "prompt": "Show the Earth-side preparations and return of Apollo 11 in July 1969. Use schematic Earth locations and do not put the Moon on Earth.",
+    "expected": "either",
+    "years": [
+      1969,
+      1969
+    ],
+    "checks": [
+      "Keep locations on Earth; explain missing spacecraft assets instead of inventing models.",
+      "Do not present a steamship or train as a spacecraft."
+    ],
+    "references": [
+      "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/"
+    ]
+  },
+  {
+    "id": "indian-ocean",
+    "category": "trade",
+    "prompt": "Show maritime trading connections across the Indian Ocean around 1500.",
+    "expected": "resolved",
+    "years": [
+      1450,
+      1550
+    ],
+    "checks": [
+      "Use a network of connections rather than one invented documented expedition.",
+      "Avoid steamships and industrial factories."
+    ],
+    "references": [
+      "https://www.unesco.org/en/silk-roads/about-silk-roads"
+    ]
+  },
+  {
+    "id": "silk-road-premise",
+    "category": "false-premise",
+    "prompt": "Was the Silk Road one single road? Illustrate the answer around 1300.",
+    "expected": "resolved",
+    "years": [
+      1250,
+      1350
+    ],
+    "checks": [
+      "Explicitly correct the single-road premise.",
+      "Mark reconstructed travel as representative."
+    ],
+    "references": [
+      "https://www.unesco.org/en/silk-roads/about-silk-roads"
+    ]
+  },
+  {
+    "id": "industrial-comparison",
+    "category": "comparison",
+    "prompt": "Compare industrial development in Britain and Japan around 1870 using one clearly scoped schematic story; ask for clarification if the comparison needs narrowing.",
+    "expected": "either",
+    "years": [
+      1850,
+      1900
+    ],
+    "checks": [
+      "Address both Britain and Japan instead of silently dropping one.",
+      "Do not present the two countries as following identical industrial timelines."
+    ],
+    "references": [
+      "https://collection.sciencemuseumgroup.org.uk/people/ap48/liverpool-manchester-railway-co",
+      "https://www.ndl.go.jp/koyomi/e/history/calendar.html"
+    ]
+  },
+  {
+    "id": "shimonoseki",
+    "category": "diplomacy",
+    "prompt": "Show the Treaty of Shimonoseki and its immediate aftermath in 1895.",
+    "expected": "resolved",
+    "years": [
+      1895,
+      1895
+    ],
+    "checks": [
+      "Do not treat the later outcome of Taiwan or Korea as an immediate result in 1895.",
+      "Distinguish the peace treaty from subsequent fighting or diplomatic pressure."
+    ],
+    "references": [
+      "https://jacar.go.jp/english/exhibition/jacarbl-fsjwar-e/about/index.html"
+    ]
+  },
+  {
+    "id": "meiji",
+    "category": "political-change",
+    "prompt": "Show the Meiji Restoration in Japan in 1868 with sourced context and schematic staging.",
+    "expected": "resolved",
+    "years": [
+      1868,
+      1868
+    ],
+    "checks": [
+      "Do not move later decades of industrial development into 1868.",
+      "Clearly distinguish stylized people from historically accurate portraits."
+    ],
+    "references": [
+      "https://www.ndl.go.jp/koyomi/e/history/calendar.html"
+    ]
+  },
+  {
+    "id": "french-revolution",
+    "category": "revolution",
+    "prompt": "Show the French Revolution in Paris during 1789.",
+    "expected": "resolved",
+    "years": [
+      1789,
+      1789
+    ],
+    "checks": [
+      "Keep the displayed historical period in 1789.",
+      "Do not place Napoleon's later rule in the 1789 scene."
+    ],
+    "references": [
+      "https://parcoursrevolution.paris.fr/en/chronology"
+    ]
+  },
+  {
+    "id": "haitian-revolution",
+    "category": "revolution",
+    "prompt": "Show the Haitian Revolution from 1791 to independence in 1804.",
+    "expected": "resolved",
+    "years": [
+      1791,
+      1804
+    ],
+    "checks": [
+      "Avoid erasing the role of enslaved people and emancipation.",
+      "Distinguish the revolution's changing phases rather than one generic battle."
+    ],
+    "references": [
+      "https://history.state.gov/milestones/1784-1800/haitian-rev"
+    ]
+  },
+  {
+    "id": "mansa-musa",
+    "category": "journey",
+    "prompt": "Show Mansa Musa's pilgrimage through Cairo toward Mecca in 1324–1325.",
+    "expected": "resolved",
+    "years": [
+      1324,
+      1325
+    ],
+    "checks": [
+      "Do not invent precise caravan positions or documented individual dialogue.",
+      "Distinguish reconstructed staging from the sourced pilgrimage."
+    ],
+    "references": [
+      "https://www.metmuseum.org/de/exhibitions/sahel-art-empire-sahara/inside-the-exhibition"
+    ]
+  },
+  {
+    "id": "bronze-age-uncertainty",
+    "category": "uncertainty",
+    "prompt": "Explain competing explanations for the Late Bronze Age collapse around 1200 BCE. Make uncertainty visible.",
+    "expected": "either",
+    "years": [
+      -1250,
+      -1150
+    ],
+    "checks": [
+      "Do not assert one settled universal cause.",
+      "Use BCE dates and avoid cannon, industrial factories or steam vehicles."
+    ],
+    "references": [
+      "https://www.journals.uchicago.edu/doi/abs/10.3764/aja.120.1.0099"
+    ]
+  },
+  {
+    "id": "waterloo-quote",
+    "category": "quotation",
+    "prompt": "Show Waterloo in 1815 with a verbatim quotation from Napoleon. If the prepared format cannot document a quotation, explain that and summarize instead.",
+    "expected": "either",
+    "years": [
+      1815,
+      1815
+    ],
+    "checks": [
+      "Never present an invented quotation or imagined perspective as documented speech.",
+      "A sourced narration summary or explicit clarification is acceptable."
+    ],
+    "references": [
+      "https://www.nam.ac.uk/explore/battle-waterloo"
+    ]
+  },
+  {
+    "id": "ambiguous-civil-war",
+    "category": "ambiguity",
+    "prompt": "Show the civil war.",
+    "expected": "clarification",
+    "years": null,
+    "checks": [
+      "Ask for the country/event and period instead of silently assuming one."
+    ],
+    "references": []
+  },
+  {
+    "id": "ambiguous-revolution",
+    "category": "ambiguity",
+    "prompt": "Show the revolution.",
+    "expected": "clarification",
+    "years": null,
+    "checks": [
+      "Ask which revolution and period."
+    ],
+    "references": []
+  },
+  {
+    "id": "ambiguous-battle",
+    "category": "ambiguity",
+    "prompt": "Show that battle.",
+    "expected": "clarification",
+    "years": null,
+    "checks": [
+      "Do not invent a referent that the user did not supply."
+    ],
+    "references": []
+  },
+  {
+    "id": "ambiguous-time-place",
+    "category": "ambiguity",
+    "prompt": "What happened there at that time?",
+    "expected": "clarification",
+    "years": null,
+    "checks": [
+      "Ask for a place/event and time instead of guessing."
+    ],
+    "references": []
+  }
+]

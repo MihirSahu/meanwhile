@@ -1,0 +1,55 @@
+{
+  "reviewerKind": "coding-agent",
+  "checkedAt": "2026-10-31",
+  "method": "Read the committed captions, narration and labels for all five reference cases and compare their coverage with the source-checked facts. This is a limited agent review of the reference anchors, not human review or certification of every historical claim.",
+  "run": "claim-evidence-20",
+  "humanReview": "pending",
+  "stories": [
+    {
+      "caseId": "sino-japanese-war",
+      "status": "needs_revision",
+      "findings": [
+        "The July 1894 opening and April 1895 treaty align with the reference dates.",
+        "The committed narration does not explain the political context in Korea or the rivalry for influence there.",
+        "The peace ending needs qualification so it does not imply that the treaty immediately ended fighting over Taiwan."
+      ]
+    },
+    {
+      "caseId": "waterloo",
+      "status": "needs_revision",
+      "findings": [
+        "The displayed date is 18 June 1815, with Allied and Prussian forces represented.",
+        "Napoleon and Blücher are not named in the rendered captions, narration or labels.",
+        "French retreat conveys defeat indirectly; an explicit outcome linked to the named opposing leadership would meet the reference coverage more clearly."
+      ]
+    },
+    {
+      "caseId": "beagle-voyage",
+      "status": "incomplete",
+      "findings": [
+        "Only the opening 12 seconds were committed; they identify Darwin, Beagle, Plymouth and departure in December 1831.",
+        "The full survey narrative, return in 1836 and requested illustrative route cannot be assessed as completed content.",
+        "The gate rejected a continuation that placed 1836 events under an 1834–1835 chapter, so those actions never became playable."
+      ]
+    },
+    {
+      "caseId": "railway-1830",
+      "status": "reference_anchors_covered_broader_review_needed",
+      "findings": [
+        "The opening ceremony is dated 15 September 1830 and connected to Liverpool and Manchester.",
+        "Later passenger and goods operations are optional background for this prompt and may be omitted.",
+        "The Huskisson accident narrative introduces claims beyond these three reference anchors; its ordering relative to the Manchester continuation needs further historical review."
+      ]
+    },
+    {
+      "caseId": "apollo-earth",
+      "status": "reference_anchors_covered_broader_review_needed",
+      "findings": [
+        "The launch date/location, Pacific return date and USS Hornet recovery role match the reference facts.",
+        "The ship is labeled as a schematic ship and no lunar scene is placed on Earth.",
+        "A July 24 narration appears while the chapter heading still reads July 16. The explicit spoken date reduces ambiguity, but the displayed chapter should transition with it.",
+        "The distance unit and the evaluation case's missing-spacecraft explanation still need follow-up."
+      ]
+    }
+  ]
+}
