@@ -57,6 +57,7 @@ function calendarMentions(
   text: string,
   fallback: HistoricalRange | undefined,
   label: boolean,
+  options: { allowOfYear?: boolean } = {},
 ) {
   let normalized = text
     .replace(/(\d)(?:st|nd|rd|th)\b/gi, "$1")
@@ -265,9 +266,10 @@ function calendarMentions(
       !label &&
       !followsDatedRange &&
       !explicitEra &&
-      !/(?:\b(?:in|during|by|since|from|until|around|circa|year|of)|c\.)\s*$/i.test(
-        before,
-      )
+      !(options.allowOfYear === false
+        ? /(?:\b(?:in|during|by|since|from|until|around|circa|year)|c\.)\s*$/i
+        : /(?:\b(?:in|during|by|since|from|until|around|circa|year|of)|c\.)\s*$/i
+      ).test(before)
     )
       continue;
     if (
@@ -294,6 +296,11 @@ function calendarMentions(
   return windows.map((w) => w.window);
 }
 /** Conservative English display-date parsing; ambiguous labels fall back to typed years. */
+/** Bare "of 1848" can be a quantity; only unambiguous date cues block freezing. */
+export function hasExplicitHistoricalDate(text: string) {
+  return calendarMentions(text, undefined, false, { allowOfYear: false }).length > 0;
+}
+
 export function chapterDateWindow(
   label: string,
   fallback?: HistoricalRange,

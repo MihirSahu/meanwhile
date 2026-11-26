@@ -1,5 +1,12 @@
 import type { ResearchBundle } from "./scene-provider";
 import { sourceUrl } from "./source-retrieval";
+import { SceneServiceError } from "./scene-config";
+
+export function unavailableEvidence(reason: string) {
+  return new SceneServiceError("evidence",
+    "We couldn’t gather enough reliable sources to finish this story. Please try again.",
+    { stage: "evidence_recovery", reason });
+}
 
 export class MissingEvidenceError extends Error {
   constructor(
@@ -10,6 +17,7 @@ export class MissingEvidenceError extends Error {
   }
 }
 export type EvidenceRecoveryRecord = {
+  method?: "reread" | "search";
   topics: string[];
   outcome: "recovered" | "no_evidence" | "budget" | "failed";
   beforePassages: number;
@@ -40,6 +48,9 @@ export function mergeRecoveryResearch(
   fresh.forEach(push);
   old.forEach(push);
   const sources = selected.map((s, i) => ({ ...s, id: `s${i + 1}` }));
+  // The forty-receipt limit is global. With only one or two sources, retaining
+  // just five per source makes every focused reread replace earlier coverage.
+  const perSourceLimit = Math.floor(40 / sources.length);
   const passages: NonNullable<ResearchBundle["passages"]> = [],
     sourceChecks: NonNullable<ResearchBundle["sourceChecks"]> = [];
   for (const s of sources) {
@@ -57,7 +68,7 @@ export function mergeRecoveryResearch(
       if (seen.has(identity)) continue;
       seen.add(identity);
       passages.push({ ...p, id: `p${passages.length + 1}`, sourceId: s.id });
-      if (++count === 5) break;
+      if (++count === perSourceLimit) break;
     }
     const check = [additional, original].flatMap((bundle) =>
       bundle.sources

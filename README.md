@@ -8,39 +8,41 @@ Stack: React Three Fiber, Three.js, GSAP, Three.js AnimationMixer, and Zod.
 
 The prototype includes an interactive globe, two curated stories, a live OpenAI research-and-scene harness, progressive NDJSON streaming, cancelable prompts, inline source citations, object inspection, historical “Meanwhile…” discovery with Back, and pause/speed/seek/replay controls. Camera framing follows scene geography, nearby miniatures are spaced with anchor tethers, and labels prioritize the current speaker and selected objects. The interface supports mobile layouts, keyboard globe controls, reduced motion, and a text/playback fallback when WebGL is unavailable. See [PLAN.md](PLAN.md) for remaining asset-library and product milestones.
 
+Playback smoothly expands to fill the viewport, retaining a collapsible left sidebar and a separate scrubber. The input is hidden until “New story” is selected, which pauses playback while choosing. Dismissing it restores the previous playback state; Escape closes it and returns focus to “New story”. Object details use a separate right panel on desktop and temporarily replace the sidebar drawer on mobile. Map labels avoid the projected figures and interface controls; chapters without figures show their sourced text directly on the map.
+
 ## Development commands
 
 Use Node.js 20.18.1 or later (verified here with Node 24.22.1). Dependencies and the generated globe data were moved with the source. For a fresh checkout:
 
 ```sh
-npm ci
+sfw pnpm install --frozen-lockfile
 ```
 
 Start the application:
 
 ```sh
-npm run dev
+sfw pnpm dev
 ```
 
 Available checks:
 
 ```sh
-npm run typecheck
-npm run build
+sfw pnpm typecheck
+sfw pnpm build
 ```
 
 Run the streaming, playback, and API contract tests:
 
 ```sh
-npm test
+sfw pnpm test
 ```
 
 Browser checks use a production build and launch their own local server on port 3100:
 
 ```sh
-npx playwright install chromium
-npm run build
-npm run test:browser
+sfw pnpm exec playwright install chromium
+sfw pnpm build
+sfw pnpm test:browser
 ```
 
 They cover desktop and mobile playback, reduced motion, prompt replacement, interrupted streams, object inspection, label visibility on rewind, and WebGL fallback. Screenshots and failure traces are written to the ignored `test-results/` directory. Software WebGL is enabled for headless Chromium; real-device performance still needs measurement.
@@ -48,12 +50,16 @@ They cover desktop and mobile playback, reduced motion, prompt replacement, inte
 To regenerate `public/globe-land.json`:
 
 ```sh
-npm run generate:globe
+sfw pnpm generate:globe
 ```
 
 The coastline geometry comes from Natural Earth via the ISC-licensed `world-atlas` package. It is bundled locally and requires no mapping API.
 
 ## Scene generation
+
+Terminal diagnostics are enabled by default under `sfw pnpm dev`. `meanwhile.resolve.*` and `meanwhile.scene.*` log request/stage starts, completion, timing, model usage, cache hits, research/recovery, checklist reviews, compilation, repairs and stream batches. A shared `traceId` links resolution and generation; failure logs include safe upstream codes, request/response IDs and the latest rejected check. Set `SCENE_LOG_DEBUG=true` in `.env.local` to force stage logs, or `false` to silence debug/warning output. Final errors are always logged. Credentials are redacted; prompts and full provider/model bodies are omitted.
+
+Typed prompts using the OpenAI provider first pass through a short event-resolution step. When a prompt has multiple plausible meanings, the app offers two to four labeled choices with periods and descriptions before researching a story. Choosing an option starts that story directly; an already clear request continues without a picker. Existing playback stays available while choosing. This adds one bounded model call per typed prompt; demos and “Meanwhile…” discovery skip it. Usage logs for this step use `meanwhile.resolve`; harness-only evaluations do not include this UI resolution call.
 
 With no provider configured, `/api/scene` streams explicitly labeled curated demonstrations for the First Sino-Japanese War and the Silk Road. Demo buttons always use those stories, including when live inference is configured. All scenes use schematic positions and routes.
 
@@ -63,17 +69,17 @@ The live integration uses OpenAI `gpt-6.1-terra` through the official SDK and a 
 
 The harness researches sources and independently extracts and reviews a frozen checklist. A structured event plan selects those claims; a server compiler assigns dates, citations, action IDs, chapter placement and readable timing. A separate review checks the whole compiled story before the server streams a focus and three scene batches. A normal request uses five model calls; no partial opening publishes before that review. It has bounded repairs, cancellation, evidence caching and optional usage logs. Supporting passages are available beside the story context. See [.env.example](.env.example), [live inference](docs/live-inference.md), and [the scene protocol](docs/scene-protocol.md) for configuration, limits, model switching, and source handling.
 
-`npm run test:live` runs an intentional paid smoke test with the configured model, saves its committed scene and usage to ignored `artifacts/live/`, and bypasses research caching. Ordinary unit/browser checks use mocked model responses and never require an API key.
+`sfw pnpm test:live --out artifacts/evaluations/my-run "My historical prompt"` runs an intentional paid smoke test with the configured model, saves its committed scene and usage to that ignored output directory (default `artifacts/live/`), and bypasses research caching. Use a distinct output directory to preserve earlier runs. Ordinary unit/browser checks use mocked model responses and never require an API key. See [world-war recovery](docs/world-war-recovery.md) for the latest broad-topic debugging results and limits, and [custom-prompt verification](docs/custom-prompt-verification.md) for earlier completions.
 
-`npm run eval:live -- --dry-run` inspects the 20-case evaluation without API calls. `npm run eval:live` runs the paid cold/warm and paired-startup benchmark with source review and an HTML report. See [live inference](docs/live-inference.md) and [evaluation results](docs/evaluation-results.md). `npm run test:live -- --meanwhile` checks discovery using a real provider.
+`sfw pnpm eval:live --dry-run` inspects the 20-case evaluation without API calls. `sfw pnpm eval:live` runs the paid cold/warm and paired-startup benchmark with source review and an HTML report. See [live inference](docs/live-inference.md) and [evaluation results](docs/evaluation-results.md). `sfw pnpm test:live --meanwhile` checks discovery using a real provider.
 
-The five-story, 15-fact [reference set](evals/reference-stories.json) is agent source-checked with human review pending. `npm run eval:references` validates it offline. See [evidence reliability](docs/evidence-reliability.md) for claim mappings, pre-commit review, retrieval limits and human-review requirements.
+The five-story, 15-fact [reference set](evals/reference-stories.json) is agent source-checked with human review pending. `sfw pnpm eval:references` validates it offline. See [evidence reliability](docs/evidence-reliability.md) for claim mappings, pre-commit review, retrieval limits and human-review requirements.
 
 Story plans now carry sourced context, actor and outcome requirements. Reviews track actual rendered coverage, require all concepts before completion, and check narration dates against the visible chapter heading. See [story completeness](docs/story-completeness.md) and [its evaluation results](docs/story-completeness-results.md).
 
 The [independent checklist](docs/independent-checklist.md) prevents the scene planner from removing essential sourced concepts and adds explicit temporal-order review, including same-day sequences. [Results](docs/independent-checklist-results.md) record the five reference cases and the added preparation cost and latency.
 
-[Completion reservations and evidence recovery](docs/completion-budget.md) protect the ending’s generation/review capacity and allow one targeted source lookup before the checklist freezes. [Results](docs/completion-budget-results.md) record completion, recovery, historical audits and cost under the revised limits.
+[Completion reservations and evidence recovery](docs/completion-budget.md) protect the ending’s generation/review capacity and allow focused rereading and two targeted searches for distinct evidence gaps before publication, rebuilding the checklist when evidence changes. [Results](docs/completion-budget-results.md) retain the earlier milestone's completion, recovery, historical audits and cost.
 
 [Structured event compilation](docs/event-compiler.md) moves scene bookkeeping to the server and reviews actual rendered text against frozen requirements. The retained staged harness is an explicit evaluation baseline. [Reference results](docs/event-compiler-results.md) keep completion, source audits and historical limitations separate.
 

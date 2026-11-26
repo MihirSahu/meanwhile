@@ -72,6 +72,7 @@ export type CompiledEvent = {
   statement: string;
   location: StoryEvent["location"];
   participantLabels: string[];
+  participantNotes: string[];
   asset: string;
   relationText: string[];
   qualification: string | null;
@@ -84,6 +85,7 @@ export type CompiledStory = {
     method: "compiler-contract-v1";
     citations: "valid";
     protocol: "valid";
+    discovery?: ReturnType<typeof validateDiscovery>;
     dates: {
       index: number;
       chapter: number;
@@ -99,6 +101,24 @@ export type CompiledStory = {
     actionIds: string[];
   }[];
 };
+
+export class EventDateEvidenceError extends Error {
+  constructor(
+    public readonly eventIndex: number,
+    public readonly requestedDate: EventDate | null,
+    public readonly selectedClaims: {
+      claimIndex: number;
+      id: string;
+      yearRange: HistoricalRange | null;
+    }[],
+  ) {
+    super(
+      requestedDate
+        ? `Event ${eventIndex} dates leave its selected claims' ranges or cross an unsupported gap.`
+        : `Event ${eventIndex} needs a sourced date interval or, for an undated outcome, a sourced after relation to a dated event.`,
+    );
+  }
+}
 
 export function compileEventPlan(
   plan: ResolvedEventPlan,
@@ -134,8 +154,6 @@ export function compileEventPlan(
       throw new Error(
         "A contested claim needs a visible source qualification.",
       );
-    if (!event.date && !["context", "caveat"].includes(event.kind))
-      throw new Error(`Event ${index} needs a sourced date interval.`);
     const window = event.date ? eventWindow(event.date) : null;
     const ranges = claims
       .flatMap((c) => (c.yearRange ? [c.yearRange] : []))
@@ -147,8 +165,14 @@ export function compileEventPlan(
         if (range.startYear <= (coveredThrough === -1 ? 1 : coveredThrough + 1))
           coveredThrough = Math.max(coveredThrough, range.endYear);
       if (coveredThrough < event.date.end.year)
-        throw new Error(
-          `Event ${index} dates leave its selected claims' ranges or cross an unsupported gap.`,
+        throw new EventDateEvidenceError(
+          index,
+          structuredClone(event.date),
+          claims.map((claim, i) => ({
+            claimIndex: event.claimIndices[i],
+            id: claim.id,
+            yearRange: structuredClone(claim.yearRange),
+          })),
         );
     }
     if (
@@ -223,6 +247,29 @@ export function compileEventPlan(
         "Overlapping event relations need intersecting dated intervals.",
       );
   }
+  // Relative aftermath can be supported without a fabricated calendar date.
+  // Require an actual sourced before path from a dated occurrence, not array
+  // position, a context label, or an unrelated event's year bounds.
+  function hasDatedPredecessor(index: number, seen = new Set<number>()): boolean {
+    if (seen.has(index)) return false;
+    seen.add(index);
+    return plan.relations.some((relation) =>
+      relation.kind === "before" && relation.afterIndex === index &&
+      (records[relation.beforeIndex].window !== null ||
+        hasDatedPredecessor(relation.beforeIndex, seen)),
+    );
+  }
+  for (const record of records) {
+    if (!record.event.date &&
+      (record.event.kind === "event" ||
+        (record.event.kind === "outcome" && !hasDatedPredecessor(record.index))))
+      throw new EventDateEvidenceError(record.index, null,
+        record.claims.map((claim, i) => ({
+          claimIndex: record.event.claimIndices[i], id: claim.id,
+          yearRange: structuredClone(claim.yearRange),
+        })),
+      );
+  }
   // All unambiguous calendar order is server-owned; model relations can resolve coarse-date ties.
   for (const a of records)
     for (const b of records)
@@ -281,14 +328,16 @@ export function compileEventPlan(
         timingChanged = true;
       }
   }
-  const rank = (r: (typeof records)[number]) =>
-    r.window?.start ?? (r.event.kind === "context" ? -Infinity : Infinity);
   const pending = [...records],
     ordered: typeof records = [];
   while (pending.length) {
     const available = pending
       .filter((r) => !indegree[r.index])
-      .sort((a, b) => rank(a) - rank(b) || a.index - b.index);
+      // Overlapping/coarse windows do not establish relative order. Preserve
+      // the proposed narrative sequence unless calendar or sourced edges
+      // require otherwise. Never treat a year-only date as January 1 or
+      // automatically prepend all undated context.
+      .sort((a, b) => a.index - b.index);
     const next = available[0];
     if (!next)
       throw new Error(
@@ -319,7 +368,7 @@ export function compileEventPlan(
   const focus: SceneFocus = {
     type: "focus",
     title: plan.title,
-    location: focused.event.location.name,
+    location: plan.location,
     period: formatHistoricalRange(range),
     yearRange: range,
     center: focused.event.location.position,
@@ -342,7 +391,8 @@ export function compileEventPlan(
         }
       : {}),
   };
-  if (discovery) validateDiscovery(discovery, { ...focus, yearRange: range });
+  const discoveryValidation = discovery
+    ? validateDiscovery(discovery, { ...focus, yearRange: range }) : undefined;
   const overlaps = records.some(
     (a) =>
       a.window &&
@@ -401,6 +451,9 @@ export function compileEventPlan(
       group.some((r) => r.event.kind === "context")
         ? "Context markers are narrative anchors."
         : "",
+      group.some((r) => r.event.kind === "outcome" && !r.event.date)
+        ? "Aftermath is undated; calendar headings apply only to the dated events."
+        : "",
       overlaps
         ? "Overlapping date intervals need not be consecutive events."
         : "",
@@ -418,6 +471,9 @@ export function compileEventPlan(
         (r) => r.event.participants.length || r.event.template === "people",
       )
         ? "Uniformed figures are placeholders."
+        : "",
+      group.some((r) => r.event.template === "battle")
+        ? "Military figures are schematic placeholders, without exact formations or equipment."
         : "",
     ]
       .filter(Boolean)
@@ -442,10 +498,16 @@ export function compileEventPlan(
         entity = `ev_${r.index}_marker`,
         ids = r.claims.map((c) => c.id);
       headingWindows.set(r.index, chapterDateWindow(date, chapterRange)!);
-      const narration = `${e.date ? eventDateLabel(e.date) : "Context"}: ${e.statement}`;
-      const participantLabels = e.participants.map(
+      const narration = `${e.date ? eventDateLabel(e.date) : e.kind === "outcome" ? "Undated aftermath" : "Context"}: ${e.statement}`;
+      const participantText = e.participants.map(
         (p) => `${p.name}${p.role ? ` — ${p.role}` : ""}`,
       );
+      // Let the model complete a natural role phrase. Long roles get their own
+      // timed narration rather than a clipped word or an oversized map label.
+      const participantLabels = participantText.map((label, i) =>
+        label.length <= 80 ? label : e.participants[i].name,
+      );
+      const participantNotes = participantText.filter((label) => label.length > 80);
       const mainSlot = Math.max(
         4,
         Math.ceil(
@@ -485,7 +547,8 @@ export function compileEventPlan(
             sourceIds: sourcesForClaims(claimIds, checklist.claims, research),
           };
         });
-      const supplements = [
+      const supplements: { text: string; claimIds: string[]; sourceIds: string[]; referenceWindow?: DateWindow }[] = [
+        ...participantNotes.map((text) => ({ text, claimIds: ids, sourceIds: r.sourceIds })),
         ...(e.qualification
           ? [{ text: e.qualification, claimIds: ids, sourceIds: r.sourceIds }]
           : []),
@@ -555,7 +618,7 @@ export function compileEventPlan(
       }
       let offset = mainSlot;
       supplements.forEach((q, i) => {
-        if ("referenceWindow" in q)
+        if (q.referenceWindow)
           referenceWindows.set(`${prefix}_note${i}`, q.referenceWindow);
         const duration = Math.ceil(q.text.length / 14) + 1;
         if (e.template === "narration")
@@ -605,11 +668,12 @@ export function compileEventPlan(
           .slice(first)
           .filter((a) => a.type !== "despawn")
           .map((a) => a.id),
-        date: e.date ? eventDateLabel(e.date) : "Undated context",
+        date: e.date ? eventDateLabel(e.date) : e.kind === "outcome" ? "Undated aftermath" : "Undated context",
         title: e.location.name,
         statement: narration,
         location: e.location,
         participantLabels,
+        participantNotes,
         asset: e.template === "narration" ? "none" : assets[e.template],
         relationText: relations.map((rel) => rel.text),
         qualification: e.qualification,
@@ -689,6 +753,7 @@ export function compileEventPlan(
       method: "compiler-contract-v1",
       citations: "valid",
       protocol: "valid",
+      ...(discoveryValidation ? { discovery: discoveryValidation } : {}),
       dates,
     },
   };

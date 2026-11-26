@@ -7,7 +7,7 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import * as THREE from "three";
 import { gsap } from "gsap";
 import { Asset, palettes } from "./assets";
-import { modelOffsets, packLabels, sceneFraming } from "@/lib/scene-layout";
+import { modelOffsets, packLabels, sceneFraming, type Rect } from "@/lib/scene-layout";
 import { SourceLinks } from "./source-links";
 import { entityVisible, positionAt, type SceneBuffer } from "@/lib/playback";
 import type {
@@ -129,6 +129,8 @@ function CameraRig({
   command: CameraCommand | null;
 }) {
   const { camera, gl } = useThree();
+  const { lat, lon } = framing.center;
+  const distance = framing.distance;
   const travel = useRef<gsap.core.Tween | null>(null);
   const startedAt = useRef(0);
   const manual = useRef(false);
@@ -147,7 +149,7 @@ function CameraRig({
       previousHome.current = homeKey;
     }
     if (manual.current) return;
-    const target = geoPoint(framing.center, framing.distance);
+    const target = geoPoint({ lat, lon }, distance);
     const animation = gsap.to(camera.position, {
       paused: true,
       x: target.x,
@@ -179,7 +181,9 @@ function CameraRig({
       gl.domElement.removeEventListener("pointerdown", interrupt);
       gl.domElement.removeEventListener("wheel", interrupt);
     };
-  }, [focus, framing, camera, controls, gl, homeKey]);
+  // Layout measurements recreate framing objects, even when the destination
+  // is unchanged. Only actual target changes should restart geographic travel.
+  }, [focus, lat, lon, distance, camera, controls, gl, homeKey]);
   useEffect(() => {
     if (!command) return;
     manual.current = true;
@@ -255,7 +259,9 @@ function Entity({
   labels,
   sources,
   offset,
+  figureBounds,
 }: {
+  figureBounds: React.RefObject<Map<string, Rect>>;
   offset: [number, number];
   spawn: SpawnAction;
   actions: SceneAction[];
@@ -272,6 +278,10 @@ function Entity({
   const label = useRef<HTMLDivElement>(null);
   const proxy = useRef({ pop: 0 });
   const timeline = useRef<gsap.core.Timeline | null>(null);
+  const { camera, size } = useThree();
+  const bounds = useMemo(() => new THREE.Box3(), []);
+  const corner = useMemo(() => new THREE.Vector3(), []);
+  const lastBounds = useRef(0);
   useEffect(() => {
     proxy.current.pop = 0;
     const tl = gsap.timeline({ paused: true });
@@ -286,8 +296,9 @@ function Entity({
       tl.kill();
       timeline.current = null;
       document.body.style.cursor = "auto";
+      figureBounds.current.delete(spawn.entityId);
     };
-  }, [spawn]);
+  }, [spawn, figureBounds]);
   const tetherPoints = useMemo<[number, number, number][]>(
     () => [
       [0, 0.006, 0],
@@ -316,6 +327,32 @@ function Entity({
         0.075 *
         spawn.scale,
     );
+    if (!root.current.visible) {
+      figureBounds.current.delete(spawn.entityId);
+      return;
+    }
+    if (performance.now() - lastBounds.current < 80) return;
+    lastBounds.current = performance.now();
+    // Project the actual displaced model, including its height and scale.
+    // The geographic pin and the HTML label anchor alone do not describe it.
+    if (root.current.position.dot(camera.position) <= root.current.position.lengthSq()) {
+      figureBounds.current.delete(spawn.entityId);
+      return;
+    }
+    model.current.updateWorldMatrix(true, true);
+    bounds.setFromObject(model.current);
+    let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
+    for (const x of [bounds.min.x, bounds.max.x])
+      for (const y of [bounds.min.y, bounds.max.y])
+        for (const z of [bounds.min.z, bounds.max.z]) {
+          corner.set(x, y, z).project(camera);
+          const px = (corner.x + 1) * size.width / 2;
+          const py = (1 - corner.y) * size.height / 2;
+          left = Math.min(left, px); right = Math.max(right, px);
+          top = Math.min(top, py); bottom = Math.max(bottom, py);
+        }
+    if ([left, top, right, bottom].every(Number.isFinite))
+      figureBounds.current.set(spawn.entityId, { x: left, y: top, width: right - left, height: bottom - top });
   });
   return (
     <group ref={root} visible={false}>
@@ -400,6 +437,9 @@ function Entity({
               )}
             </div>
           )}
+          <svg className="scene-label-tether" aria-hidden="true">
+            <line data-label-tether stroke="currentColor" strokeWidth="1" />
+          </svg>
         </div>
       </Html>
     </group>
@@ -465,6 +505,7 @@ type GlobeProps = {
   cameraCommand: CameraCommand | null;
   session: number;
   labels: React.RefObject<HTMLDivElement | null>;
+  panelOpen: boolean;
 };
 function World({
   buffer,
@@ -475,11 +516,29 @@ function World({
   homeKey,
   cameraCommand,
   labels,
+  panelOpen,
 }: GlobeProps) {
-  const { gl, size } = useThree();
+  const { camera, gl, size } = useThree();
+  const figureBounds = useRef(new Map<string, Rect>());
+  // Match the details panel's CSS safe area while retaining a full-size canvas.
+  const leftInset = buffer.focus && panelOpen && size.width > 700 ? 348 : 0;
+  const viewport = useRef({ x: camera.view?.enabled ? camera.view.offsetX : 0 });
+  const viewportTravel = useRef<gsap.core.Tween | null>(null);
+  const viewportStarted = useRef(0);
+  useEffect(() => {
+    const animation = gsap.to(viewport.current, {
+      paused: true, x: -leftInset / 2,
+      duration: clock.current.reducedMotion ? 0 : 1.2,
+      ease: "power3.inOut",
+    });
+    viewportStarted.current = performance.now();
+    viewportTravel.current = animation;
+    if (animation.duration() === 0) animation.progress(1);
+    return () => { animation.kill(); viewportTravel.current = null; };
+  }, [leftInset, clock, clock.current.reducedMotion]);
   const framing = useMemo(
-    () => sceneFraming(buffer.focus, buffer.actions, size.width / size.height),
-    [buffer, buffer.focus, buffer.actions.length, size.width, size.height],
+    () => sceneFraming(buffer.focus, buffer.actions, (size.width - leftInset) / size.height),
+    [buffer, buffer.focus, buffer.actions.length, size.width, size.height, leftInset],
   );
   const offsets = useMemo(
     () =>
@@ -500,12 +559,27 @@ function World({
   const lastLabels = useRef(0);
   const renderedFrames = useRef(0);
   useFrame(() => {
+    const animation = viewportTravel.current;
+    if (animation) {
+      animation.totalTime((performance.now() - viewportStarted.current) / 1000);
+      if (animation.progress() === 1) viewportTravel.current = null;
+    }
+    const view = camera.view;
+    if (Math.abs(viewport.current.x) > 0.01) {
+      if (!view?.enabled || view.fullWidth !== size.width || view.fullHeight !== size.height || view.offsetX !== viewport.current.x)
+        camera.setViewOffset(size.width, size.height, viewport.current.x, 0, size.width, size.height);
+    } else if (view?.enabled) camera.clearViewOffset();
     if (performance.now() - lastLabels.current > 100 && labels.current) {
       lastLabels.current = performance.now();
       const nodes = [
         ...labels.current.querySelectorAll<HTMLElement>("[data-scene-label]"),
       ];
       const stage = gl.domElement.getBoundingClientRect();
+      const models = new Map([...figureBounds.current].map(([id, r]) =>
+        [id, { ...r, x: r.x + stage.x, y: r.y + stage.y }]));
+      const controls = [...document.querySelectorAll<HTMLElement>("[data-map-obstacle]")]
+        .filter((node) => node.checkVisibility())
+        .map((node) => node.getBoundingClientRect());
       // Batch writes before reads to avoid a layout flush for every label.
       for (const node of nodes) node.style.translate = "0px 0px";
       const items = nodes
@@ -520,6 +594,7 @@ function World({
             id: node.dataset.sceneLabel!,
             priority: Number(node.dataset.priority),
             rect: { x: r.x, y: r.y, width: r.width, height: r.height },
+            anchor: models.get(node.dataset.sceneLabel!),
           };
         });
       const packed = packLabels(
@@ -537,12 +612,25 @@ function World({
           ),
         },
         size.width < 600 ? 4 : 6,
+        [...models.values(), ...controls],
       );
       for (const node of nodes) {
         const p = packed[node.dataset.sceneLabel!];
         node.style.visibility = p?.shown ? "visible" : "hidden";
         node.style.translate = p ? `${p.x}px ${p.y}px` : "0px 0px";
         node.dataset.labelShown = String(Boolean(p?.shown));
+        const item = items.find((item) => item.id === node.dataset.sceneLabel);
+        const anchor = item?.anchor;
+        const tether = node.querySelector("[data-label-tether]");
+        if (anchor && item && p?.shown && tether) {
+          const card = { ...item.rect, x: item.rect.x + p.x, y: item.rect.y + p.y };
+          const toRight = card.x + card.width / 2 > anchor.x + anchor.width / 2;
+          tether.setAttribute("x1", String((toRight ? anchor.x + anchor.width : anchor.x) - card.x));
+          tether.setAttribute("y1", String(anchor.y + anchor.height / 2 - card.y));
+          tether.setAttribute("x2", String(toRight ? 0 : card.width));
+          tether.setAttribute("y2", String(card.height / 2));
+        }
+        node.dataset.figureBounds = JSON.stringify([...models.values()]);
       }
     }
     if (renderedFrames.current < 2 && ++renderedFrames.current === 2)
@@ -598,6 +686,7 @@ function World({
           labels={labels}
           sources={buffer.focus?.sources ?? []}
           offset={offsets[spawn.entityId] ?? [0, 0]}
+          figureBounds={figureBounds}
         />
       ))}
       {buffer.actions

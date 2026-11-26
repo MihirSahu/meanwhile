@@ -12,6 +12,7 @@ export type ResearchBundle = {
 };
 export type GenerationRequest<T> = {
   stage:
+    | "intent"
     | "checklist"
     | "checklist_review"
     | "event_plan"
@@ -45,6 +46,7 @@ export type ModelUsage = {
 /** A provider implements inference and retrieval; it never owns playback state. */
 export interface SceneProvider {
   readonly cacheIdentity: string;
+  rereadEvidence?(topics: string[], signal: AbortSignal, research?: ResearchBundle): Promise<ResearchBundle | null>;
   research(
     prompt: string,
     signal: AbortSignal,

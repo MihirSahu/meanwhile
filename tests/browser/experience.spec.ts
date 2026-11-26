@@ -147,6 +147,173 @@ test("invalid prompts explain demo limits and the mobile layout remains usable",
   await page.keyboard.press("Home");
 });
 
+test("playback fills the viewport with a left sidebar and an on-demand prompt", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Sino-Japanese War/ }).click();
+  await expect(page.getByRole("heading", { name: "The First Sino-Japanese War", exact: true })).toBeVisible();
+  const stage = page.getByRole("region", { name: "Interactive historical globe" });
+  const panel = page.getByRole("complementary", { name: "Story details" });
+  await expect(panel).toBeVisible();
+  const s = (await stage.boundingBox())!;
+  const p = (await panel.boundingBox())!;
+  const playback = (await page.getByRole("region", { name: "Story playback" }).boundingBox())!;
+  await expect(page.getByRole("textbox", { name: "What are you curious about?" })).toHaveCount(0);
+  expect(s).toEqual({ x: 0, y: 0, ...page.viewportSize()! });
+  expect(p.x).toBeLessThan(page.viewportSize()!.width / 2);
+  expect(playback.x).toBeGreaterThan(p.x + p.width);
+  const tools = (await page.locator(".world-tools").boundingBox())!;
+  expect(p.y + p.height).toBeLessThan(tools.y);
+  await page.getByRole("button", { name: "New story", exact: true }).click();
+  await expect(page.getByRole("textbox", { name: "What are you curious about?" })).toBeFocused();
+  await page.getByRole("button", { name: "Close story prompt" }).click();
+  await expect(page.getByRole("textbox", { name: "What are you curious about?" })).toHaveCount(0);
+  await page.getByRole("button", { name: "Hide story details" }).click();
+  await expect(panel).toBeHidden();
+  await expect(page.getByRole("button", { name: "Show story details" })).toHaveAttribute("aria-expanded", "false");
+  await page.screenshot({ path: "test-results/fullscreen-playback.png" });
+});
+
+test("mobile playback hides the prompt and opens story details in a left drawer", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.getByRole("button", { name: /The Silk Road/ }).click();
+  await expect(page.getByRole("heading", { name: "Trade along the Silk Road", exact: true })).toBeVisible();
+  await expect(page.locator("#story-panel")).toBeHidden();
+  const stage = (await page.getByRole("region", { name: "Interactive historical globe" }).boundingBox())!;
+  expect(stage).toEqual({ x: 0, y: 0, width: 390, height: 844 });
+  const prompt = page.getByRole("textbox", { name: "What are you curious about?" });
+  await expect(prompt).toHaveCount(0);
+  await page.getByRole("button", { name: "Show story details" }).click();
+  const panel = page.getByRole("complementary", { name: "Story details" });
+  await expect(panel).toBeVisible();
+  const p = (await panel.boundingBox())!;
+  const playback = (await page.getByRole("region", { name: "Story playback" }).boundingBox())!;
+  expect(p.y + p.height).toBeLessThan(playback.y);
+  const tools = (await page.locator(".world-tools").boundingBox())!;
+  expect(p.x + p.width).toBeLessThan(tools.x);
+  await page.getByRole("button", { name: "Hide story details" }).click();
+  await expect(panel).toBeHidden();
+});
+
+test("the new-story prompt pauses playback and restores its prior state on dismissal", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.getByRole("button", { name: /The Silk Road/ }).click();
+  await expect(page.getByText("All chapters ready", { exact: true })).toBeVisible();
+  const opener = page.getByRole("button", { name: "New story", exact: true });
+  const slider = page.getByRole("slider", { name: "Story position in seconds" });
+  await opener.click();
+  await expect(page.getByRole("textbox", { name: "What are you curious about?" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "Play", exact: true })).toBeVisible();
+  const position = await slider.inputValue();
+  await page.waitForTimeout(300);
+  await expect(slider).toHaveValue(position);
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("textbox")).toHaveCount(0);
+  await expect(opener).toBeFocused();
+  await expect(page.getByRole("button", { name: "Pause", exact: true })).toBeVisible();
+
+  await page.getByRole("button", { name: "Pause", exact: true }).click();
+  await opener.click();
+  await page.getByRole("button", { name: "Close story prompt" }).click();
+  await expect(page.getByRole("button", { name: "Play", exact: true })).toBeVisible();
+  await expect(opener).toBeFocused();
+
+  await opener.click();
+  await page.getByRole("button", { name: "Play", exact: true }).click();
+  await expect(page.getByRole("textbox")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Pause", exact: true })).toBeVisible();
+});
+
+test("the globe expands through intermediate sizes when motion is enabled", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  const home = (await page.locator(".world-stage").boundingBox())!;
+  await page.evaluate(() => {
+    const frames: { x: number; width: number; done: boolean }[] = [];
+    (window as any).__layoutFrames = frames;
+    const main = document.querySelector("main")!;
+    const observer = new MutationObserver(() => {
+      if (!main.classList.contains("has-story")) return;
+      observer.disconnect();
+      const start = performance.now();
+      let last = 0;
+      const sample = (now: number) => {
+        const elapsed = now - start;
+        if (now - last > 60 || elapsed >= 1600) {
+          const rect = document.querySelector(".world-stage")!.getBoundingClientRect();
+          frames.push({ x: rect.x, width: rect.width, done: elapsed >= 1600 });
+          last = now;
+        }
+        if (elapsed < 1600) requestAnimationFrame(sample);
+      };
+      requestAnimationFrame(sample);
+    });
+    observer.observe(main, { attributes: true, attributeFilter: ["class"] });
+  });
+  await page.getByRole("button", { name: /Sino-Japanese War/ }).click();
+  await expect.poll(() => page.evaluate(() => (window as any).__layoutFrames.at(-1)?.done)).toBe(true);
+  const frames = await page.evaluate(() => (window as any).__layoutFrames as { x: number; width: number }[]);
+  expect(frames.some((frame) => frame.x > 10 && frame.x < home.x - 10)).toBe(true);
+  expect(frames.at(-1)!.x).toBeCloseTo(0, 0);
+  expect(frames.at(-1)!.width).toBeCloseTo(page.viewportSize()!.width, 0);
+  await expect(page.getByRole("textbox", { name: "What are you curious about?" })).toHaveCount(0);
+});
+
+test("a sidebar-only layout change does not restart an unchanged geographic camera flight", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Sino-Japanese War/ }).click();
+  const canvas = page.locator("canvas");
+  await expect(canvas).toHaveAttribute("data-camera-ready", "The First Sino-Japanese War");
+  await canvas.evaluate((node) => {
+    const changes: (string | null)[] = [];
+    (window as any).__cameraChanges = changes;
+    const observer = new MutationObserver(() => changes.push(node.getAttribute("data-camera-ready")));
+    observer.observe(node, { attributes: true, attributeFilter: ["data-camera-ready"] });
+  });
+  await page.getByRole("button", { name: "Hide story details" }).click();
+  await expect(page.locator("#story-panel")).toBeHidden();
+  const changes = await page.evaluate(() => (window as any).__cameraChanges as (string | null)[]);
+  expect(changes).not.toContain(null);
+  await expect(canvas).toHaveAttribute("data-camera-ready", "The First Sino-Japanese War");
+});
+
+for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
+  test(`selected object details stay clear of the story sidebar at ${viewport.width}px`, async ({ page }) => {
+    await page.setViewportSize(viewport);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    await page.getByRole("button", { name: /Sino-Japanese War/ }).click();
+    await expect(page.getByText("All chapters ready", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "Pause", exact: true }).click();
+    await page.getByRole("slider", { name: "Story position in seconds" }).fill("57");
+    if (viewport.width < 700) await page.getByRole("button", { name: "Show story details" }).click();
+    const panel = page.locator("#story-panel");
+    await panel.getByText("Context, objects & sources", { exact: true }).click();
+    await panel.getByRole("button", { name: "Li Hongzhang", exact: true }).click();
+    const popup = page.getByRole("complementary", { name: "Selected object" });
+    await expect(popup).toContainText("Named historical figure");
+    const object = (await popup.boundingBox())!;
+    if (viewport.width >= 700) {
+      const sidebar = (await panel.boundingBox())!;
+      expect(sidebar.x + sidebar.width).toBeLessThan(object.x);
+      await expect(panel).toBeVisible();
+    } else {
+      await expect(panel).toBeHidden();
+      expect(object.x).toBeGreaterThanOrEqual(0);
+      expect(object.x + object.width).toBeLessThanOrEqual(viewport.width);
+    }
+    const playback = (await page.getByRole("region", { name: "Story playback" }).boundingBox())!;
+    expect(object.y + object.height).toBeLessThan(playback.y);
+    await page.screenshot({ path: `test-results/object-details-${viewport.width}.png` });
+    await page.getByRole("button", { name: "Close object details" }).click();
+    await expect(panel).toBeVisible();
+  });
+}
+
 test("an incomplete stream stops at the buffer and preserves playable chapters", async ({
   page,
 }) => {
@@ -549,6 +716,7 @@ test("visible labels stay separated at a dense chapter", async ({ page }) => {
   await expect(
     page.locator('[data-scene-label][data-label-shown="true"]').first(),
   ).toBeVisible();
+  await expect(page.locator('[data-label-shown="true"] .speech-bubble')).toBeVisible();
   await expect
     .poll(() =>
       page.evaluate(() => {
@@ -559,6 +727,10 @@ test("visible labels stay separated at a dense chapter", async ({ page }) => {
         ]
           .filter((n) => n.checkVisibility())
           .map((n) => n.getBoundingClientRect());
+        const node = document.querySelector<HTMLElement>('[data-label-shown="true"]');
+        const figures = JSON.parse(node?.dataset.figureBounds ?? "[]") as { x: number; y: number; width: number; height: number }[];
+        if (!figures.length || !rects.every((a) => figures.every((b) =>
+          a.right <= b.x || a.left >= b.x + b.width || a.bottom <= b.y || a.top >= b.y + b.height))) return false;
         return rects.every((a, i) =>
           rects
             .slice(i + 1)
@@ -601,6 +773,7 @@ test("stopping a pending Meanwhile search restores the original playback", async
   ).toBeVisible();
   await page.getByRole("button", { name: "Meanwhile…" }).click();
   await expect(page.getByRole("status")).toContainText("Looking elsewhere");
+  await page.getByRole("button", { name: "New story", exact: true }).click();
   await page.getByRole("button", { name: "Stop", exact: true }).click();
   release();
   await expect(
@@ -612,6 +785,8 @@ test("stopping a pending Meanwhile search restores the original playback", async
   await expect(
     page.getByRole("slider", { name: "Story position in seconds" }),
   ).toBeEnabled();
+  await expect(page.getByRole("button", { name: "Play", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Close story prompt" }).click();
   await expect(
     page.getByRole("button", { name: "Pause", exact: true }),
   ).toBeVisible();
@@ -724,7 +899,24 @@ test("compiled text-only facts display and seek without a lunar Earth marker", a
   await expect(
     page.getByRole("button", { name: "Inspect Moon", exact: true }),
   ).toHaveCount(0);
+  const mapText = page.getByRole("region", { name: "Map story text" });
+  await expect(mapText).toBeVisible();
+  await expect(mapText).toContainText("Synthetic lunar fact");
+  await expect(mapText.getByRole("link", { name: /^Source 1/ })).toBeVisible();
+  await expect(page.locator('[data-scene-label][data-label-shown="true"]')).toHaveCount(0);
+  await page.screenshot({ path: "test-results/map-text-chapter.png" });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole("button", { name: "Hide story details" }).click();
+  await expect(page.locator("#story-panel")).toBeHidden();
+  await expect(mapText).toBeVisible();
+  const textRect = (await mapText.boundingBox())!;
+  const controlsRect = (await page.getByRole("region", { name: "Story playback" }).boundingBox())!;
+  expect(textRect.x).toBeGreaterThanOrEqual(0);
+  expect(textRect.x + textRect.width).toBeLessThanOrEqual(390);
+  expect(textRect.y + textRect.height).toBeLessThan(controlsRect.y);
+  await page.screenshot({ path: "test-results/mobile-map-text-chapter.png" });
   await slider.fill("1");
+  await expect(mapText).toHaveCount(0);
   await expect(
     page.getByRole("heading", { name: "Regional networks", exact: true }),
   ).toBeVisible();
@@ -777,6 +969,7 @@ for (const failure of [
       name: "Story position in seconds",
     });
     await slider.fill("20");
+    await page.getByRole("button", { name: "New story", exact: true }).click();
     await page
       .getByRole("textbox", { name: "What are you curious about?" })
       .fill("Broken replacement");
@@ -832,6 +1025,7 @@ test("ordinary replacement keeps the current scene until a playable batch and St
     name: "Story position in seconds",
   });
   await slider.fill("20");
+  await page.getByRole("button", { name: "New story", exact: true }).click();
   await page
     .getByRole("textbox", { name: "What are you curious about?" })
     .fill("Pending replacement");
@@ -901,6 +1095,7 @@ test("superseding a pending discovery releases its pause even when the replaceme
   ).toBeVisible();
   await page.getByRole("button", { name: "Meanwhile…" }).click();
   await expect(page.getByRole("status")).toContainText("Looking elsewhere");
+  await page.getByRole("button", { name: "New story", exact: true }).click();
   await page
     .getByRole("textbox", { name: "What are you curious about?" })
     .fill("Broken replacement");
@@ -908,6 +1103,8 @@ test("superseding a pending discovery releases its pause even when the replaceme
   await expect(page.getByRole("main").getByRole("alert")).toContainText(
     "Replacement failed",
   );
+  await expect(page.getByRole("button", { name: "Play", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Close story prompt" }).click();
   await expect(
     page.getByRole("button", { name: "Pause", exact: true }),
   ).toBeVisible();
@@ -955,6 +1152,7 @@ test("a failed ordinary replacement preserves discovery Back history", async ({
       exact: true,
     }),
   ).toBeVisible();
+  await page.getByRole("button", { name: "New story", exact: true }).click();
   await page
     .getByRole("textbox", { name: "What are you curious about?" })
     .fill("Broken replacement");

@@ -6,13 +6,14 @@ import {
 } from "../src/lib/discovery";
 import { makeDemo } from "../src/lib/demo";
 import { loadEnvConfig } from "@next/env";
+import { parseArgs } from "node:util";
 import { mkdir, writeFile } from "node:fs/promises";
 import {
   readSceneConfig,
   SceneServiceError,
 } from "../src/lib/server/scene-config";
 import { OpenAISceneProvider } from "../src/lib/server/openai-provider";
-import { generateScene } from "../src/lib/server/scene-harness";
+import { generateScene, harnessVersion, type RejectionRecord } from "../src/lib/server/scene-harness";
 import { SceneBuffer } from "../src/lib/playback";
 import type { GateRecord } from "../src/lib/server/evidence-gate";
 import type { ResearchBundle } from "../src/lib/server/scene-provider";
@@ -24,7 +25,11 @@ import type { EvidenceRecoveryRecord } from "../src/lib/server/evidence-recovery
 async function main() {
   loadEnvConfig(process.cwd());
   const config = readSceneConfig({ ...process.env, SCENE_PROVIDER: "openai" });
-  const meanwhile = process.argv.includes("--meanwhile");
+  const { values, positionals } = parseArgs({
+    options: { meanwhile: { type: "boolean" }, out: { type: "string" } },
+    allowPositionals: true,
+  });
+  const meanwhile = Boolean(values.meanwhile);
   const origin = new SceneBuffer();
   if (meanwhile)
     makeDemo("The First Sino-Japanese War").forEach((message) =>
@@ -33,12 +38,13 @@ async function main() {
   const discovery = meanwhile
     ? currentHistoricalContext(origin.focus!, origin.actions, 57)!
     : undefined;
-  const output = meanwhile ? "artifacts/live-meanwhile" : "artifacts/live";
+  const output = values.out ?? (meanwhile ? "artifacts/live-meanwhile" : "artifacts/live");
   const prompt = discovery
     ? discoveryPrompt(discovery)
-    : process.argv.slice(2).join(" ") ||
+    : positionals.join(" ") ||
       "The First Sino-Japanese War, 1894–1895";
   const gates: GateRecord[] = [];
+  const rejections: RejectionRecord[] = [];
   const eventReviews: EventReviewRecord[] = [];
   let eventPlan: EventPlan | null = null;
   const checklistReviews: ChecklistReviewRecord[] = [];
@@ -48,9 +54,10 @@ async function main() {
   let checklistMs: number | null = null;
   const usage: ModelUsage[] = [],
     lines: string[] = [];
-  const provider = new OpenAISceneProvider(config, (event) =>
-    usage.push(event),
-  );
+  const provider = new OpenAISceneProvider(config, (event) => {
+    usage.push(event);
+    console.info(JSON.stringify({ event: "model", stage: event.stage, durationMs: event.elapsedMs }));
+  });
   const buffer = new SceneBuffer(),
     started = performance.now();
   let firstFocusMs: number | null = null,
@@ -77,6 +84,10 @@ async function main() {
       },
       onGate: (record) => {
         gates.push(record);
+      },
+      onRejected: (record) => {
+        rejections.push(record);
+        console.info(JSON.stringify({ event: "rejected", stage: record.stage, reason: record.reason }));
       },
       onEventPlan: (record) => {
         eventPlan = record;
@@ -130,12 +141,15 @@ async function main() {
           eventPlan,
           eventReviews,
           gates,
+          rejections,
         },
         null,
         2,
       ),
     );
     const summary = {
+      harnessVersion,
+      prompt,
       model: config.model,
       effort: config.effort,
       complete: buffer.complete,

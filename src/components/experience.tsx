@@ -29,6 +29,7 @@ import {
   SceneBuffer,
 } from "@/lib/playback";
 import { readSceneStream } from "@/lib/scene-stream";
+import { storyIntentSchema, type StoryClarification } from "@/lib/story-intent";
 import type { SpawnAction } from "@/lib/scene-schema";
 import type { CameraCommand, PlaybackClock } from "./globe";
 import { EvidenceDetails } from "./evidence-details";
@@ -74,6 +75,9 @@ export function Experience() {
     time: number;
     paused: boolean;
   };
+  const [panelOpen, setPanelOpen] = useState(true);
+  const [compact, setCompact] = useState(false);
+  const [promptOpen, setPromptOpen] = useState(false);
   const [history, setHistory] = useState<Snapshot[]>([]);
   const [visitedTitles, setVisitedTitles] = useState<string[]>([]);
   const [discovering, setDiscovering] = useState(false);
@@ -81,6 +85,10 @@ export function Experience() {
   const [prompt, setPrompt] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [awaitingScene, setAwaitingScene] = useState(false);
+  const [resolving, setResolving] = useState(false);
+  const [clarification, setClarification] = useState<
+    (StoryClarification & { request: string }) | null
+  >(null);
   const [error, setError] = useState<string | null>(null);
   const [time, setTime] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -93,6 +101,9 @@ export function Experience() {
   );
   const [, refresh] = useState(0);
   const active = useRef<AbortController | null>(null);
+  const firstChoice = useRef<HTMLButtonElement | null>(null);
+  const newStoryButton = useRef<HTMLButtonElement | null>(null);
+  const promptPause = useRef<boolean | null>(null);
   const pendingPause = useRef<{
     controller: AbortController;
     paused: boolean;
@@ -103,8 +114,18 @@ export function Experience() {
     speed: 1,
     reducedMotion: false,
   });
+  const choices = clarification?.request === prompt.trim() ? clarification : null;
 
   useEffect(() => {
+    if (choices && !streaming) firstChoice.current?.focus();
+  }, [choices, streaming]);
+
+  useEffect(() => {
+    const layout = window.matchMedia("(max-width: 700px)");
+    setPanelOpen(!layout.matches);
+    setCompact(layout.matches);
+    const updateLayout = () => setCompact(layout.matches);
+    layout.addEventListener("change", updateLayout);
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => {
       clock.current.reducedMotion = media.matches;
@@ -114,6 +135,7 @@ export function Experience() {
     media.addEventListener("change", update);
     return () => {
       media.removeEventListener("change", update);
+      layout.removeEventListener("change", updateLayout);
       active.current?.abort();
       document.body.style.cursor = "";
     };
@@ -142,28 +164,56 @@ export function Experience() {
     return () => cancelAnimationFrame(frame);
   }, [buffer]);
 
+  function closePrompt(restorePlayback = true, restoreFocus = true) {
+    const previousPause = promptPause.current;
+    promptPause.current = null;
+    setPromptOpen(false);
+    if (previousPause !== null) {
+      if (restorePlayback) {
+        clock.current.paused = pendingPause.current ? true : previousPause;
+        setPaused(clock.current.paused);
+      }
+      if (restoreFocus) newStoryButton.current?.focus();
+    }
+  }
+
+  function togglePrompt() {
+    if (promptOpen) {
+      closePrompt();
+      return;
+    }
+    promptPause.current = pendingPause.current?.paused ?? clock.current.paused;
+    clock.current.paused = true;
+    setPaused(true);
+    setTime(clock.current.time);
+    setSelected(null);
+    setPromptOpen(true);
+  }
+
   async function start(
     value: string,
     demo = false,
     discovery?: DiscoveryContext,
+    chosen = false,
   ) {
     if (value.trim().length < 3) return;
     active.current?.abort();
     // A superseded discovery must release its temporary pause before the new
     // request snapshots playback. Its finally block no longer owns the UI.
     if (pendingPause.current) {
-      clock.current.paused = pendingPause.current.paused;
-      setPaused(pendingPause.current.paused);
+      clock.current.paused = promptPause.current === null ? pendingPause.current.paused : true;
+      setPaused(clock.current.paused);
       pendingPause.current = null;
     }
     const controller = new AbortController();
+    let traceId: string | undefined = globalThis.crypto?.randomUUID?.();
     active.current = controller;
     const next = new SceneBuffer();
     const previous = {
       buffer,
       prompt,
       time: clock.current.time,
-      paused: clock.current.paused,
+      paused: promptPause.current ?? clock.current.paused,
     };
     let adopted = false,
       recordedFocus = false;
@@ -177,12 +227,14 @@ export function Experience() {
         setVisitedTitles([]);
       }
       pendingPause.current = null;
+      promptPause.current = null;
       setAwaitingScene(false);
       clock.current.time = 0;
       clock.current.paused = false;
       setTime(0);
       setPaused(false);
       setSelected(null);
+      setPromptOpen(false);
       setCameraCommand(null);
       setBuffer(next);
       setPrompt(discovery ? (next.focus?.title ?? value) : value);
@@ -190,6 +242,8 @@ export function Experience() {
       setDiscovering(false);
     };
     setError(null);
+    setClarification(null);
+    setResolving(!demo && !discovery && !chosen);
     setStreaming(true);
     setAwaitingScene(true);
     setDiscovering(Boolean(discovery));
@@ -199,9 +253,39 @@ export function Experience() {
       setPaused(true);
     }
     try {
+      if (!demo && !discovery && !chosen) {
+        const resolution = await fetch("/api/resolve", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(traceId ? { "X-Meanwhile-Trace-Id": traceId } : {}),
+          },
+          body: JSON.stringify({ prompt: value.trim() }),
+          signal: controller.signal,
+        });
+        const body = await resolution.json();
+        traceId = resolution.headers.get("X-Meanwhile-Trace-Id") ?? traceId;
+        controller.signal.throwIfAborted();
+        if (!resolution.ok)
+          throw new Error(
+            typeof body?.error === "string"
+              ? body.error
+              : "We couldn’t look up story options. Please try again.",
+          );
+        const { result } = storyIntentSchema.parse(body);
+        if (active.current !== controller) return;
+        if (result.status === "clarification") {
+          setClarification({ ...result, request: value.trim() });
+          return;
+        }
+        setResolving(false);
+      }
       const response = await fetch("/api/scene", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(traceId ? { "X-Meanwhile-Trace-Id": traceId } : {}),
+        },
         body: JSON.stringify({
           prompt: value.trim(),
           demo,
@@ -235,11 +319,12 @@ export function Experience() {
     } finally {
       if (active.current === controller) {
         setStreaming(false);
+        setResolving(false);
         setAwaitingScene(false);
         setDiscovering(false);
         if (discovery && !adopted) {
-          clock.current.paused = previous.paused;
-          setPaused(previous.paused);
+          clock.current.paused = promptPause.current === null ? previous.paused : true;
+          setPaused(clock.current.paused);
           pendingPause.current = null;
         }
       }
@@ -252,7 +337,10 @@ export function Experience() {
     active.current?.abort();
     active.current = null;
     pendingPause.current = null;
+    promptPause.current = null;
     setAwaitingScene(false);
+    setResolving(false);
+    setClarification(null);
     setStreaming(false);
     setDiscovering(false);
     setHistory((items) => items.slice(0, -1));
@@ -263,6 +351,7 @@ export function Experience() {
     setTime(previous.time);
     setPaused(previous.paused);
     setSelected(null);
+    setPromptOpen(false);
     setError(null);
     setCameraCommand(null);
     setSession((n) => n + 1);
@@ -273,8 +362,13 @@ export function Experience() {
     clock.current.time = Math.max(0, Math.min(value, buffer.readyThrough));
     setTime(clock.current.time);
   }
+  function selectEntity(id: string) {
+    closePrompt(true, false);
+    setSelected(id);
+  }
   function togglePause() {
     if (discovering) return;
+    closePrompt(false, false);
     clock.current.paused = !clock.current.paused;
     setPaused(clock.current.paused);
     setTime(clock.current.time);
@@ -298,31 +392,175 @@ export function Experience() {
       a.type === "spawn" && entityVisible(buffer.actions, a, time),
   );
   const entity = spawns.find((a) => a.entityId === selected);
+  const panelVisible = panelOpen && !(compact && (entity || promptOpen));
   const status = discovering
     ? `Looking elsewhere in ${discovery?.periodLabel ?? "this period"}`
-    : error
-      ? "Stream interrupted"
-      : awaitingScene
-        ? focus
-          ? "Preparing a replacement story"
-          : "Finding your moment"
-        : ended
-          ? "Story complete"
-          : paused
-            ? "Paused"
-            : waiting
-              ? "Waiting for the next chapter"
-              : streaming
-                ? focus
-                  ? "Building the story"
-                  : "Finding your moment"
-                : playable
-                  ? "Story playing"
-                  : "A little curiosity goes a long way";
+    : choices
+      ? "Choose a moment to explore"
+      : resolving
+        ? "Finding possible stories"
+        : error
+          ? "Story request failed"
+          : awaitingScene
+            ? focus
+              ? "Preparing a replacement story"
+              : "Finding your moment"
+            : ended
+              ? "Story complete"
+              : paused
+                ? "Paused"
+                : waiting
+                  ? "Waiting for the next chapter"
+                  : streaming
+                    ? focus
+                      ? "Building the story"
+                      : "Finding your moment"
+                    : playable
+                      ? "Story playing"
+                      : "A little curiosity goes a long way";
+
+  useEffect(() => {
+    if (!promptOpen) return;
+    document.getElementById("history-prompt")?.focus();
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      closePrompt();
+    };
+    document.addEventListener("keydown", dismiss);
+    return () => document.removeEventListener("keydown", dismiss);
+  }, [promptOpen]);
+
+  const promptForm = (
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          void start(prompt);
+        }}
+      >
+        <label htmlFor="history-prompt">What are you curious about?</label>
+        <div className="prompt-input">
+          <input
+            id="history-prompt"
+            value={prompt}
+            onChange={(event) => {
+              setPrompt(event.target.value);
+              setClarification(null);
+            }}
+            placeholder="A war, a journey, a turning point…"
+            minLength={3}
+            maxLength={500}
+            required
+            autoComplete="off"
+          />
+          <button
+            type="submit"
+            aria-label="Explore this story"
+            disabled={prompt.trim().length < 3}
+          >
+            <ArrowRight size={21} />
+          </button>
+        </div>
+      </form>
+  );
+  const requestFeedback = (
+    <>
+      <div className="stream-status" role="status">
+        {streaming && <LoaderCircle size={13} className="spin" />}
+        {status}
+        {streaming && (
+          <button
+            className="text-button"
+            onClick={() => {
+              active.current?.abort();
+              setStreaming(false);
+              setResolving(false);
+              setError(
+                "Request stopped. Any available chapters can still be played or replayed.",
+              );
+            }}
+          >
+            Stop
+          </button>
+        )}
+      </div>
+      {error && (
+        <div className="error-message" role="alert">
+          {error}
+        </div>
+      )}
+      {choices && (
+        <section
+          className="story-choices"
+          aria-labelledby="story-choice-question"
+        >
+          <h2 id="story-choice-question">{choices.question}</h2>
+          <div className="story-choice-options">
+            {choices.options.map((option, index) => (
+              <button
+                key={option.prompt}
+                type="button"
+                ref={index === 0 ? firstChoice : undefined}
+                onClick={() => {
+                  setPrompt(option.prompt);
+                  void start(option.prompt, false, undefined, true);
+                }}
+              >
+                <span>
+                  <strong>{option.label}</strong>
+                  <small>{option.period}</small>
+                  <span>{option.description}</span>
+                </span>
+                <ArrowRight size={16} aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="text-button"
+            onClick={() => setClarification(null)}
+          >
+            Dismiss choices
+          </button>
+        </section>
+      )}
+    </>
+  );
+
+  const storySuggestions = (
+    <>
+      <p className="demo-label">Try a curated story</p>
+      <div className="demo-options">
+        {demos.map((demo) => (
+          <button
+            key={demo.prompt}
+            onClick={() => void start(demo.prompt, true)}
+          >
+            {demo.icon === "flag" ? (
+              <Flag size={16} />
+            ) : (
+              <Route size={16} />
+            )}
+            <span>
+              {demo.label}
+              <small>
+                {demo.period} <span>·</span> {demo.region}
+              </small>
+            </span>
+            <ArrowRight size={15} />
+          </button>
+        ))}
+      </div>
+      <p className="demo-disclosure">
+        Sample stories are curated demonstrations. Other prompts require a
+        connected scene provider.
+      </p>
+    </>
+  );
 
   return (
-    <main className={focus ? "experience has-story" : "experience"}>
-      <header className="masthead">
+    <main className={`experience${focus ? " has-story" : ""}${focus && panelVisible ? " details-open" : ""}`}>
+      <header className="masthead" data-map-obstacle>
         <a className="wordmark" href="/" aria-label="Meanwhile home">
           <span className="brand-mark">
             <Globe2 size={22} />
@@ -334,6 +572,38 @@ export function Experience() {
           <span /> An exploration in time
         </span>
       </header>
+
+      {focus && (
+        <>
+          <button ref={newStoryButton} className="new-story-button" aria-expanded={promptOpen} aria-controls="playback-prompt"
+            onClick={togglePrompt} data-map-obstacle>
+            <Plus size={16} /><span>New story</span>
+          </button>
+          {promptOpen && (
+            <section id="playback-prompt" className="prompt-section playback-prompt" aria-label="Choose a historical story" data-map-obstacle>
+              <button className="close-button" aria-label="Close story prompt" onClick={() => closePrompt()}><X size={16} /></button>
+              {promptForm}
+              {requestFeedback}
+            </section>
+          )}
+          <div className="story-heading" data-map-obstacle>
+            <h1>{focus.title}</h1>
+            {spawns.length > 0 && chapter && (
+              <div className="active-chapter-heading">
+                <span>{chapter.date}</span><h2>{chapter.title}</h2>
+              </div>
+            )}
+            {!promptOpen && <div className="playback-feedback">{requestFeedback}</div>}
+          </div>
+          <button className="panel-toggle" aria-label={panelVisible ? "Hide story details" : "Show story details"}
+            aria-expanded={panelVisible} aria-controls="story-panel" onClick={() => {
+              if (compact) { setSelected(null); closePrompt(true, false); }
+              setPanelOpen(!panelVisible);
+            }} data-map-obstacle>
+            <span>Story details</span>{panelVisible ? <X size={16} /> : <ArrowRight size={16} />}
+          </button>
+        </>
+      )}
 
       <section
         className="world-stage"
@@ -372,12 +642,20 @@ export function Experience() {
               clock={clock}
               time={time}
               selected={entity?.entityId ?? null}
-              onSelect={setSelected}
+              onSelect={selectEntity}
               homeKey={homeKey}
               cameraCommand={cameraCommand}
+              panelOpen={Boolean(panelVisible)}
             />
           </GlobeBoundary>
         </div>
+        {focus && chapter && spawns.length === 0 && (
+          <section className="map-chapter-card" aria-label="Map story text" data-map-obstacle>
+            <p className="eyebrow">{chapter.date}</p>
+            <h2>{chapter.title}</h2>
+            <p>{chapter.caption}<SourceLinks sources={focus.sources} ids={chapter.sourceIds} fallback /></p>
+          </section>
+        )}
         <div className="world-coordinate">
           <Compass size={14} />
           <span>
@@ -386,7 +664,7 @@ export function Experience() {
               : "Every place has a past"}
           </span>
         </div>
-        <div className="world-tools">
+        <div className="world-tools" data-map-obstacle>
           <button aria-label="Zoom in" onClick={() => command("in")}>
             <Plus size={17} />
           </button>
@@ -407,7 +685,9 @@ export function Experience() {
         )}
       </section>
 
-      <div className="story-column">
+      <div className="story-column" id="story-panel" role={focus ? "complementary" : undefined}
+        aria-label={focus ? "Story details" : undefined} aria-hidden={focus && !panelVisible ? true : undefined}
+        inert={focus && !panelVisible ? true : undefined} data-map-obstacle>
         {!focus ? (
           <section className="intro">
             <p className="eyebrow">History, in a different light</p>
@@ -440,12 +720,11 @@ export function Experience() {
               </p>
             )}
             <p className="eyebrow story-period">{focus.period}</p>
-            <h1>{focus.title}</h1>
-            <div className="chapter-copy">
+            {spawns.length > 0 && <div className="chapter-copy">
               <p className="chapter-date">
                 {chapter?.date ?? "Preparing the first chapter"}
               </p>
-              <h2>{chapter?.title ?? "Traveling to the story…"}</h2>
+              <p className="chapter-title">{chapter?.title ?? "Traveling to the story…"}</p>
               <p>
                 {chapter?.caption ??
                   "The camera travels as the scene arrives. You can explore the globe at any time."}
@@ -457,7 +736,7 @@ export function Experience() {
                   />
                 )}
               </p>
-            </div>
+            </div>}
             <div className="discovery-actions">
               {discovery && (
                 <button
@@ -490,7 +769,7 @@ export function Experience() {
                     <button
                       key={spawn.entityId}
                       aria-pressed={entity?.entityId === spawn.entityId}
-                      onClick={() => setSelected(spawn.entityId)}
+                      onClick={() => selectEntity(spawn.entityId)}
                     >
                       {spawn.label}
                     </button>
@@ -511,91 +790,18 @@ export function Experience() {
           </section>
         )}
 
-        <section
-          className="prompt-section"
-          aria-label="Choose a historical story"
-        >
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              void start(prompt);
-            }}
-          >
-            <label htmlFor="history-prompt">What are you curious about?</label>
-            <div className="prompt-input">
-              <input
-                id="history-prompt"
-                value={prompt}
-                onChange={(event) => setPrompt(event.target.value)}
-                placeholder="A war, a journey, a turning point…"
-                minLength={3}
-                maxLength={500}
-                required
-                autoComplete="off"
-              />
-              <button
-                type="submit"
-                aria-label="Explore this story"
-                disabled={prompt.trim().length < 3}
-              >
-                <ArrowRight size={21} />
-              </button>
-            </div>
-          </form>
-          <div className="stream-status" role="status">
-            {streaming && <LoaderCircle size={13} className="spin" />}
-            {status}
-            {streaming && (
-              <button
-                className="text-button"
-                onClick={() => {
-                  active.current?.abort();
-                  setStreaming(false);
-                  setError(
-                    "Generation stopped. Any available chapters can still be played or replayed.",
-                  );
-                }}
-              >
-                Stop
-              </button>
-            )}
-          </div>
-          {error && (
-            <div className="error-message" role="alert">
-              {error}
-            </div>
-          )}
-          <p className="demo-label">Try a curated story</p>
-          <div className="demo-options">
-            {demos.map((demo) => (
-              <button
-                key={demo.prompt}
-                onClick={() => void start(demo.prompt, true)}
-              >
-                {demo.icon === "flag" ? (
-                  <Flag size={16} />
-                ) : (
-                  <Route size={16} />
-                )}
-                <span>
-                  {demo.label}
-                  <small>
-                    {demo.period} <span>·</span> {demo.region}
-                  </small>
-                </span>
-                <ArrowRight size={15} />
-              </button>
-            ))}
-          </div>
-          <p className="demo-disclosure">
-            Sample stories are curated demonstrations. Other prompts require a
-            connected scene provider.
-          </p>
-        </section>
+        {!focus && (
+          <section className="prompt-section" aria-label="Choose a historical story">
+            {promptForm}
+            {requestFeedback}
+            {storySuggestions}
+          </section>
+        )}
+        {focus && <div className="story-suggestions">{storySuggestions}</div>}
       </div>
 
       {entity && (
-        <aside className="selection-card" aria-label="Selected object">
+        <aside className="selection-card" aria-label="Selected object" data-map-obstacle>
           <button
             className="close-button"
             aria-label="Close object details"
@@ -656,13 +862,14 @@ export function Experience() {
       )}
 
       {playable && (
-        <section className="playback" aria-label="Story playback">
+        <section className="playback" aria-label="Story playback" data-map-obstacle>
           <div className="playback-buttons">
             <button
               disabled={discovering}
               aria-label={ended ? "Play again" : paused ? "Play" : "Pause"}
               onClick={() => {
                 if (ended) {
+                  closePrompt(false, false);
                   seek(0);
                   clock.current.paused = false;
                   setPaused(false);
@@ -679,6 +886,7 @@ export function Experience() {
               disabled={discovering}
               aria-label="Replay from beginning"
               onClick={() => {
+                closePrompt(false, false);
                 seek(0);
                 clock.current.paused = false;
                 setPaused(false);

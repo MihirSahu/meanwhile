@@ -1,8 +1,9 @@
 import { z } from "zod";
 import { historicalRangeSchema } from "./historical-time";
 export const claimIdSchema = z.string().regex(/^c[1-9][0-9]?$/);
+export const maxChecklistClaims = 18;
 export const passageIdSchema = z.string().regex(/^p[1-9][0-9]?$/);
-export const claimIdsSchema = z.array(claimIdSchema).max(12);
+export const claimIdsSchema = z.array(claimIdSchema).max(maxChecklistClaims);
 export const claimSchema = z
   .object({
     id: claimIdSchema,

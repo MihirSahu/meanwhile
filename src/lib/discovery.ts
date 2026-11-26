@@ -22,6 +22,7 @@ export const discoveryContextSchema = z.object({
   excludedTitles: z.array(z.string().min(1).max(100)).max(8),
 });
 export type DiscoveryContext = z.infer<typeof discoveryContextSchema>;
+export const minimumDiscoveryDistance = 20;
 export function angularDistance(a: Geo, b: Geo) {
   const rad = Math.PI / 180;
   return (
@@ -63,7 +64,12 @@ export function currentHistoricalContext(
   };
 }
 export function discoveryPrompt(context: DiscoveryContext) {
-  return `Find one sourced historical event elsewhere in the world during ${context.periodLabel}, strictly within years ${context.yearRange.startYear} to ${context.yearRange.endYear} (negative years mean BCE). The current story is ${context.originTitle} near latitude ${context.originCenter.lat}, longitude ${context.originCenter.lon}. Choose an event at least 20 angular degrees away. Do not repeat these stories: ${context.excludedTitles.join("; ")}. Show what was happening in that same period; do not change historical dates to make an event fit. If no supported event is found, ask for a broader historical period.`;
+  return `Find one sourced historical event elsewhere in the world during ${context.periodLabel}, strictly within years ${context.yearRange.startYear} to ${context.yearRange.endYear} (negative years mean BCE). The current story is ${context.originTitle} near latitude ${context.originCenter.lat}, longitude ${context.originCenter.lon}. Choose an event at least ${minimumDiscoveryDistance} angular degrees away. This is an application selection rule: the server calculates separation from mapped coordinates; do not search for a source proving the angular distance. Find readable evidence for the selected event's date, context, principal actors, outcome and named geographic setting. Prefer a candidate with an explicitly supported city, country or region. If the sources cannot establish its geographic setting, choose another well-sourced event during the same period rather than repeatedly researching an unlocatable candidate. Do not repeat these stories: ${context.excludedTitles.join("; ")}. Show what was happening in that same period; do not change historical dates to make an event fit. If no supported event is found, ask for a broader historical period.`;
+}
+/** Historical extraction/review must not treat navigation arithmetic as a fact
+ * that a historical source needs to establish. Research alone selects elsewhere. */
+export function discoveryStoryPrompt(context: DiscoveryContext) {
+  return `Prepare a concise sourced account of the one historical event selected by the research during ${context.periodLabel}, strictly within years ${context.yearRange.startYear} to ${context.yearRange.endYear} (negative years mean BCE). Explain its context, principal actors, main developments and concrete outcome. Include a supported geographic setting: a city, country or region is sufficient for an honest regional context anchor; do not invent a precise venue or imply the event occurred at that anchor. Do not repeat these stories: ${context.excludedTitles.join("; ")}. Do not change historical dates to fit the period.`;
 }
 export function validateDiscovery(
   context: DiscoveryContext,
@@ -73,7 +79,8 @@ export function validateDiscovery(
     throw new Error(
       "The discovered event must stay within the requested historical period; never change historical dates to fit.",
     );
-  if (angularDistance(context.originCenter, focus.center) < 20)
+  const separation = angularDistance(context.originCenter, focus.center);
+  if (separation < minimumDiscoveryDistance)
     throw new Error(
       "Choose an event elsewhere, at least 20 angular degrees from the original focus.",
     );
@@ -83,4 +90,10 @@ export function validateDiscovery(
     )
   )
     throw new Error("Choose a different historical event.");
+  return {
+    periodCheck: "within_requested_range" as const,
+    titleCheck: "not_excluded" as const,
+    angularDistanceDegrees: separation,
+    minimumAngularDistanceDegrees: minimumDiscoveryDistance,
+  };
 }

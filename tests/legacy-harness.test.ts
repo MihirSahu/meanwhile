@@ -126,6 +126,39 @@ test("provider selection keeps auto/upstream/demo compatibility and Terra defaul
     assert.throws(() => config(extra), SceneServiceError);
 });
 
+test("focused rereading finds an omitted specific detail without another fetch or model request", async () => {
+  const text = Array.from({ length: 60 }, (_, i) =>
+    `Regional markets and merchants carried trade across regional networks around 1300, in illustrative section ${i}.`,
+  ).join(" ") + " Rowan carried the purple pennant during the expedition.";
+  let reads = 0;
+  const { provider, bodies } = fixtureProvider({ sourceReader: async () => {
+    reads++;
+    return { ...fixtureDocument, text };
+  } });
+  const original = await provider.research("Regional markets and merchants around 1300", signal());
+  assert.ok(!original.passages?.some((p) => p.text.includes("Rowan carried")));
+  const reread = await provider.rereadEvidence(["Rowan purple pennant"], signal());
+  const found = reread?.passages?.find((p) => p.text.includes("Rowan carried"));
+  assert.ok(found);
+  assert.equal(text.slice(found.start, found.end), found.text);
+  assert.equal(reads, 1);
+  assert.equal(bodies.length, 1);
+});
+
+test("a fresh provider can reread cached research without paying for another search", async () => {
+  let reads = 0;
+  const { provider, bodies } = fixtureProvider({ sourceReader: async () => {
+    reads++;
+    return fixtureDocument;
+  } });
+  const result = await provider.rereadEvidence(["markets and merchants"], signal(), research);
+  assert.ok(result?.passages?.length);
+  assert.equal(reads, 1);
+  assert.equal(bodies.length, 0);
+  await provider.rereadEvidence(["regional cities"], signal(), research);
+  assert.equal(reads, 1, "subsequent rereads reuse the document loaded for the cache hit");
+});
+
 test("Terra emits focus and batches progressively through the production SDK contract", async () => {
   const { provider, bodies, usage } = fixtureProvider();
   const iterator = generateScene("Silk Road", provider, signal(), {
@@ -237,7 +270,7 @@ test("repeated prompts reuse research, while model changes isolate the cache", a
   }
 });
 
-test("uncited research and model-written URLs cannot enter the source registry", async () => {
+test("model-written URLs without citation or search-tool provenance cannot enter the source registry", async () => {
   const { provider } = fixtureProvider({
     respond: () => responseFixture(`Made-up reference: ${evidenceUrl}`, false),
   });
@@ -249,6 +282,8 @@ test("uncited research and model-written URLs cannot enter the source registry",
     respond: () => {
       const value = responseFixture("Research with no citations", true);
       (value.output.at(-1) as any).content[0].annotations = [];
+      for (const item of value.output as any[])
+        if (item.type === "web_search_call" && item.action.type === "search") item.action.sources = [];
       return value;
     },
   });
@@ -256,6 +291,30 @@ test("uncited research and model-written URLs cannot enter the source registry",
     uncited.provider.research("Silk Road", signal()),
     /citable sources/,
   );
+});
+
+test("actual search-result pages are fetched as bounded evidence candidates even when the brief does not cite them", async () => {
+  const read: string[] = [];
+  const { provider } = fixtureProvider({
+    respond: (body) => {
+      const value = fixtureForRequest(body) as any;
+      if (body.tools) {
+        const search = value.output.find((item: any) => item.type === "web_search_call");
+        search.action.sources = [
+          { type: "url", url: evidenceUrl + "?utm_source=duplicate" },
+          ...Array.from({ length: 12 }, (_, i) => ({ type: "url", url: `https://example.org/overview-${i}` })),
+        ];
+      }
+      return value;
+    },
+    sourceReader: async (url) => { read.push(url); return fixtureDocument; },
+  });
+  const bundle = await provider.research("Synthetic broader historical overview", signal());
+  assert.equal(bundle.sources.length, 8);
+  assert.equal(read.length, 8);
+  assert.equal(bundle.sources.filter((s) => s.url.startsWith(evidenceUrl)).length, 1);
+  assert.ok(bundle.sources.some((s) => s.url.includes("overview-0")));
+  assert.ok(bundle.passages!.every((p) => read.includes(bundle.sources.find((s) => s.id === p.sourceId)!.url)));
 });
 
 test("unknown source references and invalid timelines receive one atomic repair", async () => {
@@ -726,7 +785,7 @@ test("independent checklist sees only prompt, fetched passages and capabilities 
   );
   const extraction = JSON.parse(bodies[1].input).request;
   assert.deepEqual(Object.keys(extraction).sort(), [
-    "discovery",
+    "coverageQuestions",
     "prompt",
     "renderingCapabilities",
     "research",
@@ -1066,7 +1125,7 @@ test("one targeted lookup fills an evidence gap before a fresh checklist freezes
     2,
   );
   assert.equal(bodies.length, 11);
-  assert.equal(recoveries[0].outcome, "recovered");
+  assert.equal(recoveries.find((r) => r.method === "search")?.outcome, "recovered");
   assert.equal(
     buffer.focus!.evidence!.passages[0].documentHash,
     "b".repeat(64),
@@ -1098,7 +1157,7 @@ test("missing evidence after the single recovery clarifies without looping or pu
     generateScene("Silk Road", provider, signal(), {
       cache: new ResearchCache(),
     }).next(),
-    /Essential event order/,
+    (error: any) => error.code === "evidence" && /Essential event order/.test(error.details?.reason ?? ""),
   );
   assert.equal(bodies.filter((b) => b.tools).length, 2);
   assert.equal(bodies.length, 4);
@@ -1190,9 +1249,9 @@ test("recovery is skipped before search when it would consume reserved completio
       cache: new ResearchCache(),
       onRecovery: (r) => recoveries.push(r),
     }).next(),
-    /outcome is missing/,
+    (error: any) => error.code === "evidence" && /outcome is missing/.test(error.details?.reason ?? ""),
   );
-  assert.equal(recoveries[0].outcome, "budget");
+  assert.equal(recoveries.find((r) => r.method === "search")?.outcome, "budget");
   assert.equal(bodies.filter((b) => b.tools).length, 1);
 });
 

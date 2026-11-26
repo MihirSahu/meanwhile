@@ -57,7 +57,11 @@ test("Meanwhile uses the current chapter and rejects another period or nearby ev
     center: { lat: 0, lon: -70 },
     yearRange: context.yearRange,
   };
-  assert.doesNotThrow(() => validateDiscovery(context, event));
+  const receipt = validateDiscovery(context, event);
+  assert.equal(receipt.angularDistanceDegrees, angularDistance(context.originCenter, event.center));
+  assert.equal(receipt.minimumAngularDistanceDegrees, 20);
+  assert.equal(receipt.periodCheck, "within_requested_range");
+  assert.throws(() => validateDiscovery(context, { ...event, title: context.originTitle }), /different historical event/);
   assert.throws(
     () =>
       validateDiscovery(context, {
@@ -133,4 +137,30 @@ test("model spacing is deterministic and leaves isolated anchors in place", () =
   assert.deepEqual(offsets.a, [0, 0]);
   assert.notDeepEqual(offsets.b, offsets.a);
   assert.ok(Math.hypot(...offsets.c) < 0.3);
+});
+
+test("narration sits beside the full miniature and avoids the right story panel", () => {
+  const figure = { x: 400, y: 180, width: 170, height: 230 };
+  const panel = { x: 760, y: 90, width: 200, height: 450 };
+  const rect = { x: 460, y: 180, width: 210, height: 180 };
+  const result = packLabels([{ id: "speaker", rect, anchor: figure, priority: 1000 }],
+    { x: 8, y: 80, width: 944, height: 500 }, 6, [figure, panel]).speaker;
+  assert.ok(result.shown);
+  const placed = { ...rect, x: rect.x + result.x, y: rect.y + result.y };
+  assert.ok(placed.x + placed.width < figure.x);
+  assert.ok(placed.y >= 80 && placed.y + placed.height <= 580);
+});
+
+test("narrow-screen narration uses clear space without covering models or playback", () => {
+  const figure = { x: 125, y: 300, width: 140, height: 100 };
+  const top = { x: 0, y: 0, width: 390, height: 210 };
+  const playback = { x: 12, y: 680, width: 366, height: 100 };
+  const rect = { x: 150, y: 280, width: 150, height: 140 };
+  const result = packLabels([{ id: "speaker", rect, anchor: figure, priority: 1000 }],
+    { x: 8, y: 80, width: 374, height: 580 }, 4, [figure, top, playback]).speaker;
+  assert.ok(result.shown);
+  const placed = { ...rect, x: rect.x + result.x, y: rect.y + result.y };
+  assert.ok(placed.y > figure.y + figure.height);
+  assert.ok(placed.x >= 8 && placed.x + placed.width <= 382);
+  assert.ok(placed.y + placed.height < playback.y);
 });

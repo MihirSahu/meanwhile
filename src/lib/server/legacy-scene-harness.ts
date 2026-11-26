@@ -325,8 +325,9 @@ export async function* generateScene(
       : ["opening", "evidence_review", ...remainingPairs(0)];
   const reserve = (stages: BudgetStage[]) =>
     provider.reserveCompletion?.(reserveFor(stages));
-  const { research, prepared, validated, generationEvidence } =
+  const { research, prepared, validated, generationEvidence, historicalPrompt } =
     await prepareSceneEvidence(prompt, provider, signal, options, sceneSteps);
+  prompt = historicalPrompt;
   if (prepared.result.status !== "ready")
     throw new Error("Expected a ready source checklist.");
   const checklist = prepared.result;

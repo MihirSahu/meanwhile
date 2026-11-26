@@ -9,6 +9,9 @@ export class SceneServiceError extends Error {
       providerCode?: string;
       requestId?: string;
       stage?: string;
+      connectionCode?: string;
+      responseId?: string;
+      reason?: string;
     },
   ) {
     super(message);

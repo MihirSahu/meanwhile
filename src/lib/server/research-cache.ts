@@ -34,6 +34,9 @@ export class ResearchCache {
   clear() {
     this.entries.clear();
   }
+  delete(key: string) {
+    this.entries.delete(key);
+  }
 }
 
 export const researchCache = new ResearchCache();

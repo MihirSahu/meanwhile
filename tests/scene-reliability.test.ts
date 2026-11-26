@@ -65,6 +65,7 @@ test("focus explicitly selects the requested main site rather than the first bac
     position: { lat: 50.68, lon: 4.41 },
   };
   p.focusEventIndex = 1;
+  p.location = "Main site";
   const story = compileEventPlan(p, checklist(), research);
   assert.deepEqual(story.focus.center, { lat: 50.68, lon: 4.41 });
   assert.equal(story.focus.location, "Main site");

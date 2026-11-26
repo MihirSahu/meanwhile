@@ -51,11 +51,12 @@ export function sceneFraming(
     distance: Math.min(7.8, Math.max(focus.distance, 4.1, distance)),
   };
 }
-/** Greedy screen-space packing. The caller sorts important labels first. */
+/** Screen-space packing around miniatures and interface controls. */
 export function packLabels(
-  items: { id: string; rect: Rect; priority: number }[],
+  items: { id: string; rect: Rect; priority: number; anchor?: Rect }[],
   bounds: Rect,
   limit: number,
+  obstacles: Rect[] = [],
 ) {
   const placed: Rect[] = [],
     result: Record<string, { x: number; y: number; shown: boolean }> = {};
@@ -76,19 +77,38 @@ export function packLabels(
       r.y <= bounds.y + bounds.height &&
       placed.length < limit
     ) {
-      for (const dy of [0, -32, 32, -64, 64]) {
+      const anchor = item.anchor;
+      const candidates = anchor
+        ? [
+            // Try either side first, keeping the entire box off the miniature.
+            ...[0, -32, 32, -80, 80, -144, 144].flatMap((dy) => [
+              { x: anchor.x + anchor.width + 16, y: anchor.y + anchor.height / 2 - r.height / 2 + dy },
+              { x: anchor.x - r.width - 16, y: anchor.y + anchor.height / 2 - r.height / 2 + dy },
+            ]),
+            // On a narrow screen, use clear space above/below rather than
+            // drawing through a figure or letting narration leave the screen.
+            { x: anchor.x + anchor.width / 2 - r.width / 2, y: anchor.y - r.height - 16 },
+            { x: anchor.x + anchor.width / 2 - r.width / 2, y: anchor.y + anchor.height + 16 },
+            ...Array.from({ length: Math.ceil(bounds.height / 32) }, (_, i) => [
+              { x: bounds.x, y: bounds.y + i * 32 },
+              { x: bounds.x + bounds.width - r.width, y: bounds.y + i * 32 },
+            ]).flat(),
+          ]
+        : [0, -32, 32, -64, 64].map((dy) => ({ x: r.x, y: r.y + dy }));
+      for (const candidate of candidates) {
         const next = {
           ...r,
           x: Math.max(
             bounds.x,
-            Math.min(r.x, bounds.x + bounds.width - r.width),
+            Math.min(candidate.x, bounds.x + bounds.width - r.width),
           ),
           y: Math.max(
             bounds.y,
-            Math.min(r.y + dy, bounds.y + bounds.height - r.height),
+            Math.min(candidate.y, bounds.y + bounds.height - r.height),
           ),
         };
-        if (!placed.some((p) => overlap(next, p))) {
+        if (next.width <= bounds.width && next.height <= bounds.height &&
+          ![...placed, ...obstacles].some((p) => overlap(next, p))) {
           found = next;
           break;
         }

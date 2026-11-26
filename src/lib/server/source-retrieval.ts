@@ -240,11 +240,46 @@ export function selectPassages(
     retrievedAt: document.retrievedAt,
   }));
 }
+
+/** Reserve excerpt space for the core parts of an overview, rather than
+ * letting one repeated phase in the brief occupy every available window. */
+export function selectCoveragePassages(document: SourceDocument, sourceId: string, query: string, brief: string) {
+  const primary = selectPassages(document, sourceId, `${query} ${brief.slice(0, 6000)}`);
+  const pools = [primary, ...[
+    "origin cause background grievance purpose",
+    "leader leadership commander government participant",
+    "development milestone campaign battle reform journey stage",
+    "outcome defeat victory armistice settlement treaty return aftermath",
+  ].map((facet) => {
+    const score = (text: string) => facet.split(" ").reduce((sum, word) =>
+      sum + Number(text.toLowerCase().includes(word)), 0);
+    return selectPassages(document, sourceId, `${query} ${facet}`)
+      .sort((a, b) => score(b.text) - score(a.text) || a.start - b.start);
+  })];
+  const selected: typeof primary = [];
+  // Different facets can need adjacent sentences sharing introductory context.
+  // Reject near-duplicates, without excluding a cause/battle merely because
+  // its window overlaps a neighboring leadership passage.
+  const distinct = (candidate: typeof primary[number]) => !selected.some((other) =>
+    Math.max(0, Math.min(candidate.end, other.end) - Math.max(candidate.start, other.start)) >
+      0.8 * Math.min(candidate.end - candidate.start, other.end - other.start),
+  );
+  for (const pool of pools) {
+    const next = pool.find(distinct);
+    if (next) selected.push(next);
+  }
+  for (const candidate of primary) {
+    if (selected.length === 5) break;
+    if (distinct(candidate)) selected.push(candidate);
+  }
+  return selected.sort((a, b) => a.start - b.start);
+}
 export async function retrieveResearchPassages(
   brief: ResearchBundle,
   query: string,
   signal: AbortSignal,
   reader: SourceReader = readSourceDocument,
+  focused = false,
 ): Promise<ResearchBundle> {
   const passages: EvidencePassage[] = [],
     sourceChecks: SourceCheck[] = [];
@@ -283,11 +318,8 @@ export async function retrieveResearchPassages(
       });
       continue;
     }
-    const selected = selectPassages(
-      result,
-      source.id,
-      `${query} ${brief.text.slice(0, 6000)}`,
-    );
+    const selected = focused ? selectPassages(result, source.id, query)
+      : selectCoveragePassages(result, source.id, query, brief.text);
     sourceChecks.push({
       sourceId: source.id,
       status: selected.length ? "readable" : "unavailable",

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test, { type TestContext } from "node:test";
 import { POST } from "../src/app/api/scene/route";
 import { makeDemo } from "../src/lib/demo";
-import { fixtureForRequest, fixtureHtml } from "./fixtures/live-scene";
+import { fixtureForRequest, fixtureHtml, responseFixture } from "./fixtures/live-scene";
 import { researchCache } from "../src/lib/server/research-cache";
 import {
   sceneInstructions,
@@ -24,8 +24,13 @@ test("direct OpenAI mode streams a complete live scene through the same endpoint
     OPENAI_API_KEY: "fixture-key",
     SCENE_RESEARCH_CACHE_TTL_SECONDS: "0",
     SCENE_LOG_USAGE: "false",
+    SCENE_LOG_DEBUG: "true",
   });
   researchCache.clear();
+  const diagnostics: { event: string; record: any }[] = [];
+  t.mock.method(console, "debug", (event: string, details: string) => {
+    diagnostics.push({ event, record: JSON.parse(details) });
+  });
   const requests: Record<string, any>[] = [];
   t.mock.method(
     globalThis,
@@ -57,7 +62,97 @@ test("direct OpenAI mode streams a complete live scene through the same endpoint
   assert.equal(messages[0].sources[0].id, "s1");
   assert.equal(requests.length, 5);
   assert.ok(requests.every((body) => body.model === "gpt-6.1-terra"));
+  const traceId = response.headers.get("X-Meanwhile-Trace-Id");
+  assert.ok(traceId);
+  assert.ok(diagnostics.every(({ record }) => record.traceId === traceId));
+  assert.deepEqual(diagnostics.filter(({ event }) => event.endsWith("stage.started")).map(({ record }) => record.stage), [
+    "research", "checklist", "checklist_review", "event_plan", "event_review",
+  ]);
+  assert.ok(diagnostics.some(({ event }) => event === "meanwhile.scene.compilation.completed"));
+  assert.equal(diagnostics.filter(({ event }) => event === "meanwhile.scene.stream.sent").length, 5);
+  assert.equal(diagnostics.at(-1)?.record.outcome, "complete");
+  assert.doesNotMatch(JSON.stringify(diagnostics), /fixture-key|Evidence brief/);
 });
+
+test("missing-source instructions stay in terminal diagnostics rather than asking the visitor to provide research", async (t) => {
+  configure(t, { ...process.env, SCENE_PROVIDER: "openai", OPENAI_API_KEY: "fixture-key",
+    SCENE_RESEARCH_CACHE_TTL_SECONDS: "0", SCENE_LOG_DEBUG: "false" });
+  const failures: any[] = [];
+  t.mock.method(console, "error", (_event: string, details: string) => failures.push(JSON.parse(details)));
+  t.mock.method(globalThis, "fetch", async (url: string, init: RequestInit) => {
+    if (init.method === "GET") return fixtureHtml();
+    if (String(url).includes("/responses/input_tokens"))
+      return Response.json({ object: "response.input_tokens", input_tokens: 100 });
+    const body = JSON.parse(init.body as string);
+    if (body.text?.format.name === "meanwhile_checklist")
+      return Response.json(responseFixture(JSON.stringify({ claims: [], result: {
+        status: "clarification", reason: "missing_evidence",
+        question: "Could you provide sources covering the war’s origins and major military developments?",
+        missingEvidence: ["Sources on the war’s origins and military developments."],
+      } })));
+    return Response.json(fixtureForRequest(body));
+  });
+  const response = await POST(request({ prompt: "World War I" }));
+  const messages = (await response.text()).trim().split("\n").map((line) => JSON.parse(line));
+  assert.deepEqual(messages.map((m) => m.type), ["error"]);
+  assert.match(messages[0].message, /reliable sources/);
+  assert.doesNotMatch(messages[0].message, /provide sources|military developments/);
+  assert.equal(failures[0].code, "evidence");
+  assert.match(failures[0].reason, /provide sources.*origins/);
+});
+
+for (const environment of ["development", "production"] as const)
+  test(`rejected stories retain development diagnostics without publishing unverified output (${environment})`, async (t) => {
+    configure(t, {
+      ...process.env,
+      NODE_ENV: environment,
+      SCENE_PROVIDER: "openai",
+      OPENAI_API_KEY: "fixture-key",
+      SCENE_RESEARCH_CACHE_TTL_SECONDS: "0",
+      SCENE_LOG_USAGE: "false",
+    });
+    researchCache.clear();
+    const warnings: unknown[][] = [];
+    t.mock.method(console, "warn", (...args: unknown[]) => warnings.push(args));
+    t.mock.method(globalThis, "fetch", async (url: string, init: RequestInit) => {
+      if (init.method === "GET") return fixtureHtml();
+      if (String(url).includes("/responses/input_tokens"))
+        return Response.json({
+          object: "response.input_tokens",
+          input_tokens: 100,
+        });
+      const body = JSON.parse(init.body as string);
+      const response = fixtureForRequest(body);
+      if (body.text?.format.name === "meanwhile_event_plan") {
+        const content = (response.output.at(-1) as any).content[0];
+        const plan = JSON.parse(content.text);
+        plan.result.events[0].claimIndices = [999];
+        content.text = JSON.stringify(plan);
+      }
+      return Response.json(response);
+    });
+    const response = await POST(request({ prompt: "Silk Road" }));
+    const messages = (await response.text())
+      .trim()
+      .split("\n")
+      .map((line) => JSON.parse(line));
+    assert.equal(messages.length, 1);
+    assert.equal(messages[0].type, "error");
+    assert.match(messages[0].message, /try again or choose a curated story/);
+    assert.doesNotMatch(JSON.stringify(messages), /claimIndices|fixture-key|999/);
+    const rejections = warnings.filter(
+      ([name]) => name === "meanwhile.scene.rejected",
+    );
+    assert.equal(rejections.length, environment === "development" ? 2 : 0);
+    for (const [, details] of rejections) {
+      const record = JSON.parse(details as string);
+      assert.ok(record.traceId);
+      assert.ok(record.attempt === 1 || record.attempt === 2);
+      assert.ok(!("candidate" in record));
+      assert.equal(record.stage, "event_plan");
+      assert.match(record.reason, /claim/i);
+    }
+  });
 
 test("explicit OpenAI without credentials fails clearly, while demo buttons still work", async (t) => {
   configure(t, {
@@ -73,6 +168,50 @@ test("explicit OpenAI without credentials fails clearly, while demo buttons stil
   const first = await reader.read();
   assert.match(new TextDecoder().decode(first.value), /"mode":"demo"/);
   await reader.cancel();
+});
+
+test("failed date repairs log compilation bounds, rejection attempts and the final failure under one trace", async (t) => {
+  configure(t, {
+    ...process.env, SCENE_PROVIDER: "openai", OPENAI_API_KEY: "fixture-key",
+    SCENE_LOG_DEBUG: "true", SCENE_LOG_USAGE: "false", SCENE_RESEARCH_CACHE_TTL_SECONDS: "0",
+  });
+  const logs: { event: string; record: any }[] = [];
+  for (const level of ["debug", "warn", "error"] as const)
+    t.mock.method(console, level, (event: string, details: string) => {
+      logs.push({ event, record: JSON.parse(details) });
+    });
+  t.mock.method(globalThis, "fetch", async (url: string, init: RequestInit) => {
+    if (init.method === "GET") return fixtureHtml();
+    if (String(url).includes("/responses/input_tokens"))
+      return Response.json({ object: "response.input_tokens", input_tokens: 100 });
+    const body = JSON.parse(init.body as string);
+    if (body.text?.format.name === "meanwhile_repair")
+      return Response.json(responseFixture(JSON.stringify({
+        result: { status: "corrected", date: null, claimIndices: [0] },
+      })));
+    const output = fixtureForRequest(body);
+    if (body.text?.format.name === "meanwhile_event_plan") {
+      const content = (output.output.at(-1) as any).content[0];
+      const plan = JSON.parse(content.text);
+      plan.result.events[0].date.start.year = 1400;
+      plan.result.events[0].date.end.year = 1400;
+      content.text = JSON.stringify(plan);
+    }
+    return Response.json(output);
+  });
+  const response = await POST(request({ prompt: "Synthetic date repair failure" }));
+  const messages = (await response.text()).trim().split("\n").map((line) => JSON.parse(line));
+  assert.deepEqual(messages.map((message) => message.type), ["error"]);
+  const compilation = logs.find(({ event }) => event === "meanwhile.scene.compilation.failed")!.record;
+  assert.equal(compilation.eventIndex, 0);
+  assert.equal(compilation.requestedDate.start.year, 1400);
+  assert.equal(compilation.selectedClaims[0].id, "c1");
+  assert.deepEqual(logs.filter(({ event }) => event === "meanwhile.scene.rejected").map(({ record }) => record.attempt), [1, 2]);
+  const failure = logs.find(({ event }) => event === "meanwhile.scene.failed")!.record;
+  assert.equal(failure.code, "validation");
+  assert.equal(failure.lastRejection.attempt, 2);
+  assert.ok(logs.every(({ record }) => record.traceId === response.headers.get("X-Meanwhile-Trace-Id")));
+  assert.doesNotMatch(JSON.stringify(logs), /fixture-key/);
 });
 
 test("clarification from the live harness remains visible and contains no fabricated focus", async (t) => {
@@ -347,8 +486,13 @@ test("Meanwhile constrains live inference to another place in the supplied perio
     SCENE_PROVIDER: "openai",
     OPENAI_API_KEY: "fixture-key",
     SCENE_RESEARCH_CACHE_TTL_SECONDS: "0",
+    SCENE_LOG_DEBUG: "true",
   });
   const bodies: any[] = [];
+  const discoveryChecks: any[] = [];
+  t.mock.method(console, "debug", (event: string, details: string) => {
+    if (event === "meanwhile.scene.discovery.validated") discoveryChecks.push(JSON.parse(details));
+  });
   t.mock.method(
     globalThis,
     "fetch",
@@ -381,6 +525,12 @@ test("Meanwhile constrains live inference to another place in the supplied perio
   assert.equal(output.at(-1).type, "done");
   assert.equal(output[0].discoveryFrom.title, discovery.originTitle);
   assert.ok(bodies[0].input.includes("strictly within years 1275 to 1325"));
+  const preparation = bodies.filter((body) => ["meanwhile_checklist", "meanwhile_checklist_review"].includes(body.text?.format?.name));
+  assert.equal(preparation.length, 2);
+  for (const body of preparation) assert.doesNotMatch(body.input, /angular degrees|originCenter|latitude|longitude/);
+  assert.equal(discoveryChecks.length, 1);
+  assert.ok(discoveryChecks[0].angularDistanceDegrees >= 20);
+  assert.equal(discoveryChecks[0].minimumAngularDistanceDegrees, 20);
   const invalid = await POST(
     request({
       prompt: "Meanwhile",

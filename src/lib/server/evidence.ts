@@ -47,6 +47,26 @@ export function citedResearch(
       paragraphs.push(text.replace(/cite[^]*/g, ""));
     }
   }
+  // Search results can supply useful readable overviews even when the short
+  // model brief cites only an opening episode. They still must be fetched;
+  // search snippets and the brief never become claim evidence.
+  const candidates = response.output.flatMap((item) =>
+    item.type === "web_search_call" && item.action.type === "search"
+      ? item.action.sources ?? [] : [],
+  );
+  const canonical = (raw: string) => {
+    const url = new URL(raw); url.hash = "";
+    for (const key of [...url.searchParams.keys()])
+      if (key.startsWith("utm_")) url.searchParams.delete(key);
+    return url.href;
+  };
+  for (const candidate of candidates) {
+    if (sources.length === 8) break;
+    if (!/^https?:\/\//i.test(candidate.url) || !URL.canParse(candidate.url)) continue;
+    const url = canonical(candidate.url);
+    if (sources.some((source) => canonical(source.url) === url)) continue;
+    sources.push({ id: `s${sources.length + 1}`, title: new URL(url).hostname, url });
+  }
   if (!sources.length)
     throw new SceneServiceError(
       "evidence",

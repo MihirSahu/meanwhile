@@ -14,6 +14,7 @@ import {
   readSourceDocument,
   retrieveResearchPassages,
   selectPassages,
+  selectCoveragePassages,
 } from "../src/lib/server/source-retrieval";
 import {
   fixtureClaim,
@@ -180,6 +181,26 @@ test("source extraction removes scripts, decodes entities and preserves selected
   assert.ok(passages.length);
   for (const passage of passages)
     assert.equal(passage.text, text.slice(passage.start, passage.end));
+});
+
+test("overview selection retains origins and military developments when the brief overemphasizes aftermath", () => {
+  const paragraph = (text: string) => text + " " + "Additional verified description and detail about this period. ".repeat(22);
+  const text = [
+    paragraph("The conflict's origin and cause lay in grievances and its political background."),
+    paragraph("The military campaign and battle developments changed the war in several stages."),
+    paragraph("The government and commander provided leadership to the participants."),
+    ...Array.from({ length: 10 }, (_, i) => paragraph(`The outcome, settlement, treaty and aftermath in 1918, section ${i}.`)),
+  ].join(" ");
+  const doc = { ...fixtureDocument, text };
+  const brief = "The outcome settlement treaty aftermath in 1918.";
+  const skewed = selectPassages(doc, "s1", brief);
+  assert.ok(!skewed.some((p) => p.text.includes("political background")));
+  const balanced = selectCoveragePassages(doc, "s1", "The conflict", brief);
+  assert.ok(balanced.some((p) => p.text.includes("political background")));
+  assert.ok(balanced.some((p) => p.text.includes("military campaign")));
+  assert.ok(balanced.some((p) => p.text.includes("leadership")));
+  assert.ok(balanced.length <= 5);
+  for (const p of balanced) assert.equal(p.text, text.slice(p.start, p.end));
 });
 test("unreadable source pages cannot create passages and cancellation propagates", async () => {
   const bundle = await retrieveResearchPassages(

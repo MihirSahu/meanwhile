@@ -83,6 +83,35 @@ test("optional work cannot spend calls, input or output reserved for completion"
     assert.doesNotThrow(() => b.admit("evidence_review", 40, 40));
   }
 });
+
+test("two checklist repairs preserve admission for event compilation and final review", () => {
+  const budget = new SceneRequestBudget();
+  const ending: BudgetStage[] = ["event_plan", "event_review"];
+  const stages: BudgetStage[] = [
+    "research",
+    "checklist", "checklist_review",
+    "checklist", "checklist_review",
+    "checklist", "checklist_review",
+    ...ending,
+  ];
+  for (const stage of stages) {
+    const remaining: BudgetStage[] = stage === "research"
+      ? ["checklist", "checklist_review", ...ending]
+      : stage === "checklist"
+        ? ["checklist_review", ...ending]
+        : stage === "checklist_review"
+          ? ending
+          : stage === "event_plan"
+            ? ["event_review"]
+            : [];
+    budget.reserve(reserveFor(remaining));
+    budget.admit(stage, 12_000, stageAllowances[stage].outputTokens);
+    budget.record(12_000, stageAllowances[stage].outputTokens);
+  }
+  assert.equal(budget.snapshot().used.calls, 9);
+  assert.equal(budget.snapshot().used.outputTokens, 27_600);
+  assert.deepEqual(budget.snapshot().reserved, { calls: 0, inputTokens: 0, outputTokens: 0 });
+});
 test("oversized or invalid counted inputs cannot start a generation", () => {
   for (const n of [24001, -1, NaN, Infinity]) {
     const b = new SceneRequestBudget();
@@ -136,4 +165,20 @@ test("recovery merges actual receipts with fresh IDs, preserved offsets and boun
   };
   assert.ok(mergeRecoveryResearch(many, many).sources.length <= 8);
   assert.ok(mergeRecoveryResearch(many, many).passages!.length <= 40);
+});
+
+test("focused rereads retain prior context and outcomes instead of replacing a source's first five receipts", () => {
+  const bundle = (prefix: string) => ({
+    text: "Synthetic source receipt fixture",
+    sources: [{ id: "s1", title: "One long source", url: evidenceUrl }],
+    passages: Array.from({ length: 5 }, (_, i) => ({
+      ...fixturePassage, id: `p${i + 1}`, documentHash: (prefix === "old" ? "a" : "b").repeat(64),
+      text: `${prefix} ${i}: ${fixturePassage.text}`, end: fixturePassage.end + prefix.length + 4,
+    })),
+  });
+  const original = bundle("old"), focused = bundle("new");
+  const merged = mergeRecoveryResearch(original, focused);
+  assert.equal(merged.passages!.length, 10);
+  for (const receipt of [...original.passages, ...focused.passages])
+    assert.ok(merged.passages!.some((p) => p.documentHash === receipt.documentHash && p.text === receipt.text));
 });
